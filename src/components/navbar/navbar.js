@@ -5,7 +5,7 @@ import { Input } from "../ui/input";
 const Navbar = () => {
   return (
     <nav>
-      <ul className="flex items-center justify-between p-4 bg-gray-500">
+      <ul className="flex items-center justify-between bg-gray-500 p-4">
         <div className="flex items-center space-x-8">
           <li>
             <Link href="/">
@@ -21,7 +21,7 @@ const Navbar = () => {
         </div>
         <li>
           <Input
-            className="rounded-xl w-72 bg-rgba-darkgray"
+            className="bg-rgba-darkgray w-72 rounded-xl"
             type="text"
             placeholder="Search for campaigns..."
           />

@@ -1,11 +1,5 @@
-
-
 const Authlayout = () => {
-  return (
-    <div>
-      page
-    </div>
-  )
-}
+  return <div>page</div>;
+};
 
-export default Authlayout
+export default Authlayout;
