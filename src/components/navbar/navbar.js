@@ -5,34 +5,34 @@ import { Input } from "../ui/input";
 const Navbar = () => {
   return (
     <nav>
-      <ul className="flex items-center justify-between bg-gray-500 p-4">
+      <ul className="flex items-center justify-between p-4 bg-lightblue">
         <div className="flex items-center space-x-8">
           <li>
             <Link href="/">
-              <Button>TF</Button>
+              <Button className="bg-darkgray">TF</Button>
             </Link>
           </li>
           <li>
-            <Button>Theme</Button>
+            <Button className="bg-darkgray">Theme</Button>
           </li>
           <li>
-            <Button>Options</Button>
+            <Button className="bg-darkgray">Options</Button>
           </li>
         </div>
         <li>
           <Input
-            className="bg-rgba-darkgray w-72 rounded-xl"
+            className="rounded-xl w-72 bg-darkgray text-white placeholder-white"
             type="text"
             placeholder="Search for campaigns..."
           />
         </li>
         <div className="flex items-center space-x-8">
           <li>
-            <Button>Create campaigns</Button>
+            <Button className="bg-darkgray">Create campaigns</Button>
           </li>
           <li>
             <Link href="/">
-              <Button>Login/Register</Button>
+              <Button className="bg-darkgray">Login/Register</Button>
             </Link>
           </li>
         </div>
