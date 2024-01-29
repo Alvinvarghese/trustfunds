@@ -1,9 +1,10 @@
 import Navbar from "@/components/navbar/navbar"
 
-const Layout = () => {
+const Layout = (props) => {
   return (
     <div>
         <Navbar/>
+        {props.children}
     </div>
   )
 }
