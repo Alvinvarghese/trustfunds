@@ -1,24 +1,42 @@
+import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import React from "react";
 
 const Page = () => {
   return (
-    <div className="flex h-screen">
-      <div>
-        <label>Your name</label>
-        <Input />
-        <label>Campaign title</label>
+    <div className="flex h-screen flex-col items-center px-10">
+      <h1 className=" mt-4 text-4xl font-bold text-darkgray">
+        Start a Campaign
+      </h1>
+      <div className="mb-6 mt-4 flex w-full">
+        <div className="mr-6 w-1/2">
+          <label>Your name*</label>
+          <Input />
+        </div>
+        <div className="w-1/2">
+          <label>Campaign title*</label>
+          <Input />
+        </div>
+      </div>
+      <div className="mb-6 w-full">
+        <label>Story*</label>
+        <Input className="h-40" />
+      </div>
+      <div className="mb-6 flex w-full">
+        <div className="mr-6 w-1/2 ">
+          <label>Goal*</label>
+          <Input />
+        </div>
+        <div className="w-1/2">
+          <label>End date*</label>
+          <Input />
+        </div>
+      </div>
+      <div className="mb-6 w-full">
+        <label>Campaign image*</label>
         <Input />
       </div>
-      <label>Story</label>
-      <Input />
-      <div>
-        <label>Goal</label>
-        <Input />
-        <label>End date</label>
-        <Input />
-      </div>
-      <label>Campaign image</label>
+      <Button className="text-lg">Create Campaign</Button>
     </div>
   );
 };
