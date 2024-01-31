@@ -6,7 +6,7 @@ import ThemeToggle from "./ThemeToggle";
 // navbar_button style in global.css
 const Navbar = () => {
   return (
-    <nav>
+    <nav className="fixed z-50 w-full">
       <ul className="flex items-center justify-between bg-lightblue p-2">
         <div className="flex items-center space-x-4 lg:pl-4">
           <li>

@@ -49,7 +49,7 @@ const Page = () => {
           <div className="flex flex-row gap-2">
             <Button
               type="submit"
-              className="w-32 rounded-xl bg-darkgray text-lg"
+              className="bg-welcome-button w-32 rounded-xl text-lg"
             >
               REGISTER
             </Button>

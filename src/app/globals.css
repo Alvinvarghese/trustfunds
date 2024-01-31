@@ -173,3 +173,16 @@
 .navbar_button {
   @apply text-lightbluetext rounded-3xl bg-darkgray text-[16px] font-[500];
 }
+
+.custom_scroll::-webkit-scrollbar {
+  width: 0.5rem;
+}
+
+.custom_scroll::-webkit-scrollbar-track {
+  @apply bg-darkgray;
+}
+
+.custom_scroll::-webkit-scrollbar-thumb {
+  @apply bg-lightbluetext;
+  border-radius: 2rem;
+}

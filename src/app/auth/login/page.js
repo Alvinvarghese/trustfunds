@@ -37,7 +37,7 @@ const Page = () => {
           <div className="flex flex-row gap-4">
             <Button
               type="submit"
-              className="w-32 rounded-xl bg-darkgray text-lg"
+              className="bg-welcome-button w-32 rounded-xl text-lg"
             >
               LOGIN
             </Button>
