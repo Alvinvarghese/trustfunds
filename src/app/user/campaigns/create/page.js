@@ -1,5 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import { PlusCircle } from "lucide-react";
 import React from "react";
 
 const Page = () => {
@@ -48,8 +49,8 @@ const Page = () => {
           placeholder="Place image url of your campaign"
         />
       </div>
-      <Button className="rounded-xl bg-darkgray text-lg">
-        Create Campaign
+      <Button className="mt-3 flex flex-row gap-2 rounded-xl bg-darkgray px-10 py-6 text-lg">
+        <PlusCircle size={20} /> <span>Create Campaign</span>
       </Button>
     </div>
   );

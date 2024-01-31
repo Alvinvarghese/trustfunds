@@ -1,3 +1,4 @@
+import Fonts from "@/components/Fonts";
 import "./globals.css";
 
 export const metadata = {
@@ -8,6 +9,9 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
+      <head>
+        <Fonts />
+      </head>
       <body>{children}</body>
     </html>
   );

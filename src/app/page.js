@@ -1,5 +1,13 @@
+import Home from "@/components/Home/Home";
+import Navbar from "@/components/navbar/navbar";
+
 const Page = () => {
-  return <div>Page</div>;
+  return (
+    <>
+      <Navbar />
+      <Home />
+    </>
+  );
 };
 
 export default Page;
