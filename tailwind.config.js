@@ -19,6 +19,7 @@ module.exports = {
     extend: {
       colors: {
         lightblue: "rgba(168, 188, 240, 1)",
+        lightbluetext: "rgba(168, 188, 226, 1)",
         darkgray: "rgba(61,67,80,1)",
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
@@ -39,7 +40,7 @@ module.exports = {
         },
         muted: {
           DEFAULT: "hsl(var(--muted))",
-          foreground: "hsl(var(--muted-foreground))",
+          foreground: "rgba(168, 188, 226, 0.5)",
         },
         accent: {
           DEFAULT: "hsl(var(--accent))",

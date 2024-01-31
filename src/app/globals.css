@@ -74,3 +74,102 @@
     @apply bg-background text-foreground;
   }
 }
+
+*,
+:root {
+  font-family: "Montserrat Alternates", sans-serif;
+}
+
+.fma-thin {
+  font-weight: 100;
+  font-style: normal;
+}
+
+.fma-thin-italic {
+  font-weight: 100;
+  font-style: italic;
+}
+
+.fma-extralight {
+  font-weight: 200;
+  font-style: normal;
+}
+
+.fma-extralight-italic {
+  font-weight: 200;
+  font-style: italic;
+}
+
+.fma-light {
+  font-weight: 300;
+  font-style: normal;
+}
+
+.fma-light-italic {
+  font-weight: 300;
+  font-style: italic;
+}
+
+.fma-regular {
+  font-weight: 400;
+  font-style: normal;
+}
+
+.fma-regular-italic {
+  font-weight: 400;
+  font-style: italic;
+}
+
+.fma-medium {
+  font-weight: 500;
+  font-style: normal;
+}
+
+.fma-medium-italic {
+  font-weight: 500;
+  font-style: italic;
+}
+
+.fma-semibold {
+  font-weight: 600;
+  font-style: normal;
+}
+
+.fma-semibold-italic {
+  font-weight: 600;
+  font-style: italic;
+}
+
+.fma-bold {
+  font-weight: 700;
+  font-style: normal;
+}
+
+.fma-bold-italic {
+  font-weight: 700;
+  font-style: italic;
+}
+
+.fma-extrabold {
+  font-weight: 800;
+  font-style: normal;
+}
+
+.fma-extrabold-italic {
+  font-weight: 800;
+  font-style: italic;
+}
+
+.fma-black {
+  font-weight: 900;
+  font-style: normal;
+}
+
+.fma-black-italic {
+  font-weight: 900;
+  font-style: italic;
+}
+
+.navbar_button {
+  @apply text-lightbluetext rounded-3xl bg-darkgray text-[16px] font-[500];
+}
