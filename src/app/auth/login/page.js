@@ -12,7 +12,7 @@ const Page = () => {
 
   return (
     <div className="flex h-screen">
-      <div className="flex-1 cursor-pointer">
+      <div className="hidden flex-1 cursor-pointer md:block">
         <Image
           height={1024}
           width={720}
@@ -21,7 +21,7 @@ const Page = () => {
           className="h-full w-full object-contain object-left"
         />
       </div>
-      <div className="flex flex-1 items-center justify-center">
+      <div className="flex flex-auto items-center justify-center">
         <form className=" flex max-w-md flex-col items-center justify-center">
           <Link href="/" className="h-2/3 w-3/5 pb-16">
             <img src="/TF.png" alt="logo" />
@@ -37,7 +37,7 @@ const Page = () => {
           <div className="flex flex-row gap-4">
             <Button
               type="submit"
-              className="bg-welcome-button w-32 rounded-xl text-lg"
+              className="w-32 rounded-xl bg-welcome-button text-lg"
             >
               LOGIN
             </Button>

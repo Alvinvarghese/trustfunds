@@ -11,7 +11,7 @@ const Page = () => {
   const goToLogin = () => router.push("/auth/login");
   return (
     <div className="flex h-screen">
-      <div className="flex-1">
+      <div className="hidden flex-1 cursor-pointer md:block">
         <Image
           height={1024}
           width={720}
@@ -21,7 +21,7 @@ const Page = () => {
         />
       </div>
 
-      <div className="flex flex-1 items-center justify-center ">
+      <div className="flex flex-auto items-center justify-center ">
         <form className=" flex max-w-md flex-col items-center justify-center">
           <Link href="/" className="h-2/3 w-3/5 pb-8">
             <img src="/TF.png" alt="logo" />
@@ -49,7 +49,7 @@ const Page = () => {
           <div className="flex flex-row gap-2">
             <Button
               type="submit"
-              className="bg-welcome-button w-32 rounded-xl text-lg"
+              className="w-32 rounded-xl bg-welcome-button text-lg"
             >
               REGISTER
             </Button>
