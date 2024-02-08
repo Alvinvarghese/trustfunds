@@ -12,7 +12,7 @@ const Page = () => {
 
   return (
     <div className="flex h-screen">
-      <div className="hidden flex-1 cursor-pointer md:block">
+      <div className="hidden flex-1 cursor-pointer lg:block">
         <Image
           height={1024}
           width={720}
