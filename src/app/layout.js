@@ -1,6 +1,7 @@
 import Fonts from "@/components/Fonts";
 import "./globals.css";
 
+
 export const metadata = {
   title: "TrustFunds",
   description: "Crowdfunding platform",
