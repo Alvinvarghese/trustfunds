@@ -17,39 +17,50 @@ const Page = () => {
         <img
           src="/campaign_image.png"
           alt="campaign image"
-          className="h-[240px] w-[1250px]"
+          height={200}
+          width={1200}
+          layout="responsive"
         />
       </div>
-      <div className="pt-4">
+      <div className="flex flex-row justify-between pr-96 pt-4 ">
         <div>
           <h1 className="text-4xl font-bold text-darkgray">
             Clean Ganga Initiative
           </h1>
-          <p>by Organization</p>
+          <div className="flex flex-row gap-1">
+            <p>by </p>
+            <p className="font-bold">Organization</p>
+          </div>
         </div>
-        <div>
-          <Button>0.01 raised of 0.1</Button>
-          <Button>10 days left</Button>
-          <Button>5 backers</Button>
+        <div className="flex flex-row gap-5">
+          <Button className="size-100 flex flex-col bg-lightblue text-darkgray">
+            <p className="text-3xl font-bold">0.01</p> <p>raised of 0.1</p>
+          </Button>
+          <Button className="size-100 flex flex-col bg-lightblue text-darkgray">
+            <p className="text-3xl font-bold">10</p> <p>days left</p>
+          </Button>
+          <Button className="size-100 flex flex-col bg-lightblue text-darkgray">
+            <p className="text-3xl font-bold">5</p> <p>backers</p>
+          </Button>
         </div>
       </div>
-      <div>
-        <div>
-          <p>Creator</p>
+      <div className="flex flex-row gap-48 pr-96 pt-10">
+        <div className="flex flex-col">
+          <h3 className="font-bold">Creator</h3>
           <div>
             <img />
             <div>
-              <p>Organization</p>
-              <p>10 campaigns</p>
+              <p>Organization name</p>
+              <p className="text-sm font-light">10 campaigns</p>
             </div>
           </div>
         </div>
-        <Button>Go To Forum</Button>
-        <p>Pledge ETH 0.1</p>
-        <Button>FUND CAMPAIGN</Button>
+        <Button className="bg-darkgray">Go To Forum</Button>
+        <p className="border-spacing-12 border-black">Pledge ETH 0.1</p>
+        <Button className="bg-darkgray">FUND CAMPAIGN</Button>
       </div>
       <div>
-        <h3>Story/Pitch</h3>
+        <h2 className="pt-8 font-bold">Story/Pitch</h2>
         <p>
           Alappuzha Beach is one of the most popular tourist destinations in
           Kerala, India. However, the beach is becoming increasingly polluted

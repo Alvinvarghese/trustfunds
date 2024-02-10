@@ -26,7 +26,7 @@ const Page = () => {
       <div className="w-full pb-4 lg:mb-6">
         <label>Story*</label>
         <Input
-          className="h-32 rounded-2xl align-top"
+          className="text-top h-32 rounded-2xl"
           type="text"
           placeholder="Write your story"
         />
@@ -41,15 +41,31 @@ const Page = () => {
           <Input className="rounded-2xl" type="date" />
         </div>
       </div>
-      <div className="mb-6 w-full">
-        <label>Campaign image*</label>
-        <Input
-          className="rounded-2xl"
-          type="text"
-          placeholder="Place image url of your campaign"
-        />
+      <div className="flex w-full flex-row lg:mb-6">
+        <div className="mr-10 w-1/2">
+          <label>Campaign image*</label>
+          <Input
+            className="rounded-2xl"
+            type="file"
+            accept="image/*"
+            placeholder="Place image url of your campaign"
+          />
+          <p className="pl-2 text-sm text-gray-400">
+            Choose an image for your campaign
+          </p>
+        </div>
+        <div className=" w-1/2">
+          <label>Campaign cause*</label>
+          <div>
+            <Input
+              className="rounded-2xl"
+              type="text"
+              placeholder="Select a cause"
+            />
+          </div>
+        </div>
       </div>
-      <Button className="mt-3 flex flex-row gap-2 rounded-xl bg-darkgray px-10 py-6 text-lg">
+      <Button className="mt-2 flex flex-row gap-2 rounded-xl bg-darkgray px-10 py-6 text-lg">
         <PlusCircle size={20} /> <span>Create Campaign</span>
       </Button>
     </div>
