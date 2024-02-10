@@ -32,7 +32,7 @@ const Page = () => {
           </div>
           <div className="mb-4 w-80">
             <label className="mb-2 block text-sm">Email*</label>
-            <Input type="text" className="rounded-xl border border-black" />
+            <Input type="email" className="rounded-xl border border-black" />
           </div>
           <div className="mb-3 w-80">
             <label className="mb-2 block text-sm">Username*</label>
@@ -40,11 +40,11 @@ const Page = () => {
           </div>
           <div className="mb-3 w-80">
             <label className="mb-2 block text-sm">Password*</label>
-            <Input type="text" className="rounded-xl border border-black" />
+            <Input type="password" className="rounded-xl border border-black" />
           </div>
           <div className="mb-6 w-80">
             <label className="mb-2 block text-sm">Repeat Password*</label>
-            <Input type="text" className="rounded-xl border border-black" />
+            <Input type="password" className="rounded-xl border border-black" />
           </div>
           <div className="flex flex-row gap-2">
             <Button

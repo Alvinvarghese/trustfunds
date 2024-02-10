@@ -1,23 +1,30 @@
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import Image from "next/image";
 
 const Page = () => {
   return (
-    <div className="flex h-screen flex-col">
-      <div>
+    <div className="flex h-screen flex-col pl-10">
+      <div className="flex flex-row justify-start p-4">
         <div>
-          <Button>Go Back</Button>
+          <Button className="bg-darkgray">Go Back</Button>
         </div>
-        <div>
-          <Button>Go To Dashboard</Button>
+        <div className="pl-10">
+          <Button className="bg-darkgray">Go To Dashboard</Button>
         </div>
       </div>
       <div>
-        <img src="/campaign_image.png" alt="campaign image" />
+        <img
+          src="/campaign_image.png"
+          alt="campaign image"
+          className="h-[240px] w-[1250px]"
+        />
       </div>
-      <div>
+      <div className="pt-4">
         <div>
-          <h1>Clean Ganga Initiative</h1>
+          <h1 className="text-4xl font-bold text-darkgray">
+            Clean Ganga Initiative
+          </h1>
           <p>by Organization</p>
         </div>
         <div>

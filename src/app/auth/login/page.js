@@ -32,7 +32,7 @@ const Page = () => {
           </div>
           <div className="mb-6 w-80 pb-6">
             <label className="mb-2 block text-sm">Password*</label>
-            <Input type="text" className="rounded-xl border border-black" />
+            <Input type="password" className="rounded-xl border border-black" />
           </div>
           <div className="flex flex-row gap-4">
             <Button
