@@ -1,9 +1,20 @@
+"use client";
 import { Button } from "@/components/ui/button";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
 import { Input } from "@/components/ui/input";
 import { PlusCircle } from "lucide-react";
-import React from "react";
+import React, { useState } from "react";
 
 const Page = () => {
+  const [selectedCause, setSelectedCause] = useState("");
+  const handleCause = (cause) => {
+    setSelectedCause(cause);
+  };
   return (
     <div className="flex h-screen flex-col items-center px-10">
       <h1 className=" mt-8 text-2xl font-bold text-darkgray lg:text-4xl">
@@ -26,7 +37,7 @@ const Page = () => {
       <div className="w-full pb-4 lg:mb-6">
         <label>Story*</label>
         <Input
-          className="text-top h-32 rounded-2xl"
+          className="placeholder h-32 rounded-2xl text-start"
           type="text"
           placeholder="Write your story"
         />
@@ -36,9 +47,31 @@ const Page = () => {
           <label>Goal*</label>
           <Input className="rounded-2xl" type="text" placeholder="ETH 0.50" />
         </div>
-        <div className="w-1/2">
-          <label>End date*</label>
-          <Input className="rounded-2xl" type="date" />
+        <div className=" w-1/2">
+          <label>Campaign cause*</label>
+          <div className="flex h-10 rounded-2xl border border-black">
+            <DropdownMenu>
+              <DropdownMenuTrigger className="w-full rounded-2xl pl-3 text-start font-extralight">
+                {selectedCause || "Select a cause"}
+              </DropdownMenuTrigger>
+              <DropdownMenuContent>
+                <DropdownMenuItem onClick={() => handleCause("Environment")}>
+                  Environment
+                </DropdownMenuItem>
+                <DropdownMenuItem onClick={() => handleCause("Healthcare")}>
+                  Healthcare
+                </DropdownMenuItem>
+                <DropdownMenuItem onClick={() => handleCause("Education")}>
+                  Education
+                </DropdownMenuItem>
+                <DropdownMenuItem
+                  onClick={() => handleCause("Art and Culture")}
+                >
+                  Art and Culture
+                </DropdownMenuItem>
+              </DropdownMenuContent>
+            </DropdownMenu>
+          </div>
         </div>
       </div>
       <div className="flex w-full flex-row lg:mb-6">
@@ -54,15 +87,9 @@ const Page = () => {
             Choose an image for your campaign
           </p>
         </div>
-        <div className=" w-1/2">
-          <label>Campaign cause*</label>
-          <div>
-            <Input
-              className="rounded-2xl"
-              type="text"
-              placeholder="Select a cause"
-            />
-          </div>
+        <div className="w-1/2">
+          <label>End date*</label>
+          <Input type="date" className="rounded-2xl" />
         </div>
       </div>
       <Button className="mt-2 flex flex-row gap-2 rounded-xl bg-darkgray px-10 py-6 text-lg">

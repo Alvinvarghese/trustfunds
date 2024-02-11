@@ -4,13 +4,13 @@ import Image from "next/image";
 
 const Page = () => {
   return (
-    <div className="flex h-screen flex-col pl-10">
+    <div className="flex h-screen flex-col px-10">
       <div className="flex flex-row justify-start p-4">
         <div>
-          <Button className="bg-darkgray">Go Back</Button>
+          <Button className="rounded-2xl bg-darkgray">Go Back</Button>
         </div>
         <div className="pl-10">
-          <Button className="bg-darkgray">Go To Dashboard</Button>
+          <Button className="rounded-2xl bg-darkgray">Go To Dashboard</Button>
         </div>
       </div>
       <div>
@@ -18,11 +18,11 @@ const Page = () => {
           src="/campaign_image.png"
           alt="campaign image"
           height={200}
-          width={1200}
+          width={1400}
           layout="responsive"
         />
       </div>
-      <div className="flex flex-row justify-between pr-96 pt-4 ">
+      <div className="flex flex-row justify-between pr-28 pt-8">
         <div>
           <h1 className="text-4xl font-bold text-darkgray">
             Clean Ganga Initiative
@@ -44,7 +44,7 @@ const Page = () => {
           </Button>
         </div>
       </div>
-      <div className="flex flex-row gap-48 pr-96 pt-10">
+      <div className="flex w-full flex-row pt-10">
         <div className="flex flex-col">
           <h3 className="font-bold">Creator</h3>
           <div>
@@ -55,12 +55,20 @@ const Page = () => {
             </div>
           </div>
         </div>
-        <Button className="bg-darkgray">Go To Forum</Button>
-        <p className="border-spacing-12 border-black">Pledge ETH 0.1</p>
-        <Button className="bg-darkgray">FUND CAMPAIGN</Button>
+        <div className="flex flex-grow flex-row  justify-around">
+          <Button className="h-14 rounded-2xl bg-darkgray">GO TO FORUM</Button>
+          <div className="flex w-1/2 flex-row">
+            <p className=" flex h-14 items-center gap-40 rounded-2xl border border-darkgray pl-3">
+              Pledge ETH 0.1
+              <Button className="h-14 rounded-2xl bg-darkgray">
+                FUND CAMPAIGN
+              </Button>
+            </p>
+          </div>
+        </div>
       </div>
       <div>
-        <h2 className="pt-8 font-bold">Story/Pitch</h2>
+        <h2 className="pt-10 font-bold">Story/Pitch</h2>
         <p>
           Alappuzha Beach is one of the most popular tourist destinations in
           Kerala, India. However, the beach is becoming increasingly polluted
