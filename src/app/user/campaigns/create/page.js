@@ -51,7 +51,10 @@ const Page = () => {
           <label>Campaign cause*</label>
           <div className="flex h-10 rounded-2xl border border-black">
             <DropdownMenu>
-              <DropdownMenuTrigger className="w-full rounded-2xl pl-3 text-start font-extralight">
+              <DropdownMenuTrigger
+                className="w-full rounded-2xl pl-3 text-start"
+                style={{ fontWeight: selectedCause === "" ? 100 : 400 }}
+              >
                 {selectedCause || "Select a cause"}
               </DropdownMenuTrigger>
               <DropdownMenuContent>

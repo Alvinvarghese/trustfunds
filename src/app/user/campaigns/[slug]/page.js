@@ -44,7 +44,7 @@ const Page = () => {
           </Button>
         </div>
       </div>
-      <div className="flex w-full flex-row pt-10">
+      <div className="flex w-full flex-row justify-between pt-10">
         <div className="flex flex-col">
           <h3 className="font-bold">Creator</h3>
           <div>
@@ -55,21 +55,22 @@ const Page = () => {
             </div>
           </div>
         </div>
-        <div className="flex flex-grow flex-row  justify-around">
-          <Button className="h-14 rounded-2xl bg-darkgray">GO TO FORUM</Button>
-          <div className="flex w-1/2 flex-row">
-            <p className=" flex h-14 items-center gap-40 rounded-2xl border border-darkgray pl-3">
-              Pledge ETH 0.1
-              <Button className="h-14 rounded-2xl bg-darkgray">
-                FUND CAMPAIGN
-              </Button>
-            </p>
+        <div className="ml-20 flex flex-grow flex-row justify-end gap-24 pr-28">
+          <Button className="h-14 rounded-2xl bg-darkgray ">GO TO FORUM</Button>
+          <div className="flex h-14 flex-row rounded-2xl border border-darkgray">
+            <input
+              className=" h-13 flex items-center gap-40 rounded-2xl border-none pl-3 hover:outline-none"
+              placeholder="Pledge ETH 0.1"
+            />
+            <Button className="h-14 rounded-2xl bg-darkgray">
+              FUND CAMPAIGN
+            </Button>
           </div>
         </div>
       </div>
-      <div>
+      <div className="flex flex-col pr-24">
         <h2 className="pt-10 font-bold">Story/Pitch</h2>
-        <p>
+        <p className=" text-justify">
           Alappuzha Beach is one of the most popular tourist destinations in
           Kerala, India. However, the beach is becoming increasingly polluted
           with plastic waste. This is having a negative impact on the
