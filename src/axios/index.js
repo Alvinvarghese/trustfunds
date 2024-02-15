@@ -1,0 +1,16 @@
+import axios from "axios";
+
+const api = axios.create({
+  baseURL: process.env.NEXT_PUBLIC_BASE_URL,
+  headers: {
+    Accept: "application/json",
+    "Content-Type": "application/json",
+  },
+});
+
+// export const uploadFile = (data) => api2.post("/upload", data);
+// export const getFiles = () => api.get("/files");
+// export const getFile = (id) => api.get(/${id});
+
+export const getCausesAPI = () => api.get("/campaigns/causes", {withCredentials:true})
+export const postRegisterAPI =(body) => api.post("/auth/register",body, {withCredentials:true})

@@ -1,4 +1,5 @@
 "use client";
+import { getCausesAPI } from "@/axios";
 import { Button } from "@/components/ui/button";
 import {
   DropdownMenu,
@@ -8,13 +9,28 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { Input } from "@/components/ui/input";
 import { PlusCircle } from "lucide-react";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 const Page = () => {
   const [selectedCause, setSelectedCause] = useState("");
   const handleCause = (cause) => {
     setSelectedCause(cause);
   };
+  
+  const [data, setData] = useState([]);
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const res = await getCausesAPI();
+        if (res.status === 200) setData(res.data.result);
+        else toastError("Campaign causes could not be loaded!");
+      } catch (err) {
+        console.log(err);
+      }
+    };
+
+    fetchData();
+  }, []);
   return (
     <div className="flex h-screen flex-col items-center px-10">
       <h1 className=" mt-8 text-2xl font-bold text-darkgray lg:text-4xl">
@@ -58,20 +74,15 @@ const Page = () => {
                 {selectedCause || "Select a cause"}
               </DropdownMenuTrigger>
               <DropdownMenuContent>
-                <DropdownMenuItem onClick={() => handleCause("Environment")}>
-                  Environment
-                </DropdownMenuItem>
-                <DropdownMenuItem onClick={() => handleCause("Healthcare")}>
-                  Healthcare
-                </DropdownMenuItem>
-                <DropdownMenuItem onClick={() => handleCause("Education")}>
-                  Education
-                </DropdownMenuItem>
-                <DropdownMenuItem
-                  onClick={() => handleCause("Art and Culture")}
-                >
-                  Art and Culture
-                </DropdownMenuItem>
+                {data &&
+                  data.length > 0 &&
+                  data.map((element) => {
+                    return (
+                      <DropdownMenuItem key={element} onClick={() => handleCause(element)}>
+                        {element}
+                      </DropdownMenuItem>
+                    );
+                  })}
               </DropdownMenuContent>
             </DropdownMenu>
           </div>
