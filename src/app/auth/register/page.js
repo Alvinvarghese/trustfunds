@@ -3,7 +3,7 @@
 import { postRegisterAPI } from "@/axios";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { toastSuccess } from "@/lib/toast";
+import { toastError, toastSuccess } from "@/lib/toast";
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
@@ -20,23 +20,29 @@ const Page = () => {
   const goToLogin = () => router.push("/auth/login");
   const handleSubmit = async (e) => {
     e.preventDefault();
-
     try {
-      if (password != repeatPassword) {
-        throw new Error("Passwords do not match");
-      }
+      // validations
+      if (fullName.length === 0) throw new Error("Name cannot be empty.");
+      if (email.length === 0) throw new Error("Email must not be empty");
+      if (password.length === 0 || repeatPassword.length === 0)
+        throw new Error("Password or confirm password must not be empty.");
+      if (password != repeatPassword)
+        throw new Error("Passwords do not match.");
 
-      const res = await postRegisterAPI({
+      const data = {
         name: fullName,
         email,
         password,
-      });
-      console.log(res);
+      };
+      const res = await postRegisterAPI(data);
       if (res.status === 200) {
-        toastSuccess("Registration successful!");
+        toastSuccess("Registration successful. Please login to continue!");
+        router.push("/login");
       }
     } catch (error) {
-      console.error("Registration failed", error);
+      console.error(error);
+      let defaultError = "Registration failed. Please try again later";
+      toastError(error.response?.data?.error || error.message || defaultError);
     }
   };
 
