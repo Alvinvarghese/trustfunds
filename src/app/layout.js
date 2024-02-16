@@ -1,6 +1,6 @@
 import Fonts from "@/components/Fonts";
 import "./globals.css";
-
+import { Toaster } from "@/components/ui/toaster";
 
 export const metadata = {
   title: "TrustFunds",
@@ -13,7 +13,10 @@ export default function RootLayout({ children }) {
       <head>
         <Fonts />
       </head>
-      <body>{children}</body>
+      <body>
+        <Toaster />
+        {children}
+      </body>
     </html>
   );
 }

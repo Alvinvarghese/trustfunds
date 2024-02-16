@@ -12,5 +12,13 @@ const api = axios.create({
 // export const getFiles = () => api.get("/files");
 // export const getFile = (id) => api.get(/${id});
 
-export const getCausesAPI = () => api.get("/campaigns/causes", {withCredentials:true})
-export const postRegisterAPI =(body) => api.post("/auth/register",body, {withCredentials:true})
+export const getCausesAPI = () =>
+  api.get("/campaigns/causes", { withCredentials: true });
+export const postRegisterAPI = (body) =>
+  api.post("/users/register", body, { withCredentials: true });
+export const postLoginAPI = (body) =>
+  api.post("users/login", body, { withCredentials: true });
+export const postCampaignAPI = (body) =>
+  api.post("/campaign/create", { withCredentials: true });
+export const getCampaignAPI = () =>
+  api.get("/campaign/", { withCredentials: true });
