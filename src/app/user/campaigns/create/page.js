@@ -8,6 +8,8 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { Input } from "@/components/ui/input";
+import { toastError, toastSuccess } from "@/lib/toast";
+import uploadImage from "@/lib/uploadImage";
 import { PlusCircle } from "lucide-react";
 import React, { useEffect, useState } from "react";
 
@@ -31,28 +33,60 @@ const Page = () => {
 
     fetchData();
   }, []);
+
   const [campaignName, setCampaignName] = useState("");
   const [campaignTitle, setCampaignTitle] = useState("");
   const [story, setStory] = useState("");
-  const [goal, setGoal] = useState("");
+  const [goal, setGoal] = useState(0);
   const [campaignCause, setCampaignCause] = useState("");
   const [campaignImage, setCampaignImage] = useState(null);
   const [endDate, setEndDate] = useState("");
+
   const handleSubmit = async () => {
     try {
-      const formData = new FormData();
-      formData.append("campaignName", campaignName);
-      formData.append("campaignTitle", campaignTitle);
-      formData.append("story", story);
-      formData.append("goal", goal);
-      formData.append("campaignCause", campaignCause);
-      formData.append("campaignImage", campaignImage);
-      formData.append("endDate", endDate);
+      const url = new URL(uploadImage(campaignImage, campaignImage.name));
 
-      const res = await axios.post("/campaign/create", formData);
-      console.log("Campaign creation successful", response.data);
+      if (campaignName.length === 0)
+        throw new Error("Campaign name cannot be empty.");
+      if (campaignTitle.length === 0)
+        throw new Error("Campaign title cannot be empty.");
+      if (story.length === 0) throw new Error("Story cannot be empty.");
+      if (goal.length === 0) throw new Error("Goal cannot be empty.");
+      if (campaignCause.length === 0)
+        throw new Error("Campaign cause cannot be empty.");
+      if (campaignImage.length === 0)
+        throw new Error("Campaign image cannot be empty.");
+      if (endDate.length === 0) throw new Error("End date cannot be empty.");
+
+      const storyArr = story
+        .split("\n")
+        .filter((eachStory) => eachStory !== "");
+
+      const currDate = new Date();
+      const oneWeek = new Date(currDate.getTime() + 7 * 24 * 60 * 60 * 1000);
+      if (endDate.getTime() <= oneWeek.getTime())
+        throw new Error("End date must be at least one week from today.");
+
+      const data = {
+        campaignName,
+        campaignTitle,
+        storyArr,
+        goal,
+        campaignCause,
+        url,
+        endDate,
+      };
+
+      const res = await axios.post("/campaign/create", data);
+
+      if (res.status === 200) {
+        toastSuccess("Campaign creation successful!");
+        // router.push(/)
+      }
     } catch (error) {
       console.error("Campaign creation failed", error);
+      let defaultError = "Campaign creation failed. Please try again later.";
+      toastError(error.response?.data?.error || error.message || defaultError);
     }
   };
 

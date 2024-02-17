@@ -3,6 +3,7 @@
 import { postLoginAPI } from "@/axios";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import { toastError, toastSuccess } from "@/lib/toast";
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
@@ -16,16 +17,20 @@ const Page = () => {
     e.preventDefault();
     try {
       const res = await postLoginAPI({
-        username,
+        email,
         password,
       });
-      console.log("Login successful", res.data);
+      console.log(res);
+      if (res.status === 200) {
+        toastSuccess("Login successful!");
+      }
     } catch (error) {
       console.error("Login failed", error);
+      toastError("Login failed");
     }
   };
 
-  const [username, setUsername] = useState("");
+  const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
   return (
@@ -45,12 +50,12 @@ const Page = () => {
             <img src="/TF.png" alt="logo" />
           </Link>
           <div className="mb-6 w-80">
-            <label className="mb-2 block text-sm">Username*</label>
+            <label className="mb-2 block text-sm">Email*</label>
             <Input
               type="text"
               className="rounded-xl border border-black"
-              value={username}
-              onChange={(e) => setUsername(e.target.value)}
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
             />
           </div>
           <div className="mb-6 w-80 pb-6">
