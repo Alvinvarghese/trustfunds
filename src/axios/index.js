@@ -17,8 +17,11 @@ export const getCausesAPI = () =>
 export const postRegisterAPI = (body) =>
   api.post("/users/register", body, { withCredentials: true });
 export const postLoginAPI = (body) =>
-  api.post("users/login", body, { withCredentials: true });
+  api.post("/users/login", body, { withCredentials: true });
+export const getUserAPI = () => api.get("/users/me", { withCredentials: true });
 export const postCampaignAPI = (body) =>
   api.post("/campaign/create", { withCredentials: true });
 export const getCampaignAPI = () =>
   api.get("/campaign/", { withCredentials: true });
+export const getCampaignDetailsAPI = (id) =>
+  api.get(`/campaigns/${id}`, { withCredentials: true });
