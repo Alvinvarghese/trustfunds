@@ -1,5 +1,5 @@
 import PaddingLayout from "../Layout/PaddingLayout";
-import ExploreCampaigns from "./ExploreCampaigns";
+import ExploreCampaigns from "../Campaigns/ExploreCampaigns";
 import LandingPage from "./LandingPage";
 
 const Home = () => {

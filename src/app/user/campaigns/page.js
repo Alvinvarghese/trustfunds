@@ -1,11 +1,11 @@
-import Dashboard from "@/components/Home/Dashboard";
-import ExploreCampaigns from "@/components/Home/ExploreCampaigns";
+import ExploreCampaigns from "@/components/Campaigns/ExploreCampaigns";
+import UserCampaignsList from "@/components/Campaigns/UserCampaignsList";
 import PaddingLayout from "@/components/Layout/PaddingLayout";
 
 const Page = () => {
   return (
     <PaddingLayout>
-      <Dashboard />
+      <UserCampaignsList />
       <ExploreCampaigns />
     </PaddingLayout>
   );

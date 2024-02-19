@@ -23,5 +23,7 @@ export const createCampaignAPI = (body) =>
   api.post("/campaigns/create", body, { withCredentials: true });
 export const getCampaignAPI = () =>
   api.get("/campaigns/", { withCredentials: true });
+export const getAllCampaignsAPI = () =>
+  api.get("/campaigns/all", { withCredentials: true });
 export const getCampaignDetailsAPI = (id) =>
   api.get(`/campaigns/${id}`, { withCredentials: true });

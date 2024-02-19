@@ -1,21 +1,20 @@
 "use client";
 
 import { useCallback, useEffect, useState } from "react";
-import { getCampaignDetailsAPI } from "@/axios";
-import { toastError } from "@/lib/toast";
+import SectionHeading from "../Home/SectionHeading";
 import Loading from "./components/Loading";
-import Details from "./components/Details";
 import Error from "./components/Error";
-import PaddingLayout from "../Layout/PaddingLayout";
+import AllCampaigns from "./components/AllCampaigns";
+import { getAllCampaignsAPI } from "@/axios";
 
-const CampaignDetail = (props) => {
+const ExploreCampaigns = () => {
   // loading | success | error
   const [status, setStatus] = useState("loading");
   const [data, setData] = useState(null);
 
   const fetchData = useCallback(async () => {
     try {
-      const res = await getCampaignDetailsAPI(props.id);
+      const res = await getAllCampaignsAPI();
       if (res.status === 200) {
         setData(res.data.result);
         setStatus("success");
@@ -31,13 +30,13 @@ const CampaignDetail = (props) => {
   }, []);
 
   return (
-    <>
-      <br />
+    <div className="w-full py-10">
+      <SectionHeading text="Explore Campaigns" />
       {status === "loading" && <Loading />}
       {status === "error" && <Error fetchData={fetchData} />}
-      {status === "success" && data && <Details data={data} />}
-    </>
+      {status === "success" && data && <AllCampaigns data={data} />}
+    </div>
   );
 };
 
-export default CampaignDetail;
+export default ExploreCampaigns;

@@ -1,20 +1,22 @@
+"use client";
+
 import CampaignDetail from "@/components/Campaigns/CampaignDetail";
-import { Button } from "@/components/ui/button";
+import GoBack from "@/components/GoBack";
+import PaddingLayout from "@/components/Layout/PaddingLayout";
+import GoToButton from "@/components/goToButton";
 
 const Page = (props) => {
   const id = props.params.slug;
   return (
-    <div className="flex flex-col px-10 pb-[200px]">
-      <div className="flex flex-row justify-start p-4">
-        <div>
-          <Button className="rounded-2xl bg-darkgray">Go Back</Button>
+    <PaddingLayout>
+      <div className="flex flex-col pb-[200px]">
+        <div className="flex flex-row justify-start">
+          <GoBack />
+          <GoToButton href="/user/campaigns" text="Go To Dashboard" />
         </div>
-        <div className="pl-10">
-          <Button className="rounded-2xl bg-darkgray">Go To Dashboard</Button>
-        </div>
+        {id && <CampaignDetail id={id} />}
       </div>
-      {id && <CampaignDetail id={id} />}
-    </div>
+    </PaddingLayout>
   );
 };
 

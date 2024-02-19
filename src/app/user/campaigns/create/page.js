@@ -176,8 +176,7 @@ const Page = () => {
               type="file"
               accept="image/*"
               placeholder="Place image url of your campaign"
-              value={campaignImage}
-              onChange={(e) => setCampaignImage(e.target.value)}
+              onChange={(e) => setCampaignImage(e.target.files[0])}
             />
             <p className="pl-2 text-sm text-gray-400">
               Choose an image for your campaign

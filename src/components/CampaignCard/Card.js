@@ -2,23 +2,8 @@ import React from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { daysLeft } from "@/lib/utils";
-const Card = () => {
-  const data = {
-    _id: "65c893a37d20eae3e616d140",
-    name: "Alvin Varghese",
-    title: "Amazon River",
-    story: [
-      "The Amazon River is not only the largest river in the world by discharge volume but also plays a vital role in maintaining the ecological balance of our planet. Its significance extends far beyond its massive size and awe-inspiring beauty. Preserving the Amazon River is imperative for several reasons.",
-      "Firstly, the Amazon Rainforest, through which the river flows, is often referred to as the \"lungs of the Earth\" because it produces a significant portion of the world's oxygen. The lush vegetation absorbs carbon dioxide, mitigating climate change and helping to regulate the Earth's temperature. By safeguarding the Amazon River, we are protecting this crucial carbon sink and preserving the biodiversity it supports.",
-    ],
-    goal: 0.75,
-    endDate: "2024-02-28",
-    image:
-      "https://firebasestorage.googleapis.com/v0/b/trustfundsweb.appspot.com/o/images%2Ftrustfunds_SjxaBQ_Screenshot_from_2024-02-10_22-25-04.png?alt=media&token=49998f45-d735-46a1-b8ff-cd9f8a7bfed5",
-    creator: "65c0c40d7cedf8a9c5e0300c",
-    causeType: "Other",
-    __v: 0,
-  };
+const Card = (props) => {
+  const { data } = props;
   if (data._id)
     return (
       <Link
@@ -44,11 +29,12 @@ const Card = () => {
           <h2 className="font-bold">{data.name}</h2>
 
           <div>
-            {data.story.map((para, index) => {
-              <p className="text-xs" key={index}>
-                {para}
-              </p>;
-            })}
+            {data.story.length > 0 &&
+              data.story.map((para, index) => {
+                <p className="text-xs" key={index}>
+                  {para}
+                </p>;
+              })}
           </div>
 
           <div className="flex flex-row justify-between pt-4">
