@@ -3,6 +3,7 @@
 import { postLoginAPI } from "@/axios";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import giveErrorMsg from "@/lib/giveErrorMsg";
 import { toastError, toastSuccess } from "@/lib/toast";
 import Image from "next/image";
 import Link from "next/link";
@@ -16,17 +17,24 @@ const Page = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const res = await postLoginAPI({
+      // validations
+      if (email.length === 0) throw new Error("Enter a valid email id.");
+      if (password.length === 0) throw new Error("Password must not be empty.");
+
+      const data = {
         email,
         password,
-      });
+      };
+      const res = await postLoginAPI(data);
       console.log(res);
       if (res.status === 200) {
         toastSuccess("Login successful!");
+        router.push("/user/campaigns");
       }
     } catch (error) {
-      console.error("Login failed", error);
-      toastError("Login failed");
+      console.log("Login failed", error);
+      const e = giveErrorMsg(error);
+      toastError(e[0], e[1]);
     }
   };
 

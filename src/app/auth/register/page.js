@@ -3,6 +3,7 @@
 import { postRegisterAPI } from "@/axios";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import giveErrorMsg from "@/lib/giveErrorMsg";
 import { toastError, toastSuccess } from "@/lib/toast";
 import Image from "next/image";
 import Link from "next/link";
@@ -37,12 +38,13 @@ const Page = () => {
       const res = await postRegisterAPI(data);
       if (res.status === 200) {
         toastSuccess("Registration successful. Please login to continue!");
-        router.push("/login");
+        router.push("/auth/login");
       }
     } catch (error) {
       console.error(error);
       let defaultError = "Registration failed. Please try again later";
-      toastError(error.response?.data?.error || error.message || defaultError);
+      let e = giveErrorMsg(error);
+      toastError(e[0], e[1]);
     }
   };
 

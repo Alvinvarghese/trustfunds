@@ -13,7 +13,7 @@ export default function RootLayout({ children }) {
       <head>
         <Fonts />
       </head>
-      <body>
+      <body className="overflow-hidden bg-home-bg">
         <Toaster />
         {children}
       </body>
