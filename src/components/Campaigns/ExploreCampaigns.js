@@ -6,6 +6,7 @@ import Loading from "./components/Loading";
 import Error from "./components/Error";
 import AllCampaigns from "./components/AllCampaigns";
 import { getAllCampaignsAPI } from "@/axios";
+import { toastError } from "@/lib/toast";
 
 const ExploreCampaigns = () => {
   // loading | success | error
