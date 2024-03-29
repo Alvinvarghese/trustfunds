@@ -10,7 +10,7 @@ const Page = (props) => {
   return (
     <PaddingLayout>
       <div className="flex flex-col pb-[200px]">
-        <div className="flex flex-row justify-start">
+        <div className="flex flex-row gap-5">
           <GoBack />
           <GoToButton href="/user/campaigns" text="Go To Dashboard" />
         </div>

@@ -52,10 +52,10 @@ const Details = (props) => {
           <Button className="h-14 rounded-2xl bg-darkgray ">GO TO FORUM</Button>
           <div className="flex h-14 flex-row rounded-2xl border border-darkgray">
             <input
-              className=" h-13 flex items-center gap-40 rounded-2xl border-none pl-3 hover:outline-none"
+              className=" h-13 flex items-center gap-40 rounded-2xl rounded-r-none border-none pl-3 hover:outline-none"
               placeholder="Pledge ETH 0.1"
             />
-            <Button className="h-14 rounded-2xl bg-darkgray">
+            <Button className="h-13 border-none rounded-2xl bg-darkgray rounded-l-none">
               FUND CAMPAIGN
             </Button>
           </div>
@@ -64,8 +64,8 @@ const Details = (props) => {
       <div className="flex flex-col">
         <h2 className="pt-10 font-bold">Story/Pitch</h2>
         {data.story.length > 0 &&
-          data.story.map((para) => {
-            return <p className=" text-justify">{para}</p>;
+          data.story.map((para, index) => {
+            return <p key={index} className="text-justify">{para}</p>;
           })}
       </div>
     </>

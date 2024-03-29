@@ -9,7 +9,6 @@ import Logout from "../Home/Logout";
 // navbar_button style in global.css
 const Navbar = () => {
   const { signedIn } = useUserContext();
-  console.log(signedIn)
   return (
     <nav className="fixed z-50 w-full">
       <ul className="flex items-center justify-between bg-lightblue p-2">
