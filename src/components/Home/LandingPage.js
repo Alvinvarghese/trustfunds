@@ -21,7 +21,7 @@ const LandingPage = () => {
         </div>
 
         <Link href="/auth/login">
-          <Button className="bg-welcome-button rounded-3xl px-16 py-4 text-xl duration-150 ease-in-out">
+          <Button className="rounded-3xl bg-welcome-button px-16 py-4 text-xl duration-150 ease-in-out">
             Start Today!
           </Button>
         </Link>
