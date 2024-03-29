@@ -177,6 +177,11 @@
 .custom_scroll::-webkit-scrollbar {
   width: 0.5rem;
 }
+@media (max-width: 768px) {
+  .custom_scroll::-webkit-scrollbar {
+    width: 0rem;
+  }
+}
 
 .custom_scroll::-webkit-scrollbar-track {
   @apply bg-darkgray;

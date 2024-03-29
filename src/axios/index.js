@@ -12,12 +12,13 @@ const api = axios.create({
 // export const getFiles = () => api.get("/files");
 // export const getFile = (id) => api.get(/${id});
 
-export const getCausesAPI = () => api.get("/campaigns/causes");
-export const postRegisterAPI = (body) => api.post("/users/register", body);
-export const postLoginAPI = (body) => api.post("/users/login", body);
+export const getCausesAPI = () => api.get("/campaigns/causes", { withCredentials: true });
+export const postRegisterAPI = (body) => api.post("/users/register", body, { withCredentials: true });
+export const postLoginAPI = (body) => api.post("/users/login", body, { withCredentials: true });
+export const getLogoutAPI = () => api.get("/users/logout", { withCredentials: true });
 export const getUserAPI = () => api.get("/users/me", { withCredentials: true });
 export const createCampaignAPI = (body) =>
   api.post("/campaigns/create", body, { withCredentials: true });
-export const getCampaignAPI = () => api.get("/campaigns/");
-export const getAllCampaignsAPI = () => api.get("/campaigns/all");
-export const getCampaignDetailsAPI = (id) => api.get(`/campaigns/${id}`);
+export const getCampaignAPI = () => api.get("/campaigns/", { withCredentials: true });
+export const getAllCampaignsAPI = () => api.get("/campaigns/all", { withCredentials: true });
+export const getCampaignDetailsAPI = (id) => api.get(`/campaigns/${id}`, { withCredentials: true });

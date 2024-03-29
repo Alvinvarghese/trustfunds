@@ -3,6 +3,7 @@
 import { postLoginAPI } from "@/axios";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import { useUserContext } from "@/context/UserContext";
 import giveErrorMsg from "@/lib/giveErrorMsg";
 import { toastError, toastSuccess } from "@/lib/toast";
 import Image from "next/image";
@@ -12,6 +13,7 @@ import { useState } from "react";
 
 const Page = () => {
   const router = useRouter();
+  const { checkSignedIn } = useUserContext();
   const goToRegister = () => router.push("/auth/register");
 
   const handleSubmit = async (e) => {
@@ -30,6 +32,7 @@ const Page = () => {
       if (res.status === 200) {
         toastSuccess("Login successful!");
         router.push("/user/campaigns");
+        checkSignedIn() // await ommited intentionally
       }
     } catch (error) {
       console.log("Login failed", error);

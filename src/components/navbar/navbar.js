@@ -3,12 +3,13 @@
 import Link from "next/link";
 import { Button } from "../ui/button";
 import { Input } from "../ui/input";
-import ThemeToggle from "./ThemeToggle";
 import { useUserContext } from "@/context/UserContext";
+import Logout from "../Home/Logout";
 
 // navbar_button style in global.css
 const Navbar = () => {
   const { signedIn } = useUserContext();
+  console.log(signedIn)
   return (
     <nav className="fixed z-50 w-full">
       <ul className="flex items-center justify-between bg-lightblue p-2">
@@ -17,9 +18,6 @@ const Navbar = () => {
             <Link href="/">
               <Button className="navbar_button">TF</Button>
             </Link>
-          </li>
-          <li>
-            <ThemeToggle />
           </li>
           <li>
             <Button className="navbar_button px-6">Options</Button>
@@ -39,13 +37,13 @@ const Navbar = () => {
             </Link>
           </li>
           <li>
-            <Link href="/auth/login">
-              {signedIn ? (
-                <Button className="navbar_button px-6">Profile</Button>
-              ) : (
+            {signedIn.status ? (
+              <Logout />
+            ) : (
+              <Link href="/auth/login">
                 <Button className="navbar_button px-6">Login/Register</Button>
-              )}
-            </Link>
+              </Link>
+            )}
           </li>
         </div>
       </ul>
