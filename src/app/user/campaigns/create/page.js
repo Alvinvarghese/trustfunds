@@ -1,6 +1,7 @@
 "use client";
 import { createCampaignAPI, getCausesAPI } from "@/axios";
 import PaddingLayout from "@/components/Layout/PaddingLayout";
+import PageLayout from "@/components/Layout/PageLayout";
 import { Button } from "@/components/ui/button";
 import {
   DropdownMenu,
@@ -93,12 +94,13 @@ const Page = () => {
 
   return (
     <PaddingLayout>
-      <div className="flex flex-col items-center pb-32 pt-8">
+      <PageLayout />
+      <div className="flex flex-col items-center pb-32 pt-4">
         <h1 className="text-2xl font-bold text-darkgray lg:text-4xl">
           Start a Campaign
         </h1>
-        <div className="w-full flex-row pt-4 lg:mb-6 lg:flex">
-          <div className="pb-4 lg:mr-10 lg:w-1/2">
+        <div className="w-full flex-row pt-4 lg:flex gap-4 lg:gap-6">
+          <div className="pb-4 lg:w-1/2">
             <label>Your name*</label>
             <Input
               className="rounded-2xl"
@@ -119,7 +121,7 @@ const Page = () => {
             />
           </div>
         </div>
-        <div className="w-full pb-4 lg:mb-6">
+        <div className="w-full pb-4">
           <label>Story*</label>
           <Textarea
             className="placeholder h-32 rounded-2xl text-start"
@@ -129,8 +131,8 @@ const Page = () => {
             onChange={(e) => setStory(e.target.value)}
           />
         </div>
-        <div className="flex w-full pb-4 lg:mb-6">
-          <div className="mr-10 w-1/2 ">
+        <div className="flex w-full gap-6 lg:gap-4 lg:my-6 flex-col lg:flex-row">
+          <div className="lg:w-1/2 w-full">
             <label>Goal*</label>
             <Input
               className="rounded-2xl"
@@ -140,7 +142,7 @@ const Page = () => {
               onChange={(e) => setGoal(e.target.value)}
             />
           </div>
-          <div className=" w-1/2">
+          <div className="lg:w-1/2 w-full">
             <label>Campaign cause*</label>
             <div className="flex h-10 rounded-2xl border border-black bg-white">
               <DropdownMenu>
@@ -168,8 +170,8 @@ const Page = () => {
             </div>
           </div>
         </div>
-        <div className="flex w-full flex-row lg:mb-6">
-          <div className="mr-10 w-1/2">
+        <div className="flex w-full lg:flex-row flex-col lg:gap-4 gap-6 lg:my-0 my-6">
+          <div className="lg:w-1/2 w-full">
             <label>Campaign image*</label>
             <Input
               className="rounded-2xl"
@@ -178,11 +180,11 @@ const Page = () => {
               placeholder="Place image url of your campaign"
               onChange={(e) => setCampaignImage(e.target.files[0])}
             />
-            <p className="pl-2 text-sm text-gray-400">
+            <p className="pl-2 text-sm text-darkgray">
               Choose an image for your campaign
             </p>
           </div>
-          <div className="w-1/2">
+          <div className="lg:w-1/2 w-full">
             <label>End date*</label>
             <Input
               type="date"
@@ -193,7 +195,7 @@ const Page = () => {
           </div>
         </div>
         <Button
-          className="mt-2 flex flex-row gap-2 rounded-xl bg-darkgray px-10 py-6 text-lg"
+          className="mt-6 flex flex-row gap-2 rounded-xl bg-darkgray px-10 py-6 text-lg"
           onClick={handleSubmit}
         >
           <PlusCircle size={20} /> <span>Create Campaign</span>

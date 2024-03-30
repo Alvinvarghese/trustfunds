@@ -32,7 +32,6 @@ const CampaignDetail = (props) => {
 
   return (
     <>
-      <br />
       {status === "loading" && <Loading />}
       {status === "error" && <Error fetchData={fetchData} />}
       {status === "success" && data && <Details data={data} />}

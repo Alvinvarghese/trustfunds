@@ -13,7 +13,7 @@ const Details = (props) => {
           alt={data.title}
           height={200}
           width={1400}
-          layout="responsive"
+          priority
         />
       </div>
       <div className="flex lg:flex-row flex-col justify-between gap-5 lg:gap-0 pt-8">

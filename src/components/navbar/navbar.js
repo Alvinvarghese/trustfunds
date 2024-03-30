@@ -31,13 +31,13 @@ const Navbar = () => {
             placeholder="Search for campaigns..."
           />
         </li>
-        <div className="flex items-center lg:space-x-4 lg:px-4 w-full justify-around ">
+        <div className="flex items-center lg:space-x-4 lg:px-4 w-full justify-around lg:justify-between">
           <li>
             <Link href="/user/campaigns/create">
               <Button className="navbar_button px-6 lg:space-x-2"><BadgePlus /><span className="hidden lg:flex">Create Campaign</span></Button>
             </Link>
           </li>
-          <li>
+          <li className="lg:pr-8">
             {signedIn.status ? (
               <Logout />
             ) : (

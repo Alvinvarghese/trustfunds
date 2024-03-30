@@ -7,7 +7,7 @@ const LandingPage = () => {
     <div className="flex h-screen flex-col pt-[60px]">
       <div className="h-[20px] lg:h-[100px]"></div>
       <div className="ml-auto mr-auto flex-1 lg:mr-0">
-        <Image src="/TF.png" width={271} height={178} />
+        <Image alt="Trustfunds" src="/TF.png" width={271} height={178} />
       </div>
       <div className="flex-1">
         <div className="flex flex-col text-3xl lg:text-4xl font-[700] leading-none">
