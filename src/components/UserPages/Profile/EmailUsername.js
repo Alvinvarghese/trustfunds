@@ -4,11 +4,12 @@ import { useEffect, useState } from "react";
 import { getUserAPI } from "@/axios";
 import { Input } from "@/components/ui/input";
 import { toastError } from "@/lib/toast";
+import { useRouter } from "next/navigation";
 
 const EmailUsername = (props) => {
   const [username, setUsername] = useState(null);
   const [email, setEmail] = useState(null);
-
+  const router = useRouter();
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -18,8 +19,12 @@ const EmailUsername = (props) => {
           setEmail(res.data.result.email);
         }
       } catch (err) {
-        console.log(err);
-        toastError("Error fetching user details. Please try again later!");
+        if (err.response?.data?.status === 401) {
+          toastError("Login first before trying to view profile details.");
+          router.push("/auth/login");
+        } else {
+          toastError("Error fetching user details. Please try again later!");
+        }
       }
     };
 

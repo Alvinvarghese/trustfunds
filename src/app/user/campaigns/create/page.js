@@ -99,7 +99,7 @@ const Page = () => {
         <h1 className="text-2xl font-bold text-darkgray lg:text-4xl">
           Start a Campaign
         </h1>
-        <div className="w-full flex-row pt-4 lg:flex gap-4 lg:gap-6">
+        <div className="w-full flex-row gap-4 pt-4 lg:flex lg:gap-6">
           <div className="pb-4 lg:w-1/2">
             <label>Your name*</label>
             <Input
@@ -131,8 +131,8 @@ const Page = () => {
             onChange={(e) => setStory(e.target.value)}
           />
         </div>
-        <div className="flex w-full gap-6 lg:gap-4 lg:my-6 flex-col lg:flex-row">
-          <div className="lg:w-1/2 w-full">
+        <div className="flex w-full flex-col gap-6 lg:my-6 lg:flex-row lg:gap-4">
+          <div className="w-full lg:w-1/2">
             <label>Goal*</label>
             <Input
               className="rounded-2xl"
@@ -142,7 +142,7 @@ const Page = () => {
               onChange={(e) => setGoal(e.target.value)}
             />
           </div>
-          <div className="lg:w-1/2 w-full">
+          <div className="w-full lg:w-1/2">
             <label>Campaign cause*</label>
             <div className="flex h-10 rounded-2xl border border-black bg-white">
               <DropdownMenu>
@@ -170,8 +170,8 @@ const Page = () => {
             </div>
           </div>
         </div>
-        <div className="flex w-full lg:flex-row flex-col lg:gap-4 gap-6 lg:my-0 my-6">
-          <div className="lg:w-1/2 w-full">
+        <div className="my-6 flex w-full flex-col gap-6 lg:my-0 lg:flex-row lg:gap-4">
+          <div className="w-full lg:w-1/2">
             <label>Campaign image*</label>
             <Input
               className="rounded-2xl"
@@ -184,7 +184,7 @@ const Page = () => {
               Choose an image for your campaign
             </p>
           </div>
-          <div className="lg:w-1/2 w-full">
+          <div className="w-full lg:w-1/2">
             <label>End date*</label>
             <Input
               type="date"

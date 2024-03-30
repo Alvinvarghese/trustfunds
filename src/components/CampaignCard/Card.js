@@ -11,7 +11,13 @@ const Card = (props) => {
         className="flex w-[400px] cursor-pointer flex-col gap-2 overflow-hidden rounded-md bg-darkgray text-lightbluetext duration-300 ease-in-out hover:bg-darkgrayhover"
       >
         <div className="h-[153px] overflow-hidden">
-          <Image height={153} width={450} src={data.image} alt={data.title} priority />
+          <Image
+            height={153}
+            width={450}
+            src={data.image}
+            alt={data.title}
+            priority
+          />
         </div>
         <div className="p-3 ">
           <div className="flex flex-row ">

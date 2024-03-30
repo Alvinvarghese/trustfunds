@@ -16,7 +16,7 @@ const Details = (props) => {
           priority
         />
       </div>
-      <div className="flex lg:flex-row flex-col justify-between gap-5 lg:gap-0 pt-8">
+      <div className="flex flex-col justify-between gap-5 pt-8 lg:flex-row lg:gap-0">
         <div>
           <h1 className="text-4xl font-bold text-darkgray">{data.title}</h1>
           <div className="flex flex-row gap-1">
@@ -24,7 +24,7 @@ const Details = (props) => {
             <p className="font-bold">{data.name}</p>
           </div>
         </div>
-        <div className="flex lg:flex-row flex-col gap-5">
+        <div className="flex flex-col gap-5 lg:flex-row">
           <Button className="size-100 flex flex-col bg-lightblue text-darkgray hover:text-white">
             <p className="text-3xl font-bold">0.00</p>{" "}
             <p>raised of {data.goal}</p>
@@ -38,7 +38,7 @@ const Details = (props) => {
           </Button>
         </div>
       </div>
-      <div className="flex w-full lg:flex-row lg:pt-10 flex-col justify-between">
+      <div className="flex w-full flex-col justify-between lg:flex-row lg:pt-10">
         <div className="flex flex-col py-4">
           <h3 className="font-bold">Creator</h3>
           <div>
@@ -48,14 +48,16 @@ const Details = (props) => {
             </div>
           </div>
         </div>
-        <div className="lg:ml-20 flex flex-grow lg:flex-row flex-col justify-end lg:gap-24 gap-8">
-          <Button className="h-14 rounded-2xl bg-darkgray">GO TO CAMPAIGN FORUM</Button>
-          <div className="flex h-28 overflow-hidden lg:h-14 lg:flex-row flex-col justify-between rounded-2xl border border-darkgray">
+        <div className="flex flex-grow flex-col justify-end gap-8 lg:ml-20 lg:flex-row lg:gap-24">
+          <Button className="h-14 rounded-2xl bg-darkgray">
+            GO TO CAMPAIGN FORUM
+          </Button>
+          <div className="flex h-28 flex-col justify-between overflow-hidden rounded-2xl border border-darkgray lg:h-14 lg:flex-row">
             <input
-              className="lg:h-13 flex items-center h-full gap-40 rounded-2xl rounded-r-none border-none pl-3 hover:outline-none"
+              className="lg:h-13 flex h-full items-center gap-40 rounded-2xl rounded-r-none border-none pl-3 hover:outline-none"
               placeholder="Pledge ETH 0.1"
             />
-            <Button className="lg:h-13 border-none h-full rounded-2xl bg-darkgray rounded-l-none">
+            <Button className="lg:h-13 h-full rounded-2xl rounded-l-none border-none bg-darkgray">
               FUND CAMPAIGN
             </Button>
           </div>
@@ -65,7 +67,11 @@ const Details = (props) => {
         <h2 className="pt-10 font-bold">Story/Pitch</h2>
         {data.story.length > 0 &&
           data.story.map((para, index) => {
-            return <p key={index} className="text-justify">{para}</p>;
+            return (
+              <p key={index} className="text-justify">
+                {para}
+              </p>
+            );
           })}
       </div>
     </>

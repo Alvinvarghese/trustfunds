@@ -20,10 +20,12 @@ export const UserProvider = ({ children }) => {
     if (!signedIn.status) checkSignedIn();
   }, []);
 
-  const checkout = () => setSignedIn({ status: false, data: null })
+  const checkout = () => setSignedIn({ status: false, data: null });
 
   return (
-    <UserContext.Provider value={{ signedIn, checkSignedIn, checkout }}>{children}</UserContext.Provider>
+    <UserContext.Provider value={{ signedIn, checkSignedIn, checkout }}>
+      {children}
+    </UserContext.Provider>
   );
 };
 

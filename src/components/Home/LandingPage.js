@@ -10,12 +10,12 @@ const LandingPage = () => {
         <Image alt="Trustfunds" src="/TF.png" width={271} height={178} />
       </div>
       <div className="flex-1">
-        <div className="flex flex-col text-3xl lg:text-4xl font-[700] leading-none">
+        <div className="flex flex-col text-3xl font-[700] leading-none lg:text-4xl">
           <span>Trustfunds is a</span>
           <span>blockchain powered</span>
           <span>crowdfunding platform</span>
         </div>
-        <div className="lg:text-md my-1 mb-4 lg:w-1/2 leading-tight">
+        <div className="lg:text-md my-1 mb-4 leading-tight lg:w-1/2">
           We aim to revolutionize fundraising by providing a transparent,
           secure, and efficient ecosystem for campaign creators and backers.
         </div>

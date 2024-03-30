@@ -32,7 +32,7 @@ const Page = () => {
       if (res.status === 200) {
         toastSuccess("Login successful!");
         router.push("/user/campaigns");
-        checkSignedIn() // await ommited intentionally
+        checkSignedIn(); // await ommited intentionally
       }
     } catch (error) {
       console.log("Login failed", error);

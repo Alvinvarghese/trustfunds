@@ -7,6 +7,7 @@ import { useUserContext } from "@/context/UserContext";
 import Logout from "../Home/Logout";
 import Menu from "./Menu";
 import BadgePlus from "./BadgePlus";
+import UserIcon from "./icons/UserIcon";
 
 // navbar_button style in global.css
 const Navbar = () => {
@@ -15,26 +16,32 @@ const Navbar = () => {
     <nav className="fixed z-50 w-full">
       <ul className="flex items-center justify-between bg-lightblue p-2">
         <div className="flex items-center space-x-4 lg:pl-4">
-          <li className="lg:flex hidden">
+          <li className="hidden lg:flex">
             <Link href="/">
               <Button className="navbar_button">TF</Button>
             </Link>
           </li>
           <li>
-            <Button className="navbar_button px-6 lg:space-x-2"><Menu /><span className="hidden lg:flex">Options</span></Button>
+            <Button className="navbar_button px-6 lg:space-x-2">
+              <Menu />
+              <span className="hidden lg:flex">Options</span>
+            </Button>
           </li>
         </div>
-        <li className="lg:flex hidden ml-4 w-fit">
+        <li className="ml-4 hidden w-fit lg:flex">
           <Input
-            className="navbar_button pl-6 pr-12 w-[300px] text-left"
+            className="navbar_button w-[300px] pl-6 pr-12 text-left"
             type="text"
             placeholder="Search for campaigns..."
           />
         </li>
-        <div className="flex items-center lg:space-x-4 lg:px-4 w-full justify-around lg:justify-between">
+        <div className="flex w-full items-center justify-around lg:justify-between lg:space-x-4 lg:px-4">
           <li>
             <Link href="/user/campaigns/create">
-              <Button className="navbar_button px-6 lg:space-x-2"><BadgePlus /><span className="hidden lg:flex">Create Campaign</span></Button>
+              <Button className="navbar_button px-6 lg:space-x-2">
+                <BadgePlus />
+                <span className="hidden lg:flex">Create Campaign</span>
+              </Button>
             </Link>
           </li>
           <li className="lg:pr-8">
@@ -42,7 +49,10 @@ const Navbar = () => {
               <Logout />
             ) : (
               <Link href="/auth/login">
-                <Button className="navbar_button px-6">Login/Register</Button>
+                <Button className="navbar_button space-x-2 px-6">
+                  <UserIcon />
+                  <span>Login</span>
+                </Button>
               </Link>
             )}
           </li>
