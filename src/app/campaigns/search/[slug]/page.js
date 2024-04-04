@@ -49,7 +49,7 @@ const SearchResults = () => {
         </div>
       )}
       {status === 'success' && campaigns.length === 0 && (
-        <p>No campaigns found for "{slug}".</p>
+        <p>No campaigns found for "{query?.slug}".</p>
       )}
     </div>
     </div>
