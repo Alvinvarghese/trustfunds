@@ -13,15 +13,15 @@ import {
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu"
+} from "@/components/ui/dropdown-menu";
 import { useTheme } from "next-themes";
 
 // navbar_button style in global.css
 const Navbar = () => {
   const { signedIn } = useUserContext();
-  const { setTheme } = useTheme()
+  const { setTheme } = useTheme();
 
-  const handleTheme = () => setTheme("dark")
+  const handleTheme = () => setTheme("dark");
   return (
     <nav className="fixed z-50 w-full">
       <ul className="flex items-center justify-between bg-lightblue p-2">
@@ -40,13 +40,14 @@ const Navbar = () => {
                 </Button>
               </DropdownMenuTrigger>
               <DropdownMenuContent>
-                <DropdownMenuItem onClick={handleTheme}>Dark Mode</DropdownMenuItem>
+                <DropdownMenuItem onClick={handleTheme}>
+                  Dark Mode
+                </DropdownMenuItem>
                 <DropdownMenuItem>Billing</DropdownMenuItem>
                 <DropdownMenuItem>Team</DropdownMenuItem>
                 <DropdownMenuItem>Subscription</DropdownMenuItem>
               </DropdownMenuContent>
             </DropdownMenu>
-
           </li>
         </div>
         <li className="ml-4 hidden w-fit lg:flex">

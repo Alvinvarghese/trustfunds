@@ -16,15 +16,17 @@ export default function RootLayout({ children }) {
         <Fonts />
       </head>
       <body className="overflow-hidden bg-home-bg">
-        <ThemeProvider attribute="class"
+        <ThemeProvider
+          attribute="class"
           defaultTheme="system"
           enableSystem
-          disableTransitionOnChange >
+          disableTransitionOnChange
+        >
           <UserProvider>
             <Toaster />
             {children}
           </UserProvider>
-        </ ThemeProvider>
+        </ThemeProvider>
       </body>
     </html>
   );

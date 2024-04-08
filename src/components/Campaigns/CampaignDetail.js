@@ -18,7 +18,7 @@ const CampaignDetail = (props) => {
       const res = await getCampaignDetailsAPI(props.id);
       if (res.status === 200) {
         setData(res.data.result);
-        console.log(res.data.result)
+        console.log(res.data.result);
         setStatus("success");
       }
     } catch (error) {
