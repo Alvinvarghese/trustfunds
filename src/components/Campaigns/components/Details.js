@@ -20,6 +20,10 @@ const Details = (props) => {
         <div>
           <h1 className="text-4xl font-bold text-darkgray">{data.title}</h1>
           <div className="flex flex-row gap-1">
+            <p>Contract Address </p>
+            <p className="font-bold">{data.contractAddress}</p>
+          </div>
+          <div className="flex flex-row gap-1">
             <p>by </p>
             <p className="font-bold">{data.name}</p>
           </div>

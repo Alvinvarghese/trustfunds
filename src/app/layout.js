@@ -2,6 +2,7 @@ import Fonts from "@/components/Fonts";
 import "./globals.css";
 import { Toaster } from "@/components/ui/toaster";
 import { UserProvider } from "@/context/UserContext";
+import { ThemeProvider } from "@/components/navbar/themes/ThemeProvider";
 
 export const metadata = {
   title: "TrustFunds",
@@ -15,10 +16,15 @@ export default function RootLayout({ children }) {
         <Fonts />
       </head>
       <body className="overflow-hidden bg-home-bg">
-        <UserProvider>
-          <Toaster />
-          {children}
-        </UserProvider>
+        <ThemeProvider attribute="class"
+          defaultTheme="system"
+          enableSystem
+          disableTransitionOnChange >
+          <UserProvider>
+            <Toaster />
+            {children}
+          </UserProvider>
+        </ ThemeProvider>
       </body>
     </html>
   );

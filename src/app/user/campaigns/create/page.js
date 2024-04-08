@@ -24,7 +24,7 @@ const Page = () => {
     const fetchData = async () => {
       try {
         const res = await getCausesAPI();
-        if (res.status === 200) setData(res.data.result);
+        if (res.status === 200) setData(res.data.result.causesList);
         else toastError("Campaign causes could not be loaded!");
       } catch (err) {
         console.log(err);
