@@ -63,6 +63,7 @@ const Navbar = () => {
           <Input
             className="navbar_button w-[300px] border-none pl-6 pr-12 text-left"
             type="text"
+            value={keyword}
             placeholder="Search for campaigns..."
           />
         </li>
