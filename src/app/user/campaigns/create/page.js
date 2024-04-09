@@ -37,7 +37,7 @@ const Page = () => {
   const [campaignName, setCampaignName] = useState("");
   const [campaignTitle, setCampaignTitle] = useState("");
   const [story, setStory] = useState("");
-  const [goal, setGoal] = useState(0);
+  const [goal, setGoal] = useState("");
   const [selectedCause, setSelectedCause] = useState("");
   const handleCause = (cause) => {
     setSelectedCause(cause);
@@ -94,11 +94,12 @@ const Page = () => {
 
   return (
     <PaddingLayout>
-      <PageLayout />
-      <div className="flex flex-col items-center pb-32 pt-4">
-        <h1 className="text-2xl font-bold text-darkgray lg:text-4xl">
+      <PageLayout>
+        <h1 className="text-2xl font-bold text-primary lg:text-4xl">
           Start a Campaign
         </h1>
+      </PageLayout>
+      <div className="flex flex-col items-center pb-32 pt-4">
         <div className="w-full flex-row gap-4 pt-4 lg:flex lg:gap-6">
           <div className="pb-4 lg:w-1/2">
             <label>Your name*</label>
@@ -144,7 +145,7 @@ const Page = () => {
           </div>
           <div className="w-full lg:w-1/2">
             <label>Campaign cause*</label>
-            <div className="flex h-10 rounded-2xl border border-black bg-white">
+            <div className="flex h-10 rounded-2xl border border-black bg-background">
               <DropdownMenu>
                 <DropdownMenuTrigger
                   className="w-full rounded-2xl pl-3 text-start"

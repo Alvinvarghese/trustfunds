@@ -15,7 +15,7 @@ export default function RootLayout({ children }) {
       <head>
         <Fonts />
       </head>
-      <body className="overflow-hidden bg-home-bg">
+      <body className="home-bg overflow-hidden">
         <ThemeProvider
           attribute="class"
           defaultTheme="system"

@@ -58,7 +58,7 @@ const Page = () => {
       <div className="flex flex-auto items-center justify-center">
         <form className=" flex max-w-md flex-col items-center justify-center">
           <Link href="/" className="h-2/3 w-3/5 pb-16">
-            <img src="/TF.png" alt="logo" />
+            <img src="/TF.webp" alt="logo" />
           </Link>
           <div className="mb-6 w-80">
             <label className="mb-2 block text-sm">Email*</label>
@@ -82,14 +82,14 @@ const Page = () => {
             <Button
               onClick={handleSubmit}
               type="submit"
-              className="w-32 rounded-xl bg-welcome-button text-lg"
+              className="welcome-button w-32 rounded-xl border-white text-lg"
             >
               LOGIN
             </Button>
             <Button
               onClick={goToRegister}
               type="button"
-              className="w-32 rounded-xl border-2 border-darkgray bg-transparent text-lg  text-darkgray hover:text-white"
+              className="w-32 rounded-xl border-[1px] border-white bg-transparent text-lg text-white"
             >
               REGISTER
             </Button>

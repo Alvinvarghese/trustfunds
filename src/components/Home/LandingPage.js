@@ -7,7 +7,7 @@ const LandingPage = () => {
     <div className="flex h-screen flex-col pt-[60px]">
       <div className="h-[20px] lg:h-[100px]"></div>
       <div className="ml-auto mr-auto flex-1 lg:mr-0">
-        <Image alt="Trustfunds" src="/TF.png" width={271} height={178} />
+        <Image alt="Trustfunds" src="/TF.webp" width={271} height={178} />
       </div>
       <div className="flex-1">
         <div className="flex flex-col text-3xl font-[700] leading-none lg:text-4xl">
@@ -21,7 +21,7 @@ const LandingPage = () => {
         </div>
 
         <Link href="/auth/login">
-          <Button className="rounded-3xl bg-welcome-button px-8 py-4 text-xl duration-150 ease-in-out">
+          <Button className="welcome-button rounded-3xl px-8 py-4 text-xl text-white duration-150 ease-in-out">
             Start Today!
           </Button>
         </Link>

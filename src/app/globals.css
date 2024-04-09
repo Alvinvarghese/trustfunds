@@ -4,8 +4,8 @@
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 20 14.3% 4.1%;
+    --background: rgb(243, 246, 255);
+    --foreground: #182236;
 
     --card: 0 0% 100%;
     --card-foreground: 20 14.3% 4.1%;
@@ -13,11 +13,11 @@
     --popover: 0 0% 100%;
     --popover-foreground: 20 14.3% 4.1%;
 
-    --primary: 24 9.8% 10%;
+    --primary: #3d4350;
     --primary-foreground: 60 9.1% 97.8%;
 
-    --secondary: 60 4.8% 95.9%;
-    --secondary-foreground: 24 9.8% 10%;
+    --secondary: #8ea6d4;
+    --secondary-foreground: #000000;
 
     --muted: 60 4.8% 95.9%;
     --muted-foreground: 25 5.3% 44.7%;
@@ -33,10 +33,16 @@
     --ring: 20 14.3% 4.1%;
 
     --radius: 0.5rem;
+    --home: linear-gradient(180deg, #f3f7ff 30%, #718fcc);
+    --welcome-button: linear-gradient(
+      94deg,
+      #4c566a 7.52%,
+      rgba(46, 52, 64, 0.15) 135%
+    );
   }
 
   .dark {
-    --background: 20 14.3% 4.1%;
+    --background: #384153;
     --foreground: 60 9.1% 97.8%;
 
     --card: 20 14.3% 4.1%;
@@ -45,11 +51,11 @@
     --popover: 20 14.3% 4.1%;
     --popover-foreground: 60 9.1% 97.8%;
 
-    --primary: 60 9.1% 97.8%;
+    --primary: #2e3440;
     --primary-foreground: 24 9.8% 10%;
 
-    --secondary: 12 6.5% 15.1%;
-    --secondary-foreground: 60 9.1% 97.8%;
+    --secondary: #4c566a;
+    --secondary-foreground: #fff;
 
     --muted: 12 6.5% 15.1%;
     --muted-foreground: 24 5.4% 63.9%;
@@ -63,6 +69,13 @@
     --border: 12 6.5% 15.1%;
     --input: 12 6.5% 15.1%;
     --ring: 24 5.7% 82.9%;
+
+    --home: linear-gradient(180deg, #2e3440, #1e232e);
+    --welcome-button: linear-gradient(
+      94deg,
+      #4c566a 7.52%,
+      rgba(46, 52, 64, 0.15) 135%
+    );
   }
 }
 
@@ -71,8 +84,19 @@
     @apply border-border;
   }
   body {
-    @apply bg-background text-foreground;
+    @apply text-foreground;
   }
+}
+
+.home-bg {
+  background: var(--home);
+}
+.welcome-button {
+  background: var(--welcome-button);
+  color: white;
+}
+.welcome-button:hover {
+  color: white;
 }
 
 *,
@@ -171,7 +195,7 @@
 }
 
 .navbar_button {
-  @apply rounded-3xl bg-darkgray text-[16px] font-[500] text-lightbluetext;
+  @apply rounded-3xl bg-primary text-[16px] font-[500] text-lightbluetext;
 }
 
 .custom_scroll::-webkit-scrollbar {
@@ -184,7 +208,7 @@
 }
 
 .custom_scroll::-webkit-scrollbar-track {
-  @apply bg-darkgray;
+  @apply bg-primary;
 }
 
 .custom_scroll::-webkit-scrollbar-thumb {

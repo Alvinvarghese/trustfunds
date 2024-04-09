@@ -17,29 +17,23 @@ module.exports = {
       },
     },
     extend: {
-      backgroundImage: {
-        "welcome-button":
-          "linear-gradient(94deg, #4C566A 7.52%, rgba(46, 52, 64, 0.15) 135%)",
-        "home-bg": "linear-gradient(180deg, #FFF 0%, #A8BCE2 150%)",
-      },
       colors: {
         lightblue: "rgba(168, 188, 240, 1)",
         lightbluetext: "rgba(168, 188, 226, 1)",
-        darkgray: "rgba(61,67,80,1)",
-        darkgrayhover: "rgb(40, 42, 55, 1);",
+        darkgrayhover: "#484f60",
 
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",
-        background: "hsl(var(--background))",
+        background: "var(--background)",
         foreground: "hsl(var(--foreground))",
         primary: {
-          DEFAULT: "hsl(var(--primary))",
+          DEFAULT: "var(--primary)",
           foreground: "hsl(var(--primary-foreground))",
         },
         secondary: {
-          DEFAULT: "hsl(var(--secondary))",
-          foreground: "hsl(var(--secondary-foreground))",
+          DEFAULT: "var(--secondary)",
+          foreground: "var(--secondary-foreground)",
         },
         destructive: {
           DEFAULT: "hsl(var(--destructive))",

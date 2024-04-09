@@ -15,16 +15,19 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { useTheme } from "next-themes";
+import { Moon, Sun } from "lucide-react";
 
 // navbar_button style in global.css
 const Navbar = () => {
   const { signedIn } = useUserContext();
-  const { setTheme } = useTheme();
+  const { theme, setTheme } = useTheme();
 
   const handleTheme = () => setTheme("dark");
+  const handleLight = () => setTheme("light");
+
   return (
     <nav className="fixed z-50 w-full">
-      <ul className="flex items-center justify-between bg-lightblue p-2">
+      <ul className="flex items-center justify-between bg-secondary p-2">
         <div className="flex items-center space-x-4 lg:pl-4">
           <li className="hidden lg:flex">
             <Link href="/">
@@ -40,9 +43,15 @@ const Navbar = () => {
                 </Button>
               </DropdownMenuTrigger>
               <DropdownMenuContent>
-                <DropdownMenuItem onClick={handleTheme}>
-                  Dark Mode
-                </DropdownMenuItem>
+                {theme === "dark" ? (
+                  <DropdownMenuItem onClick={handleLight}>
+                    <Sun /><span className="pl-2">Light Mode</span>
+                  </DropdownMenuItem>
+                ) : (
+                  <DropdownMenuItem onClick={handleTheme}>
+                    <Moon /><span className="pl-2">Dark Mode</span>
+                  </DropdownMenuItem>
+                )}
                 <DropdownMenuItem>Billing</DropdownMenuItem>
                 <DropdownMenuItem>Team</DropdownMenuItem>
                 <DropdownMenuItem>Subscription</DropdownMenuItem>
@@ -52,7 +61,7 @@ const Navbar = () => {
         </div>
         <li className="ml-4 hidden w-fit lg:flex">
           <Input
-            className="navbar_button w-[300px] pl-6 pr-12 text-left"
+            className="navbar_button w-[300px] border-none pl-6 pr-12 text-left"
             type="text"
             placeholder="Search for campaigns..."
           />
