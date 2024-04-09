@@ -2,7 +2,6 @@
 
 import Link from "next/link";
 import { Button } from "../ui/button";
-import { Input } from "../ui/input";
 import { useUserContext } from "@/context/UserContext";
 import Logout from "../Home/Logout";
 import Menu from "./Menu";
@@ -16,6 +15,7 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { useTheme } from "next-themes";
 import { Moon, Sun } from "lucide-react";
+import SearchBar from "./SearchBar";
 
 // navbar_button style in global.css
 const Navbar = () => {
@@ -60,12 +60,7 @@ const Navbar = () => {
           </li>
         </div>
         <li className="ml-4 hidden w-fit lg:flex">
-          <Input
-            className="navbar_button w-[300px] border-none pl-6 pr-12 text-left"
-            type="text"
-            value={keyword}
-            placeholder="Search for campaigns..."
-          />
+          <SearchBar />
         </li>
         <div className="flex w-full items-center justify-around lg:justify-between lg:space-x-4 lg:px-4">
           <li>
