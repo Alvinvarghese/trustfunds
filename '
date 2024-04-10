@@ -6,9 +6,6 @@ import Error from '@/components/Campaigns/components/Error';
 import { searchCampaignsAPI } from '@/axios';
 import AllCampaigns from '@/components/Campaigns/components/AllCampaigns';
 import { toastError } from '@/lib/toast';
-import SpinnerLoader from '@/components/Campaigns/components/SpinnerLoader';
-import PageLayout from '@/components/Layout/PageLayout';
-import PaddingLayout from '@/components/Layout/PaddingLayout';
 
 const SearchResults = (props) => {
   const query = props.params.slug
@@ -37,26 +34,24 @@ const SearchResults = (props) => {
   }, [query]);
 
   return (
-    <PaddingLayout>
-      {status === 'loading' && <SpinnerLoader />}
-      {status === 'error' && <Error fetchData={fetchSearchResults} />}
-      {status === 'success' && campaigns && campaigns.length > 0 && (
-        <section>
-          <PageLayout>
-            <h1 className="text-3xl font-bold leading-none">Search Results for <span className='italic'>"{query}"</span></h1>
-          </PageLayout>
-          <div className="flex flex-col flex-wrap pb-40 gap-4">
+    <div className='h-screen'>
+      <div className="p-4">
+        <h1 className="text-3xl font-bold mb-2 leading-snug">Search Results for <span className='italic'>"{query}"</span></h1>
+        {status === 'loading' && <Loading />}
+        {status === 'error' && <Error fetchData={fetchSearchResults} />}
+        {status === 'success' && campaigns && campaigns.length > 0 && (
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
             <AllCampaigns data={campaigns} />
           </div>
-        </section>
-      )}
-      {status === 'success' && campaigns && campaigns.length === 0 && (
-        <p>No campaigns found for the keyword.</p>
-      )}
-      {status === 'success' && !campaigns && (
-        <Error fetchData={fetchSearchResults} />
-      )}
-    </PaddingLayout>
+        )}
+        {status === 'success' && campaigns && campaigns.length === 0 && (
+          <p>No campaigns found for the keyword.</p>
+        )}
+        {status === 'success' && !campaigns && (
+          <Error fetchData={fetchSearchResults} />
+        )}
+      </div>
+    </div>
   );
 };
 

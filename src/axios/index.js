@@ -29,5 +29,5 @@ export const getAllCampaignsAPI = () =>
   api.get("/campaigns/all", { withCredentials: true });
 export const getCampaignDetailsAPI = (id) =>
   api.get(`/campaigns/${id}`, { withCredentials: true });
-  export const searchCampaignsAPI = (id) =>
-  api.get(`/campaigns/search/${id}`, { withCredentials: true });
+export const searchCampaignsAPI = (id) =>
+  api.get(`/campaigns/search?q=${id}`, { withCredentials: true });

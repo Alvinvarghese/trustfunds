@@ -3,6 +3,7 @@ import CardLayout from "@/components/CampaignCard/CardLayout";
 
 const AllCampaigns = (props) => {
   const data = props.data;
+  console.log(data)
   if (!data) return <></>;
   return (
     <CardLayout>
