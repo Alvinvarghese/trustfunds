@@ -45,11 +45,13 @@ const Navbar = () => {
               <DropdownMenuContent>
                 {theme === "dark" ? (
                   <DropdownMenuItem onClick={handleLight}>
-                    <Sun /><span className="pl-2">Light Mode</span>
+                    <Sun />
+                    <span className="pl-2">Light Mode</span>
                   </DropdownMenuItem>
                 ) : (
                   <DropdownMenuItem onClick={handleTheme}>
-                    <Moon /><span className="pl-2">Dark Mode</span>
+                    <Moon />
+                    <span className="pl-2">Dark Mode</span>
                   </DropdownMenuItem>
                 )}
                 <DropdownMenuItem>Billing</DropdownMenuItem>

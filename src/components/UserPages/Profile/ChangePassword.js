@@ -9,7 +9,7 @@ const ChangePassword = () => {
   };
   return (
     <>
-      <h1 className="mt-8 w-full pt-3 text-base font-bold text-darkgray lg:text-2xl">
+      <h1 className="text-darkgray mt-8 w-full pt-3 text-base font-bold lg:text-2xl">
         Change Password
       </h1>
       <form onSubmit={handleSubmit}>
@@ -33,7 +33,7 @@ const ChangePassword = () => {
           </div>
         </div>
         <div className="flex w-full justify-center">
-          <Button className="mt-2 flex w-40 rounded-xl bg-darkgray px-10 py-6 text-lg">
+          <Button className="bg-darkgray mt-2 flex w-40 rounded-xl px-10 py-6 text-lg">
             Change
           </Button>
         </div>

@@ -18,7 +18,7 @@ const Details = (props) => {
       </div>
       <div className="flex flex-col justify-between gap-5 pt-8 lg:flex-row lg:gap-0">
         <div>
-          <h1 className="text-4xl font-bold text-darkgray">{data.title}</h1>
+          <h1 className="text-darkgray text-4xl font-bold">{data.title}</h1>
           <div className="flex flex-row gap-1">
             <p>Contract Address </p>
             <p className="font-bold">{data.contractAddress}</p>
@@ -29,15 +29,15 @@ const Details = (props) => {
           </div>
         </div>
         <div className="flex flex-col gap-5 lg:flex-row">
-          <Button className="size-100 flex flex-col bg-lightblue text-darkgray hover:text-white">
+          <Button className="size-100 text-darkgray flex flex-col bg-lightblue hover:text-white">
             <p className="text-3xl font-bold">0.00</p>{" "}
             <p>raised of {data.goal}</p>
           </Button>
-          <Button className="size-100 flex flex-col bg-lightblue text-darkgray hover:text-white">
+          <Button className="size-100 text-darkgray flex flex-col bg-lightblue hover:text-white">
             <p className="text-3xl font-bold">{daysLeft(data.endDate)}</p>{" "}
             <p>days left</p>
           </Button>
-          <Button className="size-100 flex flex-col bg-lightblue text-darkgray hover:text-white">
+          <Button className="size-100 text-darkgray flex flex-col bg-lightblue hover:text-white">
             <p className="text-3xl font-bold">0</p> <p>backers</p>
           </Button>
         </div>
@@ -53,15 +53,15 @@ const Details = (props) => {
           </div>
         </div>
         <div className="flex flex-grow flex-col justify-end gap-8 lg:ml-20 lg:flex-row lg:gap-24">
-          <Button className="h-14 rounded-2xl bg-darkgray">
+          <Button className="bg-darkgray h-14 rounded-2xl">
             GO TO CAMPAIGN FORUM
           </Button>
-          <div className="flex h-28 flex-col justify-between overflow-hidden rounded-2xl border border-darkgray lg:h-14 lg:flex-row">
+          <div className="border-darkgray flex h-28 flex-col justify-between overflow-hidden rounded-2xl border lg:h-14 lg:flex-row">
             <input
               className="lg:h-13 flex h-full items-center gap-40 rounded-2xl rounded-r-none border-none pl-3 hover:outline-none"
               placeholder="Pledge ETH 0.1"
             />
-            <Button className="lg:h-13 h-full rounded-2xl rounded-l-none border-none bg-darkgray">
+            <Button className="lg:h-13 bg-darkgray h-full rounded-2xl rounded-l-none border-none">
               FUND CAMPAIGN
             </Button>
           </div>

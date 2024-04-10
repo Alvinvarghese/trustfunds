@@ -5,7 +5,7 @@ const Error = (props) => {
     <div className="flex flex-row items-center gap-2 px-3">
       <h2>Error while fetching campaign details.</h2>
       <div
-        className="cursor-pointer rounded-2xl bg-transparent text-darkgray underline"
+        className="text-darkgray cursor-pointer rounded-2xl bg-transparent underline"
         onClick={props.fetchData}
       >
         Retry

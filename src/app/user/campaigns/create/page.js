@@ -181,7 +181,7 @@ const Page = () => {
               placeholder="Place image url of your campaign"
               onChange={(e) => setCampaignImage(e.target.files[0])}
             />
-            <p className="pl-2 text-sm text-darkgray">
+            <p className="text-darkgray pl-2 text-sm">
               Choose an image for your campaign
             </p>
           </div>
@@ -196,7 +196,7 @@ const Page = () => {
           </div>
         </div>
         <Button
-          className="mt-6 flex flex-row gap-2 rounded-xl bg-darkgray px-10 py-6 text-lg"
+          className="bg-darkgray mt-6 flex flex-row gap-2 rounded-xl px-10 py-6 text-lg"
           onClick={handleSubmit}
         >
           <PlusCircle size={20} /> <span>Create Campaign</span>
