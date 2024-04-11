@@ -14,8 +14,8 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { useTheme } from "next-themes";
-import { Moon, Sun } from "lucide-react";
 import SearchBar from "./SearchBar";
+import { Moon, Sun } from "../Icons";
 
 // navbar_button style in global.css
 const Navbar = () => {
