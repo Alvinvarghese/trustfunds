@@ -75,7 +75,10 @@ const Navbar = () => {
           </li>
           <li className="lg:pr-8">
             {signedIn.status ? (
-              <Logout />
+              <div className="flex flex-row items-center justify-center gap-3">
+                <span>Welcome {signedIn.data.name},</span>
+                <Logout />
+              </div>
             ) : (
               <Link href="/auth/login">
                 <Button className="navbar_button space-x-2 px-6">

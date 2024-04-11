@@ -1,7 +1,6 @@
 "use client";
 
 import { useState, useEffect, useCallback } from "react";
-import Loading from "@/components/Campaigns/components/Loading";
 import Error from "@/components/Campaigns/components/Error";
 import { searchCampaignsAPI } from "@/axios";
 import AllCampaigns from "@/components/Campaigns/components/AllCampaigns";
@@ -46,8 +45,9 @@ const SearchResults = (props) => {
       {status === "success" && campaigns && campaigns.length > 0 && (
         <section>
           <PageLayout>
-            <h1 className="text-3xl font-bold leading-none">
-              Search Results for <span className="italic">"{query}"</span>
+            <h1 className="font-regular w-full text-right text-xl leading-none">
+              Search Results for{" "}
+              <span className="font-bold italic">"{query}"</span>
             </h1>
           </PageLayout>
           <div className="flex flex-col flex-wrap gap-4 pb-40">
