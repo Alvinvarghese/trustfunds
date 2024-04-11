@@ -1,10 +1,17 @@
+import { Coins, MessageQuote } from "@/components/Icons";
 import { Button } from "@/components/ui/button";
 import { daysLeft } from "@/lib/utils";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 
 const Details = (props) => {
   const { data } = props;
-  if (!data) return <></>;
+
+  const router = useRouter();
+  const onGoToFund = () => router.push(`/campaigns/${data._id}/fund`);
+  const onGoToForum = () => router.push(`/campaigns/${data._id}/forum`);
+
+  if (!data || !data._id) return <></>;
   return (
     <>
       <div className="h-[200px] overflow-clip rounded-md">
@@ -53,18 +60,14 @@ const Details = (props) => {
           </div>
         </div>
         <div className="flex flex-grow flex-col justify-end gap-8 lg:ml-20 lg:flex-row lg:gap-24">
-          <Button className="bg-darkgray h-14 rounded-2xl">
-            GO TO CAMPAIGN FORUM
+          <Button className="outline-button py-6" onClick={onGoToForum}>
+            <MessageQuote />
+            <span className="ml-3">CAMPAIGN FORUM</span>
           </Button>
-          <div className="border-darkgray flex h-28 flex-col justify-between overflow-hidden rounded-2xl border lg:h-14 lg:flex-row">
-            <input
-              className="lg:h-13 flex h-full items-center gap-40 rounded-2xl rounded-r-none border-none pl-3 hover:outline-none"
-              placeholder="Pledge ETH 0.1"
-            />
-            <Button className="lg:h-13 bg-darkgray h-full rounded-2xl rounded-l-none border-none">
-              FUND CAMPAIGN
-            </Button>
-          </div>
+          <Button className="outline-button py-6" onClick={onGoToFund}>
+            <Coins />
+            <span className="ml-3">FUND CAMPAIGN</span>
+          </Button>
         </div>
       </div>
       <div className="flex flex-col">
@@ -72,7 +75,7 @@ const Details = (props) => {
         {data.story.length > 0 &&
           data.story.map((para, index) => {
             return (
-              <p key={index} className="text-justify">
+              <p key={index} className="my-2 text-justify leading-snug">
                 {para}
               </p>
             );
