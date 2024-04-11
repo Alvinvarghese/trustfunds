@@ -5,7 +5,7 @@ import Image from "next/image";
 import { useRouter } from "next/navigation";
 
 const Details = (props) => {
-  const { data } = props;
+  const { data, admin } = props;
 
   const router = useRouter();
   const onGoToFund = () => router.push(`/campaigns/${data._id}/fund`);
@@ -25,15 +25,11 @@ const Details = (props) => {
         />
       </div>
       <div className="flex flex-col justify-between gap-5 pt-8 lg:flex-row lg:gap-0">
-        <div>
+        <div className="flex flex-col items-start justify-between gap-1">
           <h1 className="text-darkgray text-4xl font-bold">{data.title}</h1>
           <div className="flex flex-row gap-1">
-            <p>Contract Address </p>
+            <p>Transaction Address: </p>
             <p className="font-bold">{data.contractAddress}</p>
-          </div>
-          <div className="flex flex-row gap-1">
-            <p>by </p>
-            <p className="font-bold">{data.name}</p>
           </div>
         </div>
         <div className="flex flex-col gap-5 lg:flex-row">
@@ -65,10 +61,12 @@ const Details = (props) => {
             <MessageQuote />
             <span className="ml-3">CAMPAIGN FORUM</span>
           </Button>
-          <Button className="outline-button py-6" onClick={onGoToFund}>
-            <Coins />
-            <span className="ml-3">FUND CAMPAIGN</span>
-          </Button>
+          {!admin && (
+            <Button className="outline-button py-6" onClick={onGoToFund}>
+              <Coins />
+              <span className="ml-3">FUND CAMPAIGN</span>
+            </Button>
+          )}
         </div>
       </div>
       <div className="flex flex-col">

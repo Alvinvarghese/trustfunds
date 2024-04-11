@@ -76,7 +76,7 @@ const Navbar = () => {
           <li className="lg:pr-8">
             {signedIn.status ? (
               <div className="flex flex-row items-center justify-center gap-3">
-                <span className="hidden lg:block">
+                <span className="hidden select-none lg:block">
                   Welcome {signedIn.data.name},
                 </span>
                 <Logout />

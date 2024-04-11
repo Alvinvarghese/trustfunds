@@ -100,11 +100,11 @@ const Page = () => {
   return (
     <PaddingLayout>
       <PageLayout>
-        <h1 className="text-2xl font-bold text-primary lg:text-4xl">
+        <h1 className="w-full text-right text-xl font-bold text-secondary-foreground lg:text-3xl">
           Start a Campaign
         </h1>
       </PageLayout>
-      <div className="flex flex-col items-center pb-32">
+      <div className="flex flex-col items-center pb-32 pt-4">
         <div className="w-full flex-row gap-4 lg:flex lg:gap-6">
           <div className="w-full pb-4">
             <label>Campaign title*</label>

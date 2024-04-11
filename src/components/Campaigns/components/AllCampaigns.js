@@ -9,7 +9,7 @@ const AllCampaigns = (props) => {
     <CardLayout>
       {data.length > 0 &&
         data.map((campaign, index) => {
-          return <Card data={campaign} key={index} />;
+          return <Card data={campaign} key={index} users={props.users} />;
         })}
     </CardLayout>
   );

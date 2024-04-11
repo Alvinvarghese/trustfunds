@@ -5,10 +5,11 @@ import { daysLeft } from "@/lib/utils";
 import shortenText from "../Campaigns/utils/shortenText";
 const Card = (props) => {
   const { data } = props;
-  if (data._id)
+  if (data._id) {
+    const link = `${props.users ? "/user/" : "/"}campaigns/${data._id}`;
     return (
       <Link
-        href={`/campaigns/${data._id}`}
+        href={link}
         className="flex w-[400px] cursor-pointer flex-col gap-2 overflow-hidden rounded-md bg-primary text-lightbluetext duration-300 ease-in-out hover:bg-darkgrayhover"
       >
         <div className="h-[153px] overflow-hidden">
@@ -62,6 +63,7 @@ const Card = (props) => {
         </div>
       </Link>
     );
+  }
 };
 
 export default Card;

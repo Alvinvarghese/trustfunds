@@ -31,11 +31,11 @@ const UserCampaignsList = () => {
   }, []);
 
   return (
-    <div className="w-full py-10">
+    <div className="w-full py-5">
       <SectionHeading text="Dashboard" p="Your campaigns" />
       {status === "loading" && <Loading />}
       {status === "error" && <Error fetchData={fetchData} />}
-      {status === "success" && data && <AllCampaigns data={data} />}
+      {status === "success" && data && <AllCampaigns data={data} users />}
     </div>
   );
 };
