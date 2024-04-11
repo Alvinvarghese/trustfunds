@@ -39,7 +39,7 @@ const Page = () => {
     else fetchData();
   }, []);
 
-  const [campaignName, setCampaignName] = useState("");
+  const [userName, setUserName] = useState(signedIn.data?.name || null);
   const [campaignTitle, setCampaignTitle] = useState("");
   const [story, setStory] = useState("");
   const [goal, setGoal] = useState("");
@@ -55,8 +55,8 @@ const Page = () => {
       // validation
       if (!campaignImage || campaignImage.length === 0)
         throw new Error("Campaign image cannot be empty.");
-      if (campaignName.length === 0)
-        throw new Error("Your or company's name cannot be empty.");
+      if (userName && userName.length === 0)
+        throw new Error("Please login and try again later.");
       if (campaignTitle.length === 0)
         throw new Error("Campaign title cannot be empty.");
       if (story.length === 0) throw new Error("Story cannot be empty.");
@@ -76,7 +76,7 @@ const Page = () => {
 
       // prepARE data
       const data = {
-        name: campaignName,
+        name: userName,
         title: campaignTitle,
         story: storyArr,
         goal: parseFloat(goal),
@@ -106,17 +106,7 @@ const Page = () => {
       </PageLayout>
       <div className="flex flex-col items-center pb-32">
         <div className="w-full flex-row gap-4 lg:flex lg:gap-6">
-          <div className="pb-4 lg:w-1/2">
-            <label>Campaign name*</label>
-            <Input
-              className="rounded-2xl"
-              type="text"
-              placeholder="Short name for the campaign"
-              value={campaignName}
-              onChange={(e) => setCampaignName(e.target.value)}
-            />
-          </div>
-          <div className="pb-4 lg:w-1/2">
+          <div className="w-full pb-4">
             <label>Campaign title*</label>
             <Input
               className="rounded-2xl"

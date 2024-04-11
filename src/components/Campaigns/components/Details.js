@@ -14,12 +14,13 @@ const Details = (props) => {
   if (!data || !data._id) return <></>;
   return (
     <>
-      <div className="h-[200px] overflow-clip rounded-md">
+      <div className="flex h-[400px] items-end overflow-clip rounded-md">
         <Image
           src={data.image}
           alt={data.title}
-          height={200}
+          height={400}
           width={1400}
+          objectFit="fill"
           priority
         />
       </div>
