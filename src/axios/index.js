@@ -23,6 +23,8 @@ export const getLogoutAPI = () =>
 export const getUserAPI = () => api.get("/users/me", { withCredentials: true });
 export const createCampaignAPI = (body) =>
   api.post("/campaigns/create", body, { withCredentials: true });
+export const getUserCampaignsAPI = () =>
+  api.get("/campaigns/user", { withCredentials: true });
 export const getCampaignAPI = () =>
   api.get("/campaigns/", { withCredentials: true });
 export const getAllCampaignsAPI = () =>

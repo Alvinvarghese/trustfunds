@@ -2,6 +2,7 @@ import React from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { daysLeft } from "@/lib/utils";
+import shortenText from "../Campaigns/utils/shortenText";
 const Card = (props) => {
   const { data } = props;
   if (data._id)
@@ -30,7 +31,9 @@ const Card = (props) => {
             </div>
           </div>
 
-          <h1 className="pt-4 text-2xl font-bold text-white">{data.title}</h1>
+          <h1 className="py-4 text-xl font-bold leading-tight text-white">
+            {shortenText(data.title, 60)}
+          </h1>
 
           <h2 className="font-bold">{data.name}</h2>
 
