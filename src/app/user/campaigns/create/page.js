@@ -100,14 +100,14 @@ const Page = () => {
           Start a Campaign
         </h1>
       </PageLayout>
-      <div className="flex flex-col items-center pb-32 pt-4">
-        <div className="w-full flex-row gap-4 pt-4 lg:flex lg:gap-6">
+      <div className="flex flex-col items-center pb-32">
+        <div className="w-full flex-row gap-4 lg:flex lg:gap-6">
           <div className="pb-4 lg:w-1/2">
-            <label>Your name*</label>
+            <label>Campaign name*</label>
             <Input
               className="rounded-2xl"
               type="text"
-              placeholder="Your or company's name"
+              placeholder="Short name for the campaign"
               value={campaignName}
               onChange={(e) => setCampaignName(e.target.value)}
             />
@@ -197,7 +197,7 @@ const Page = () => {
           </div>
         </div>
         <Button
-          className="bg-darkgray mt-6 flex flex-row gap-2 rounded-xl px-10 py-6 text-lg"
+          className="outline-button mt-6 flex flex-row gap-3 rounded-xl px-10 py-6 text-lg"
           onClick={handleSubmit}
         >
           <PlusCircle size={20} /> <span>Create Campaign</span>

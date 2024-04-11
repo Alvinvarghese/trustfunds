@@ -76,7 +76,9 @@ const Navbar = () => {
           <li className="lg:pr-8">
             {signedIn.status ? (
               <div className="flex flex-row items-center justify-center gap-3">
-                <span>Welcome {signedIn.data.name},</span>
+                <span className="hidden lg:block">
+                  Welcome {signedIn.data.name},
+                </span>
                 <Logout />
               </div>
             ) : (
