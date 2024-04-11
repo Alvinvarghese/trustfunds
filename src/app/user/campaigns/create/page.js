@@ -17,8 +17,9 @@ import giveErrorMsg from "@/lib/giveErrorMsg";
 import { toastError, toastSuccess } from "@/lib/toast";
 import uploadImage from "@/lib/uploadImage";
 import { daysLeft } from "@/lib/utils";
-import { PlusCircle } from "@/components/Icons";
+import { PlusCircle, Trash } from "@/components/Icons";
 import { useUserContext } from "@/context/UserContext";
+import sanitizeMilestones from "@/components/CampaignCreate/utils/sanitiseMilestone";
 
 const Page = () => {
   const { signedIn, showLogin } = useUserContext();
@@ -50,9 +51,36 @@ const Page = () => {
   const [campaignImage, setCampaignImage] = useState("");
   const [endDate, setEndDate] = useState("");
 
+  const [milestones, setMilestones] = useState([
+    { description: "", date: "", funds: 0 },
+    { description: "", date: "", funds: 0 },
+  ]);
+  const handleInputChange = (index, event) => {
+    let { name, value } = event.target;
+
+    if (name === "funds")
+      if (value > 90) return;
+      else value = parseInt(value);
+
+    const updatedMilestones = [...milestones];
+    updatedMilestones[index] = { ...updatedMilestones[index], [name]: value };
+    setMilestones(updatedMilestones);
+  };
+  const handleAddMilestone = () =>
+    setMilestones([...milestones, { description: "", date: "", funds: 0 }]);
+  const handleDeleteMilestone = (index) => {
+    if (milestones.length === 2) return;
+    setMilestones((milestones) =>
+      milestones.filter((milestone, number) => index !== number && milestone)
+    );
+  };
+
   const handleSubmit = async () => {
     try {
+      console.log(milestones);
       // validation
+      let milestonesValidated = sanitizeMilestones(milestones);
+      if (milestonesValidated.error) throw new Error(milestonesValidated.error);
       if (!campaignImage || campaignImage.length === 0)
         throw new Error("Campaign image cannot be empty.");
       if (userName && userName.length === 0)
@@ -189,6 +217,69 @@ const Page = () => {
               onChange={(e) => setEndDate(e.target.value)}
             />
           </div>
+        </div>
+        <div className="my-12 flex w-full flex-col gap-8 lg:gap-4">
+          <label>Milestones (A minimum of 2)*</label>
+          <p className="text-md px-1 text-center leading-tight lg:px-36">
+            <span className="font-bold">How to Make Milestones:</span>{" "}
+            Milestones are specific checkpoints during the course of the
+            campaign. Only on those days can the manager withdraw funds from the
+            blockchain, if approved by the majority of voters. The milestones
+            are created by giving a suitable name, specifying the date at which
+            funds are open to be withdrawn, and determining the portion of the
+            funds in % that can be released.
+          </p>
+          {milestones.map((milestone, index) => (
+            <div
+              key={index}
+              className="flex flex-row flex-wrap items-center gap-1 lg:flex-nowrap lg:gap-3"
+            >
+              <Input
+                type="text"
+                readOnly
+                value={index + 1}
+                className="w-[50px] text-center"
+              />
+              <Input
+                className="lg:w-1/2"
+                type="text"
+                placeholder="Enter in a few words about the milestone"
+                name="description"
+                value={milestone.description}
+                onChange={(e) => handleInputChange(index, e)}
+              />
+              <Input
+                className="lg:w-[30%]"
+                type="date"
+                name="date"
+                value={milestone.date}
+                onChange={(e) => handleInputChange(index, e)}
+              />
+              <Input
+                className="lg:w-[20%]"
+                type="number"
+                inputMode="numeric"
+                placeholder="Enter the % of funds to withdraw"
+                name="funds"
+                value={milestone.funds}
+                onChange={(e) => handleInputChange(index, e)}
+              />
+              <Button
+                variant="destructive"
+                className="w-fit lg:mx-auto"
+                onClick={() => handleDeleteMilestone(index)}
+              >
+                <Trash />
+              </Button>
+            </div>
+          ))}
+          <Button
+            variant="outline"
+            className="mx-auto w-fit"
+            onClick={handleAddMilestone}
+          >
+            <PlusCircle />
+          </Button>
         </div>
         <Button
           className="outline-button mt-6 flex flex-row gap-3 rounded-xl px-10 py-6 text-lg"
