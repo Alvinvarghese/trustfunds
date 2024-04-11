@@ -18,8 +18,11 @@ import { toastError, toastSuccess } from "@/lib/toast";
 import uploadImage from "@/lib/uploadImage";
 import { daysLeft } from "@/lib/utils";
 import { PlusCircle } from "@/components/Icons";
+import { useUserContext } from "@/context/UserContext";
 
 const Page = () => {
+  const { signedIn, showLogin } = useUserContext();
+
   const [data, setData] = useState([]);
   useEffect(() => {
     const fetchData = async () => {
@@ -32,7 +35,8 @@ const Page = () => {
       }
     };
 
-    fetchData();
+    if (!signedIn.status && !signedIn.fetched) showLogin();
+    else fetchData();
   }, []);
 
   const [campaignName, setCampaignName] = useState("");
@@ -124,11 +128,11 @@ const Page = () => {
           </div>
         </div>
         <div className="w-full pb-4">
-          <label>Story*</label>
+          <label>Story/Pitch*</label>
           <Textarea
             className="placeholder h-32 rounded-2xl text-start"
             type="text"
-            placeholder="Write your story"
+            placeholder="Write your story/pitch for the campaign that can help users in deciding to donate for the cause."
             value={story}
             onChange={(e) => setStory(e.target.value)}
           />
