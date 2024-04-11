@@ -6,7 +6,6 @@ import { toastError } from "@/lib/toast";
 import Loading from "./components/Loading";
 import Details from "./components/Details";
 import Error from "./components/Error";
-import PaddingLayout from "../Layout/PaddingLayout";
 
 const CampaignDetail = (props) => {
   // loading | success | error

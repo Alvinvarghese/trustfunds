@@ -4,7 +4,7 @@
 
 @layer base {
   :root {
-    --background: rgb(243, 246, 255);
+    --background: #dae7ff;
     --foreground: #182236;
 
     --card: 0 0% 100%;
@@ -55,7 +55,7 @@
     --primary-foreground: 24 9.8% 10%;
 
     --secondary: #4c566a;
-    --secondary-foreground: #fff;
+    --secondary-foreground: #ffffff;
 
     --muted: 12 6.5% 15.1%;
     --muted-foreground: 24 5.4% 63.9%;
@@ -97,6 +97,9 @@
 }
 .welcome-button:hover {
   color: white;
+}
+.outline-button {
+  @apply w-32 min-w-fit rounded-xl border-[1px] border-secondary-foreground bg-transparent text-lg text-secondary-foreground;
 }
 
 *,

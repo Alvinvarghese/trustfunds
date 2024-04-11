@@ -113,7 +113,7 @@ const Page = () => {
             <Button
               onClick={goToLogin}
               type="button"
-              className="w-32 rounded-xl border-[1px] border-white bg-transparent text-lg text-white"
+              className="outline-button"
             >
               LOGIN
             </Button>

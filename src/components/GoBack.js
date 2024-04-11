@@ -8,7 +8,7 @@ const GoBack = () => {
   const goBack = () => router.back();
   return (
     <div>
-      <Button className="bg-darkgray rounded-2xl" onClick={goBack}>
+      <Button onClick={goBack} className="outline-button">
         Go Back
       </Button>
     </div>

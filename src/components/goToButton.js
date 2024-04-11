@@ -5,7 +5,7 @@ const GoToButton = (props) => {
   const router = useRouter();
   const goTo = () => router.push(props.href || "/");
   return (
-    <Button className="bg-darkgray rounded-2xl" onClick={goTo}>
+    <Button className="outline-button" onClick={goTo}>
       {props.text || "Go To Home"}
     </Button>
   );
