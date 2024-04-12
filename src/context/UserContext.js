@@ -26,7 +26,8 @@ export const UserProvider = ({ children }) => {
     if (!signedIn.status) checkSignedIn();
   }, []);
 
-  const checkout = () => setSignedIn({ status: false, data: null, fetched: false });
+  const checkout = () =>
+    setSignedIn({ status: false, data: null, fetched: false });
 
   const router = useRouter();
   const showLogin = () => {

@@ -60,7 +60,7 @@ const SearchResults = (props) => {
         <div className="flex h-full w-full items-center justify-center">
           <div className="flex flex-col items-center gap-4">
             <SadBigIcon />
-            <p className="pb-20 text-lg w-2/3 leading-tight text-center">
+            <p className="w-2/3 pb-20 text-center text-lg leading-tight">
               No campaigns found for the keyword - "{query}".
             </p>
           </div>

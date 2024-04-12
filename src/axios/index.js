@@ -30,10 +30,10 @@ export const getCampaignAPI = () =>
 export const getAllCampaignsAPI = () =>
   api.get("/campaigns/all", { withCredentials: true });
 export const getCampaignDetailsAPI = (id) =>
-  api.get(`/campaigns/${id}`, { withCredentials: true }); 
+  api.get(`/campaigns/${id}`, { withCredentials: true });
 export const searchCampaignsAPI = (id) =>
   api.get(`/campaigns/search?q=${id}`, { withCredentials: true });
-export const postMessageAPI = (slug ,body) =>
-  api.post(`/campaigns/${slug}/forum`, body, {withCredentials:true});
+export const postMessageAPI = (slug, body) =>
+  api.post(`/campaigns/${slug}/forum`, body, { withCredentials: true });
 export const getMessagesAPI = (slug) =>
-  api.get(`/campaign/${slug}/forum`, {withCredentials: true });
+  api.get(`/campaign/${slug}/forum`, { withCredentials: true });
