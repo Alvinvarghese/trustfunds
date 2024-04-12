@@ -2,7 +2,14 @@ function err(message) {
   return { error: message };
 }
 
-function sanitizeInputs() {
+function sanitizeInputs(
+  campaignImage,
+  userName,
+  campaignTitle,
+  story,
+  goal,
+  selectedCause
+) {
   if (!campaignImage || campaignImage.length === 0)
     return err("Campaign image cannot be empty.");
   if (userName && userName.length === 0)

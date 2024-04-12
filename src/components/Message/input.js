@@ -29,13 +29,15 @@ const Text = (props) => {
   return (
     <div className="h-full w-5/6 gap-3 p-2">
       <div className="mb-3 flex flex-row justify-between">
-        <div>
-          <h2 className="font-medium">{data.name}</h2>
-          <p className="text-sm">{data.designation}</p>
-        </div>
+        {data && (
+          <div>
+            <h2 className="font-medium">{data.name}</h2>
+            <p className="text-sm">{data.designation}</p>
+          </div>
+        )}
         <div className="text-end text-sm">
-          <p>{new Date().toLocaleDateString()}</p>
-          <p>{new Date().toLocaleTimeString()}</p>
+          {/* <p>{new Date().toLocaleDateString()}</p>
+          <p>{new Date().toLocaleTimeString()}</p> */}
         </div>
       </div>
       <Textarea

@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useUserContext } from "@/context/UserContext";
-import { toastError } from "@/lib/toast";
+import { toastError, toastSuccess } from "@/lib/toast";
 import giveErrorMsg from "@/lib/giveErrorMsg";
 import sanitizeMilestones from "./utils/sanitizeMilestone";
 import sanitizeInputs from "./utils/sanitizeInputs";
@@ -16,6 +16,7 @@ import { Button } from "../ui/button";
 import { PlusCircle } from "../Icons";
 import MilestonesCreator from "./MilestonesCreator";
 import { Textarea } from "../ui/textarea";
+import { createCampaignAPI, getCausesAPI } from "@/axios";
 
 export default function CampaignCreate() {
   const { signedIn, showLogin } = useUserContext();
@@ -51,13 +52,21 @@ export default function CampaignCreate() {
   const [selectedCause, setSelectedCause] = useState("");
   const handleCause = (cause) => setSelectedCause(cause);
 
+  // submit function
   const handleSubmit = async () => {
     try {
       // validations
+      let inputsValidated = sanitizeInputs(
+        campaignImage,
+        userName,
+        campaignTitle,
+        story,
+        goal,
+        selectedCause
+      );
+      if (inputsValidated.error) throw new Error(inputsValidated.error);
       let milestonesValidated = sanitizeMilestones(milestones, endDate);
       if (milestonesValidated.error) throw new Error(milestonesValidated.error);
-      let inputsValidated = sanitizeInputs();
-      if (inputsValidated.error) throw new Error(inputsValidated.error);
 
       // upload image to firebase storage
       const url = new URL(await uploadImage(campaignImage, campaignImage.name));
@@ -82,7 +91,7 @@ export default function CampaignCreate() {
       const res = await createCampaignAPI(data);
 
       if (res.status === 200) {
-        toastSuccess("Campaign creation successful!");
+        toastSuccess(res.data.message);
       }
     } catch (error) {
       console.error("Campaign creation failed", error);
@@ -168,7 +177,7 @@ export default function CampaignCreate() {
           </p>
         </div>
         <div className="w-full lg:w-1/2">
-          <label>End date*</label>
+          <label>Campaign fund collection target date*</label>
           <Input
             type="date"
             className="rounded-2xl"
