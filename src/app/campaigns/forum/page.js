@@ -5,7 +5,6 @@ import Message from "@/components/Message/message";
 import { useEffect, useState } from "react";
 
 const Page = () => {
-
   const [messages, setMessages] = useState([]);
   const addMessage = (newMessage) => {
     setMessages([...messages, newMessage]);
@@ -25,11 +24,11 @@ const Page = () => {
       <div className="flex flex-row">
         <div className="w-1/2">
           {messages.map((msg, index) => (
-          <Message key={index} data={msg}/>
+            <Message key={index} data={msg} />
           ))}
         </div>
         <div className="flex h-full w-1/2 flex-col items-center ">
-          <Text addMessage={addMessage}/> 
+          <Text addMessage={addMessage} />
         </div>
       </div>
     </div>

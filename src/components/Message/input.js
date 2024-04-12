@@ -3,19 +3,19 @@ import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
 
 const Text = (props) => {
-  const {data}=props;
-  const [message, setMessage]  = useState('');
+  const { data } = props;
+  const [message, setMessage] = useState("");
   const handleSubmit = async () => {
     e.preventDefault();
-    try{
-    if (message.length === 0) throw new Error("Message cannot be empty.");
-    const newData = {
-      name : data.name,
-      message,
-      date: new Date().toLocaleDateString(),
-      time: new Date().toLocaleTimeString()
-    };
-    const res = await postMessageAPI(newData);
+    try {
+      if (message.length === 0) throw new Error("Message cannot be empty.");
+      const newData = {
+        name: data.name,
+        message,
+        date: new Date().toLocaleDateString(),
+        time: new Date().toLocaleTimeString(),
+      };
+      const res = await postMessageAPI(newData);
       if (res.status === 200) {
         toastSuccess("Message sent successful!");
       }
@@ -43,12 +43,14 @@ const Text = (props) => {
         placeholder="Enter your message here."
         className="placeholder h-full rounded-xl border border-black bg-white text-start"
         value={message}
-        onChange={(e)=>setMessage(e.target.value)}
+        onChange={(e) => setMessage(e.target.value)}
       />
       <div className="flex flex-col items-end">
-        <Button onClick ={handleSubmit}
-                className="mt-6 flex flex-row gap-3 rounded-xl px-10 py-6 text-lg"
-                type="submit">
+        <Button
+          onClick={handleSubmit}
+          className="mt-6 flex flex-row gap-3 rounded-xl px-10 py-6 text-lg"
+          type="submit"
+        >
           Send
         </Button>
       </div>
