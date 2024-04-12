@@ -3,9 +3,9 @@
 import { getLogoutAPI } from "@/axios";
 import { toastError, toastSuccess } from "@/lib/toast";
 import { useRouter } from "next/navigation";
-import { Button } from "../ui/button";
+import { Button } from "../../ui/button";
 import { useUserContext } from "@/context/UserContext";
-import Logouticon from "./icons/LogoutIcon";
+import { Logouticon } from "../../Icons";
 
 export default function Logout() {
   const router = useRouter();

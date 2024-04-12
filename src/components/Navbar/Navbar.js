@@ -3,7 +3,6 @@
 import Link from "next/link";
 import { Button } from "../ui/button";
 import { useUserContext } from "@/context/UserContext";
-import Logout from "../Home/Logout";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -14,6 +13,7 @@ import { useTheme } from "next-themes";
 import SearchBar from "./components/SearchBar";
 import { BadgePlus, Menu, Moon, Sun, UserIcon } from "../Icons";
 import { useRouter } from "next/navigation";
+import Logout from "./components/Logout";
 
 // navbar_button style in global.css
 const Navbar = () => {
