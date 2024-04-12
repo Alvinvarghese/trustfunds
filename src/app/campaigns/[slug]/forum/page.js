@@ -1,5 +1,6 @@
 "use client";
 
+import { getMessagesAPI } from "@/axios";
 import Text from "@/components/Message/input";
 import Message from "@/components/Message/message";
 import { useEffect, useState } from "react";
@@ -11,11 +12,18 @@ const Page = () => {
   };
 
   useEffect(() => {
-    const sortedMessages = [...messages].sort((a, b) => {
-      return new Date(a.time).getTime() - new Date(b.time).getTime();
-    });
-    setMessages(sortedMessages);
-  }, [messages]);
+    const fetchMessages = async () => {
+      try{
+        const res= await getMessagesAPI();
+        setMessages(res.data);
+      }
+      catch(error){
+        console.log("Error fetching message!", error);
+      }
+    };
+    fetchMessages();
+  }, []);
+
   return (
     <div className="m-6 flex h-screen flex-col gap-6">
       <h1 className="text-center text-3xl font-semibold">
