@@ -3,6 +3,11 @@ import { Button } from "@/components/ui/button";
 import { daysLeft } from "@/lib/utils";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
+import { Date, Description, Fund, Number } from "./MilestoneComponents";
+
+const calculatePercent = (percent, of) => {
+  return (of * percent) / 100;
+};
 
 const Details = (props) => {
   const { data, admin } = props;
@@ -10,6 +15,19 @@ const Details = (props) => {
   const router = useRouter();
   const onGoToFund = () => router.push(`/campaigns/${data._id}/fund`);
   const onGoToForum = () => router.push(`/campaigns/${data._id}/forum`);
+
+  const FundCampaignButton = () => (
+    <Button className="outline-button py-6" onClick={onGoToFund}>
+      <Coins />
+      <span className="ml-3">FUND CAMPAIGN</span>
+    </Button>
+  );
+  const CampaignForumButton = () => (
+    <Button className="outline-button py-6" onClick={onGoToForum}>
+      <MessageQuote />
+      <span className="ml-3">CAMPAIGN FORUM</span>
+    </Button>
+  );
 
   if (!data || !data._id) return <></>;
   return (
@@ -57,16 +75,8 @@ const Details = (props) => {
           </div>
         </div>
         <div className="flex flex-grow flex-col justify-end gap-8 lg:ml-20 lg:flex-row lg:gap-24">
-          <Button className="outline-button py-6" onClick={onGoToForum}>
-            <MessageQuote />
-            <span className="ml-3">CAMPAIGN FORUM</span>
-          </Button>
-          {!admin && (
-            <Button className="outline-button py-6" onClick={onGoToFund}>
-              <Coins />
-              <span className="ml-3">FUND CAMPAIGN</span>
-            </Button>
-          )}
+          <CampaignForumButton />
+          {!admin && <FundCampaignButton />}
         </div>
       </div>
       <div className="flex flex-col">
@@ -79,6 +89,43 @@ const Details = (props) => {
               </p>
             );
           })}
+      </div>
+
+      <div className="flex flex-col">
+        <h2 className="pt-10 font-bold">
+          The fund collection for the campaign is scheduled to end on:
+        </h2>
+        <span className="text-2xl">{data.endDate}</span>
+      </div>
+
+      <div className="flex flex-col">
+        <h2 className="pt-10 font-bold">Milestones</h2>
+        <div className="flex flex-row items-center justify-between gap-2 py-2 text-left font-bold">
+          <Number>S.No</Number>
+          <Description>Description</Description>
+          <Date>Date</Date>
+          <Fund>Fund %</Fund>
+        </div>
+        {data.milestones.length > 0 &&
+          data.milestones.map((milestone, index) => {
+            return (
+              <div className="flex flex-row items-center justify-between gap-2 py-1 text-left">
+                <Number>{index + 1}</Number>
+                <Description>{milestone.description}</Description>
+                <Date>{milestone.date}</Date>
+                <Fund>
+                  {milestone.funds}% of {data.goal} ={" "}
+                  {calculatePercent(milestone.funds, data.goal)} Eth
+                </Fund>
+              </div>
+            );
+          })}
+
+        {!admin && (
+          <div className="flex w-full items-center justify-center pt-10">
+            <FundCampaignButton />
+          </div>
+        )}
       </div>
     </>
   );

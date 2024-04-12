@@ -34,7 +34,7 @@ const UserCampaignsList = () => {
     <div className="w-full py-5">
       <SectionHeading text="Dashboard" p="Your campaigns" />
       {status === "loading" && <Loading />}
-      {status === "error" && <Error fetchData={fetchData} />}
+      {status === "error" && <Error retry={fetchData} />}
       {status === "success" && data && <AllCampaigns data={data} users />}
     </div>
   );

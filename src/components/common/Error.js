@@ -6,7 +6,7 @@ const Error = (props) => {
       <h2>Error while fetching campaign details.</h2>
       <div
         className="text-darkgray cursor-pointer rounded-2xl bg-transparent underline"
-        onClick={props.fetchData}
+        onClick={props.retry}
       >
         Retry
       </div>

@@ -41,7 +41,7 @@ const SearchResults = (props) => {
   return (
     <PaddingLayout>
       {status === "loading" && <SpinnerLoader />}
-      {status === "error" && <Error fetchData={fetchSearchResults} />}
+      {status === "error" && <Error retry={fetchSearchResults} />}
       {status === "success" && campaigns && campaigns.length > 0 && (
         <section>
           <PageLayout>
@@ -59,7 +59,7 @@ const SearchResults = (props) => {
         <p>No campaigns found for the keyword.</p>
       )}
       {status === "success" && !campaigns && (
-        <Error fetchData={fetchSearchResults} />
+        <Error retry={fetchSearchResults} />
       )}
     </PaddingLayout>
   );

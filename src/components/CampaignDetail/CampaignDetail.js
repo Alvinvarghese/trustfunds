@@ -3,9 +3,9 @@
 import { useCallback, useEffect, useState } from "react";
 import { getCampaignDetailsAPI } from "@/axios";
 import { toastError } from "@/lib/toast";
-import Loading from "../common/Loading";
 import Details from "./components/Details";
 import Error from "../common/Error";
+import SpinnerLoader from "../common/SpinnerLoader";
 
 const CampaignDetail = (props) => {
   // loading | success | error
@@ -32,8 +32,8 @@ const CampaignDetail = (props) => {
 
   return (
     <>
-      {status === "loading" && <Loading />}
-      {status === "error" && <Error fetchData={fetchData} />}
+      {status === "loading" && <SpinnerLoader />}
+      {status === "error" && <Error retry={fetchData} />}
       {status === "success" && data && <Details data={data} />}
     </>
   );
