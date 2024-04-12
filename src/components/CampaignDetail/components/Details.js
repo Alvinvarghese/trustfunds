@@ -110,7 +110,10 @@ const Details = (props) => {
         {data.milestones.length > 0 &&
           data.milestones.map((milestone, index) => {
             return (
-              <div className="flex flex-row items-center justify-between gap-2 py-1 text-left">
+              <div
+                className="flex flex-row items-center justify-between gap-2 py-1 text-left"
+                key={index}
+              >
                 <Number>{index + 1}</Number>
                 <Description>{milestone.description}</Description>
                 <Date>{milestone.date}</Date>

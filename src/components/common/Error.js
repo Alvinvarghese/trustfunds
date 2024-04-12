@@ -1,5 +1,3 @@
-import { Button } from "@/components/ui/button";
-
 const Error = (props) => {
   return (
     <div className="flex flex-row items-center gap-2 px-3">

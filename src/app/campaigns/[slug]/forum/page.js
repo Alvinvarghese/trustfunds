@@ -3,26 +3,15 @@
 import { getMessagesAPI } from "@/axios";
 import Text from "@/components/Message/input";
 import Message from "@/components/Message/message";
+import { useCampaignDetailContext } from "@/context/CampaignContext";
 import { useEffect, useState } from "react";
 
 const Page = () => {
+  const { status, campaignData } = useCampaignDetailContext();
   const [messages, setMessages] = useState([]);
   const addMessage = (newMessage) => {
     setMessages([...messages, newMessage]);
   };
-
-  useEffect(() => {
-    const fetchMessages = async () => {
-      try{
-        const res= await getMessagesAPI();
-        setMessages(res.data);
-      }
-      catch(error){
-        console.log("Error fetching message!", error);
-      }
-    };
-    fetchMessages();
-  }, []);
 
   return (
     <div className="m-6 flex h-screen flex-col gap-6">
