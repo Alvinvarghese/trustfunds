@@ -1,8 +1,8 @@
 "use client";
 
 import { useRouter } from "next/navigation";
-import { Button } from "./ui/button";
-import { ArrowLeft } from "./Icons";
+import { Button } from "../ui/button";
+import { ArrowLeft } from "../Icons";
 
 const GoBack = () => {
   const router = useRouter();

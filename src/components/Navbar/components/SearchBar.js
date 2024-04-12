@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
-import { Input } from "../ui/input";
+import { Input } from "../../ui/input";
 import { cn } from "@/lib/utils";
 
 const SearchBar = (props) => {

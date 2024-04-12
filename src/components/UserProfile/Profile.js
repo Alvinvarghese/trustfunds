@@ -1,5 +1,5 @@
-import ChangePassword from "./Profile/ChangePassword";
-import EmailUsername from "./Profile/EmailUsername";
+import ChangePassword from "./components/ChangePassword";
+import EmailUsername from "./components/EmailUsername";
 
 const Profile = () => {
   return (

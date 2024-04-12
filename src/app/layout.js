@@ -2,7 +2,7 @@ import Fonts from "@/components/Fonts";
 import "./globals.css";
 import { Toaster } from "@/components/ui/toaster";
 import { UserProvider } from "@/context/UserContext";
-import { ThemeProvider } from "@/components/navbar/themes/ThemeProvider";
+import { ThemeProvider } from "@/components/Navbar/themes/ThemeProvider";
 
 export const metadata = {
   title: "TrustFunds",

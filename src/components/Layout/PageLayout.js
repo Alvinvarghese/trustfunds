@@ -1,5 +1,5 @@
-import GoBack from "../GoBack";
-import GoToButton from "../goToButton";
+import GoBack from "../common/GoBack";
+import GoToButton from "../common/goToButton";
 
 export default function PageLayout(props) {
   return (

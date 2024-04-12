@@ -1,8 +1,8 @@
 "use client";
 
 import { useRouter } from "next/navigation";
-import { Button } from "./ui/button";
-import { SquareArrowUpRight } from "./Icons";
+import { Button } from "../ui/button";
+import { SquareArrowUpRight } from "../Icons";
 
 const GoToButton = (props) => {
   const router = useRouter();

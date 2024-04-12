@@ -4,9 +4,6 @@ import Link from "next/link";
 import { Button } from "../ui/button";
 import { useUserContext } from "@/context/UserContext";
 import Logout from "../Home/Logout";
-import Menu from "./Menu";
-import BadgePlus from "./BadgePlus";
-import UserIcon from "./icons/UserIcon";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -14,8 +11,8 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { useTheme } from "next-themes";
-import SearchBar from "./SearchBar";
-import { Moon, Sun } from "../Icons";
+import SearchBar from "./components/SearchBar";
+import { BadgePlus, Menu, Moon, Sun, UserIcon } from "../Icons";
 import { useRouter } from "next/navigation";
 
 // navbar_button style in global.css
@@ -59,7 +56,8 @@ const Navbar = () => {
                 )}
                 {signedIn.status && (
                   <DropdownMenuItem onClick={gotoProfile}>
-                    Profile
+                    <UserIcon />
+                    <span className="hidden lg:flex">Profile</span>
                   </DropdownMenuItem>
                 )}
                 <DropdownMenuItem>Team</DropdownMenuItem>

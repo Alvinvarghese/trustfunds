@@ -1,5 +1,5 @@
 import PaddingLayout from "@/components/Layout/PaddingLayout";
-import Profile from "@/components/UserPages/Profile";
+import Profile from "@/components/UserProfile/Profile";
 
 const Page = () => {
   return (
