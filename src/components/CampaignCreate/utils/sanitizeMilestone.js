@@ -2,7 +2,7 @@ function err(message) {
   return { error: message };
 }
 
-function sanitizeMilestones(milestones) {
+function sanitizeMilestones(milestones, endDate) {
   let previousDate = null;
   let totalPercentage = 0;
 
@@ -27,6 +27,11 @@ function sanitizeMilestones(milestones) {
 
   if (totalPercentage !== 100)
     return err("Total milestone funds percentage must be 100%.");
+
+  if (endDate.length === 0) return err("End date cannot be empty.");
+
+  if (daysLeft(endDate.toString()) <= 7)
+    return err("End date must be at least one week from today.");
 
   return err(false);
 }
