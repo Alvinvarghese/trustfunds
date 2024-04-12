@@ -36,13 +36,15 @@ export default function MilestoneTable(props) {
                 {milestone.funds}% of {props.goal} ={" "}
                 {calculatePercent(milestone.funds, props.goal)} Eth
               </Fund>
-              <Date
-                onClick={() => {
-                  alert(index);
-                }}
-              >
-                <Icon />
-              </Date>
+              {props.allowWithdraw && (
+                <Date
+                  onClick={() => {
+                    alert(index);
+                  }}
+                >
+                  <Icon />
+                </Date>
+              )}
             </div>
           );
         })}

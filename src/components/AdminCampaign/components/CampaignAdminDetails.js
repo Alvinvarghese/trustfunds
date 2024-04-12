@@ -34,7 +34,7 @@ export default function CampaignAdminDetails({ data }) {
             <p>Transaction Address: </p>
             <p className="font-bold">{data.contractAddress}</p>
           </div>
-          <div className="flex w-1/2 flex-col gap-5">
+          <div className="flex w-full lg:w-1/2 flex-col gap-5">
             <Button className="size-100 text-darkgray flex flex-col bg-lightblue hover:text-white">
               <p className="text-3xl font-bold">0.00</p>{" "}
               <p>raised of {data.goal}</p>
