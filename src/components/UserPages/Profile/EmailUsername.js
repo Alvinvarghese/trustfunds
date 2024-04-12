@@ -32,7 +32,7 @@ const EmailUsername = (props) => {
   }, []);
   return (
     <>
-      <div className="pb-4 pt-4 lg:mr-10 lg:w-1/2">
+      <div className="py-2 lg:mr-10 lg:w-1/2">
         <label>Full name*</label>
         <Input
           className="rounded-2xl"
@@ -43,7 +43,7 @@ const EmailUsername = (props) => {
         />
       </div>
 
-      <div className="pb-4 pt-4 lg:mr-10 lg:w-1/2">
+      <div className="py-2 lg:mr-10 lg:w-1/2">
         <label>Email*</label>
         <Input
           className="rounded-2xl"

@@ -77,7 +77,6 @@ const Page = () => {
 
   const handleSubmit = async () => {
     try {
-      console.log(milestones);
       // validation
       let milestonesValidated = sanitizeMilestones(milestones);
       if (milestonesValidated.error) throw new Error(milestonesValidated.error);
@@ -111,6 +110,7 @@ const Page = () => {
         causeType: selectedCause,
         image: url,
         endDate,
+        milestones,
       };
 
       const res = await createCampaignAPI(data);

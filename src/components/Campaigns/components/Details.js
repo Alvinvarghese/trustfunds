@@ -14,7 +14,7 @@ const Details = (props) => {
   if (!data || !data._id) return <></>;
   return (
     <>
-      <div className="flex h-[400px] items-end overflow-clip rounded-md">
+      <div className="flex items-end overflow-clip rounded-md lg:h-[400px]">
         <Image
           src={data.image}
           alt={data.title}

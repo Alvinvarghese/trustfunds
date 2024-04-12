@@ -16,14 +16,17 @@ import {
 import { useTheme } from "next-themes";
 import SearchBar from "./SearchBar";
 import { Moon, Sun } from "../Icons";
+import { useRouter } from "next/navigation";
 
 // navbar_button style in global.css
 const Navbar = () => {
   const { signedIn } = useUserContext();
   const { theme, setTheme } = useTheme();
-
   const handleTheme = () => setTheme("dark");
   const handleLight = () => setTheme("light");
+
+  const router = useRouter();
+  const gotoProfile = () => router.push("/user/profile");
 
   return (
     <nav className="fixed z-50 w-full">
@@ -54,7 +57,11 @@ const Navbar = () => {
                     <span className="pl-2">Dark Mode</span>
                   </DropdownMenuItem>
                 )}
-                <DropdownMenuItem>Billing</DropdownMenuItem>
+                {signedIn.status && (
+                  <DropdownMenuItem onClick={gotoProfile}>
+                    Profile
+                  </DropdownMenuItem>
+                )}
                 <DropdownMenuItem>Team</DropdownMenuItem>
                 <DropdownMenuItem>Subscription</DropdownMenuItem>
               </DropdownMenuContent>
