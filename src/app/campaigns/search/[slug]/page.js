@@ -8,6 +8,7 @@ import PageLayout from "@/components/Layout/PageLayout";
 import PaddingLayout from "@/components/Layout/PaddingLayout";
 import SpinnerLoader from "@/components/common/SpinnerLoader";
 import Error from "@/components/common/Error";
+import { SadBigIcon } from "@/components/Icons";
 
 const SearchResults = (props) => {
   const query = props.params.slug;
@@ -56,7 +57,14 @@ const SearchResults = (props) => {
         </section>
       )}
       {status === "success" && campaigns && campaigns.length === 0 && (
-        <p>No campaigns found for the keyword.</p>
+        <div className="flex h-full w-full items-center justify-center">
+          <div className="flex flex-col items-center gap-4">
+            <SadBigIcon />
+            <p className="pb-20 text-lg w-2/3 leading-tight text-center">
+              No campaigns found for the keyword - "{query}".
+            </p>
+          </div>
+        </div>
       )}
       {status === "success" && !campaigns && (
         <Error retry={fetchSearchResults} />

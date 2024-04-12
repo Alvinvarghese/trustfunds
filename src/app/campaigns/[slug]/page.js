@@ -8,7 +8,7 @@ const Page = (props) => {
   const id = props.params.slug;
   return (
     <PaddingLayout>
-      <div className="flex flex-col pb-[200px]">
+      <div className="flex flex-col pb-[100px]">
         <PageLayout />
         {id && <CampaignDetail id={id} />}
       </div>
