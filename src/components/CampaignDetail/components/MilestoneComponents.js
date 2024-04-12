@@ -11,7 +11,10 @@ export const Description = (props) => (
 );
 
 export const Date = (props) => (
-  <p className="rounded-md border-[1px] border-secondary px-2 py-1 text-center lg:w-[200px]">
+  <p
+    onClick={props?.onClick}
+    className="cursor-pointer rounded-md border-[1px] border-secondary px-2 py-1 text-center lg:w-[200px]"
+  >
     {props.children}
   </p>
 );

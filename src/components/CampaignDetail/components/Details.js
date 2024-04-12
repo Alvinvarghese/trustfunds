@@ -3,12 +3,8 @@ import { Button } from "@/components/ui/button";
 import { daysLeft } from "@/lib/utils";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
-import { Date, Description, Fund, Number } from "./MilestoneComponents";
 import { useUserContext } from "@/context/UserContext";
-
-const calculatePercent = (percent, of) => {
-  return (of * percent) / 100;
-};
+import MilestoneTable from "./Milestonetable";
 
 const Details = (props) => {
   const { data } = props;
@@ -100,30 +96,11 @@ const Details = (props) => {
       </div>
 
       <div className="flex flex-col">
-        <h2 className="pt-10 font-bold">Milestones</h2>
-        <div className="flex flex-row items-center justify-between gap-2 py-2 text-left font-bold">
-          <Number>S.No</Number>
-          <Description>Description</Description>
-          <Date>Date</Date>
-          <Fund>Fund %</Fund>
-        </div>
-        {data.milestones.length > 0 &&
-          data.milestones.map((milestone, index) => {
-            return (
-              <div
-                className="flex flex-row items-center justify-between gap-2 py-1 text-left"
-                key={index}
-              >
-                <Number>{index + 1}</Number>
-                <Description>{milestone.description}</Description>
-                <Date>{milestone.date}</Date>
-                <Fund>
-                  {milestone.funds}% of {data.goal} ={" "}
-                  {calculatePercent(milestone.funds, data.goal)} Eth
-                </Fund>
-              </div>
-            );
-          })}
+        <MilestoneTable
+          milestones={data.milestones}
+          goal={data.goal}
+          allowWithdraw={false}
+        />
       </div>
 
       <div className="flex flex-col">
