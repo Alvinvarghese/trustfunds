@@ -1,6 +1,6 @@
 "use client";
 
-import CampaignDetail from "@/components/Campaigns/CampaignDetail";
+import CampaignDetail from "@/components/CampaignDetail/CampaignDetail";
 import PaddingLayout from "@/components/Layout/PaddingLayout";
 import PageLayout from "@/components/Layout/PageLayout";
 

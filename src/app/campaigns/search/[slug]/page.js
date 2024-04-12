@@ -1,13 +1,13 @@
 "use client";
 
 import { useState, useEffect, useCallback } from "react";
-import Error from "@/components/Campaigns/components/Error";
 import { searchCampaignsAPI } from "@/axios";
-import AllCampaigns from "@/components/Campaigns/components/AllCampaigns";
+import AllCampaigns from "@/components/CampaignsList/components/AllCampaigns";
 import { toastError } from "@/lib/toast";
-import SpinnerLoader from "@/components/Campaigns/components/SpinnerLoader";
 import PageLayout from "@/components/Layout/PageLayout";
 import PaddingLayout from "@/components/Layout/PaddingLayout";
+import SpinnerLoader from "@/components/common/SpinnerLoader";
+import Error from "@/components/common/Error";
 
 const SearchResults = (props) => {
   const query = props.params.slug;

@@ -1,21 +1,21 @@
 "use client";
 
 import { useCallback, useEffect, useState } from "react";
-import SectionHeading from "../Home/SectionHeading";
-import Loading from "./components/Loading";
-import Error from "./components/Error";
+import SectionHeading from "../common/SectionHeading";
+import Loading from "../common/Loading";
+import Error from "../common/Error";
 import AllCampaigns from "./components/AllCampaigns";
-import { getAllCampaignsAPI } from "@/axios";
 import { toastError } from "@/lib/toast";
+import { getUserCampaignsAPI } from "@/axios";
 
-const ExploreCampaigns = () => {
+const UserCampaignsList = () => {
   // loading | success | error
   const [status, setStatus] = useState("loading");
   const [data, setData] = useState(null);
 
   const fetchData = useCallback(async () => {
     try {
-      const res = await getAllCampaignsAPI();
+      const res = await getUserCampaignsAPI();
       if (res.status === 200) {
         setData(res.data.result);
         setStatus("success");
@@ -32,14 +32,12 @@ const ExploreCampaigns = () => {
 
   return (
     <div className="w-full py-5">
-      <SectionHeading text="Explore Campaigns" />
+      <SectionHeading text="Dashboard" p="Your campaigns" />
       {status === "loading" && <Loading />}
       {status === "error" && <Error fetchData={fetchData} />}
-      {status === "success" && data && (
-        <AllCampaigns data={data} users={false} />
-      )}
+      {status === "success" && data && <AllCampaigns data={data} users />}
     </div>
   );
 };
 
-export default ExploreCampaigns;
+export default UserCampaignsList;

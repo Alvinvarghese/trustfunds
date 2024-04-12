@@ -1,7 +1,8 @@
 "use client";
+
 import Text from "@/components/Message/input";
 import Message from "@/components/Message/message";
-import React, { useState } from "react";
+import { useEffect, useState } from "react";
 
 const Page = () => {
 

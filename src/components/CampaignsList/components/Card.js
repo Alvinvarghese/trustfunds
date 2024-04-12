@@ -2,7 +2,7 @@ import React from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { daysLeft } from "@/lib/utils";
-import shortenText from "../Campaigns/utils/shortenText";
+import shortenText from "../utils/shortenText";
 const Card = (props) => {
   const { data } = props;
   if (data._id) {

@@ -1,5 +1,5 @@
-import Card from "@/components/CampaignCard/Card";
-import CardLayout from "@/components/CampaignCard/CardLayout";
+import Card from "./Card";
+import CardLayout from "./CardLayout";
 
 const AllCampaigns = (props) => {
   const data = props.data;

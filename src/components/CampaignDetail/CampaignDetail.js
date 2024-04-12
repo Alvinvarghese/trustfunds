@@ -3,9 +3,9 @@
 import { useCallback, useEffect, useState } from "react";
 import { getCampaignDetailsAPI } from "@/axios";
 import { toastError } from "@/lib/toast";
-import Loading from "./components/Loading";
+import Loading from "../common/Loading";
 import Details from "./components/Details";
-import Error from "./components/Error";
+import Error from "../common/Error";
 
 const CampaignDetail = (props) => {
   // loading | success | error
