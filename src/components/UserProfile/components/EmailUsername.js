@@ -6,6 +6,14 @@ import { Input } from "@/components/ui/input";
 import { toastError } from "@/lib/toast";
 import { useRouter } from "next/navigation";
 
+const InitialsIcon = ({ name }) => {
+  const initials = name
+    .split(" ")
+    .map((part) => part.charAt(0))
+    .join("");
+  return <div className="initials-icon">{initials}</div>;
+};
+
 const EmailUsername = (props) => {
   const [username, setUsername] = useState(null);
   const [email, setEmail] = useState(null);
@@ -32,27 +40,13 @@ const EmailUsername = (props) => {
   }, []);
   return (
     <>
-      <div className="py-2 lg:mr-10 lg:w-1/2">
-        <label>Full name*</label>
-        <Input
-          className="rounded-2xl"
-          defaultValue={username || ""}
-          type="text"
-          readOnly
-          placeholder="John Doe"
-        />
+       <div className="flex flex-col items-center">
+      <InitialsIcon name={username || ""} />
+      <div className="py-2">
+        <strong>{username}</strong>
       </div>
-
-      <div className="py-2 lg:mr-10 lg:w-1/2">
-        <label>Email*</label>
-        <Input
-          className="rounded-2xl"
-          type="text"
-          defaultValue={email || ""}
-          readOnly
-          placeholder="example@gmail.com"
-        />
-      </div>
+      <div className="py-2">{email}</div>
+    </div>
     </>
   );
 };
