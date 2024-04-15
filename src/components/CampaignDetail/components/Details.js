@@ -5,6 +5,7 @@ import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { useUserContext } from "@/context/UserContext";
 import MilestoneTable from "./Milestonetable";
+import { PrivateBanner } from "@/components/AdminCampaign/components/PublicBanner";
 
 const Details = (props) => {
   const { data } = props;
@@ -38,6 +39,7 @@ const Details = (props) => {
   if (!data || !data._id) return <></>;
   return (
     <>
+      {isCreator && <PrivateBanner link={`/user/campaigns/${data._id}`} />}
       <div className="flex items-end overflow-clip rounded-md lg:h-[400px]">
         <Image
           src={data.image}
