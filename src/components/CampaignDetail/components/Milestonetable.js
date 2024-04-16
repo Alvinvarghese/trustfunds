@@ -38,6 +38,7 @@ export default function MilestoneTable(props) {
               </Fund>
               {props.allowWithdraw && (
                 <Date
+                  className="bg-secondary"
                   onClick={() => {
                     alert(index);
                   }}

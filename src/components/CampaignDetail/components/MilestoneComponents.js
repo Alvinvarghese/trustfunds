@@ -1,3 +1,5 @@
+import { cn } from "@/lib/utils";
+
 export const Number = (props) => (
   <p className="rounded-md border-[1px] border-secondary px-2 py-1 text-center lg:w-[60px]">
     {props.children}
@@ -13,7 +15,10 @@ export const Description = (props) => (
 export const Date = (props) => (
   <p
     onClick={props?.onClick}
-    className="cursor-pointer rounded-md border-[1px] border-secondary px-2 py-1 text-center lg:w-[200px]"
+    className={cn(
+      "cursor-pointer rounded-md border-[1px] border-secondary px-2 py-1 text-center lg:w-[200px]",
+      props.className
+    )}
   >
     {props.children}
   </p>

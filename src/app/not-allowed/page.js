@@ -7,7 +7,7 @@ export default function Page() {
     <>
       <Navbar />
       <PaddingLayout>
-<NotAllowed />
+        <NotAllowed />
       </PaddingLayout>
     </>
   );

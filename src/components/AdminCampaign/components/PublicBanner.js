@@ -12,7 +12,7 @@ export default function PublicBanner(props) {
       <Link href={props.link || "/user/campaigns"} className="underline">
         here to go to public view
       </Link>{" "}
-      of the campaign!
+      of your campaign!
     </div>
   );
 }
@@ -26,7 +26,7 @@ export const PrivateBanner = (props) => {
         campaign! Click{" "}
       </span>
       <Link href={props.link || "/user/campaigns"} className="underline">
-        here to manage the campaign.
+        here to manage your campaign.
       </Link>{" "}
     </div>
   );

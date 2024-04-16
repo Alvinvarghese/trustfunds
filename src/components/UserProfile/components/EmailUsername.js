@@ -40,16 +40,14 @@ const EmailUsername = (props) => {
   }, []);
   return (
     <>
-     <div className="flex flex-col items-center p-10 text-xl">
-      <div className="bg-white text-slate-800 text-5xl leading-none font-medium flex border rounded-full p-5 items-center justify-center">
-      <InitialsIcon name={username || ""} />
+      <div className="flex flex-col items-center">
+        <InitialsIcon name={username || ""} />
+        <div className="py-2">
+          <strong>{username}</strong>
+        </div>
+        <div className="py-2">{email}</div>
       </div>
-      <div className="pt-6">
-        <strong>{username}</strong>
-      </div>
-      <div className="py-2">{email}</div>
-    </div>
-     </>
+    </>
   );
 };
 

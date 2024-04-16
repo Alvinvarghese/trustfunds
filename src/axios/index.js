@@ -38,4 +38,4 @@ export const searchCampaignsAPI = (id) =>
 export const postMessageAPI = (slug, body) =>
   api.post(`/campaigns/${slug}/forum`, body, { withCredentials: true });
 export const getMessagesAPI = (slug) =>
-  api.get(`/campaigns/${slug}/forum`, {withCredentials: true });
+  api.get(`/campaigns/${slug}/forum`, { withCredentials: true });
