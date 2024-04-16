@@ -1,7 +1,7 @@
+import Image from "next/image";
 import { Coins, MessageQuote } from "@/components/Icons";
 import { Button } from "@/components/ui/button";
 import { daysLeft } from "@/lib/utils";
-import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { useUserContext } from "@/context/UserContext";
 import MilestoneTable from "./Milestonetable";

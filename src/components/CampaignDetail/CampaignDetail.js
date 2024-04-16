@@ -1,10 +1,10 @@
 "use client";
 
+import { useEffect } from "react";
 import Details from "./components/Details";
 import Error from "../common/Error";
 import SpinnerLoader from "../common/SpinnerLoader";
 import { useCampaignDetailContext } from "@/context/CampaignContext";
-import { useEffect } from "react";
 
 const CampaignDetail = (props) => {
   const { setSlug, status, campaignData } = useCampaignDetailContext();
