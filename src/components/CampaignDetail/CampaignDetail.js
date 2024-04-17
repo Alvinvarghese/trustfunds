@@ -7,7 +7,7 @@ import SpinnerLoader from "../common/SpinnerLoader";
 import { useCampaignDetailContext } from "@/context/CampaignContext";
 
 const CampaignDetail = (props) => {
-  const { setSlug, status, campaignData } = useCampaignDetailContext();
+  const { setSlug, status, campaignData, fetchCampaignData } = useCampaignDetailContext();
 
   useEffect(() => {
     setSlug(props.id);
@@ -16,7 +16,7 @@ const CampaignDetail = (props) => {
   return (
     <>
       {status === "loading" && <SpinnerLoader />}
-      {status === "error" && <Error retry={fetchData} />}
+      {status === "error" && <Error retry={fetchCampaignData} />}
       {status === "success" && campaignData && <Details data={campaignData} />}
     </>
   );

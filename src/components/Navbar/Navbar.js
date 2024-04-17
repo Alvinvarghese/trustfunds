@@ -60,8 +60,6 @@ const Navbar = () => {
                     <span className="hidden lg:flex">Profile</span>
                   </DropdownMenuItem>
                 )}
-                <DropdownMenuItem>Team</DropdownMenuItem>
-                <DropdownMenuItem>Subscription</DropdownMenuItem>
               </DropdownMenuContent>
             </DropdownMenu>
           </li>

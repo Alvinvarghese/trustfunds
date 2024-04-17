@@ -46,7 +46,6 @@ const Details = (props) => {
           alt={data.title}
           height={400}
           width={1400}
-          objectFit="fill"
           priority
         />
       </div>
