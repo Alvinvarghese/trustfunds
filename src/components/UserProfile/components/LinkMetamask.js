@@ -3,7 +3,7 @@
 import { Button } from "@/components/ui/button";
 import { useEffect, useState } from "react";
 import { formatEther } from "ethers";
-import { toastError } from "@/lib/toast";
+import { toastError, toastSuccess } from "@/lib/toast";
 import { postMetamaskAPI } from "@/axios";
 
 export default function LinkMetamask(props) {
@@ -14,9 +14,14 @@ export default function LinkMetamask(props) {
         method: "eth_getBalance",
         params: [String(account), "latest"],
       });
-      return formatEther(balance) + " ETH";
+      console.log(account);
+      if (!balance) throw new Error("Could not fetch the balance.");
+      setData({
+        address: account,
+        balance: formatEther(balance) + " ETH",
+      });
     } catch (error) {
-      throw new Error("Failed to fetch balance: " + error.message);
+      console.log(error);
     }
   };
 
@@ -26,43 +31,54 @@ export default function LinkMetamask(props) {
         throw new Error(
           "Metamask cannot be found. Please try again after installing it."
         );
+      // getting accounts linked
       const accounts = await window.ethereum.request({
         method: "eth_requestAccounts",
       });
-      const response = await registerMetamaskAccount();
-      const balance = await getBalance(accounts[0]);
-      setData({
-        address: accounts[0],
-        balance: balance,
-      });
+      if (!accounts[0]) throw new Error("No metamask account found!");
+      // saving account details to user
+      const response = await registerMetamaskAccount(accounts[0]);
+      console.log(response);
+      if (!response) throw new Error("Could not save metamask details.");
+      // getting balance in the account
+      await getBalance(accounts[0]);
     } catch (error) {
+      console.error(error);
       toastError(error.message);
     }
   };
 
-  const registerMetamaskAccount = async () => {
+  const registerMetamaskAccount = async (paramAddress) => {
     try {
-      if (!data.address)
+      console.log(paramAddress);
+      if (!data?.address && !paramAddress) {
         toastError(
-          "The metamask account is not connect yet. Click on link to link your metamask account with the application."
+          "The metamask account is not connected yet. Click on link to link your metamask account with the application."
         );
-
-      const res = await postMetamaskAPI(data.address);
-      console.log(res);
-      if (res.status === 200) {
+        return null;
       }
+      const res = await postMetamaskAPI({
+        metamaskAddress: paramAddress || data?.address,
+      });
+      console.log(res);
+      if (res.status === 200) return res.data?.result;
+      else return null;
     } catch (err) {
       console.log(err);
       toastError(err.response?.data?.error || err.message);
+      return null;
     }
   };
 
   useEffect(() => {
-    if (props.account)
-      setData({
-        address: props.account,
-        balance: null,
-      });
+    const fetchData = async () => {
+      if (props.account && !data) await getBalance(props.account); // on load, already linked metamask
+      toastSuccess(
+        "The metamask account already used is synced with the application."
+      );
+    };
+
+    fetchData();
   }, []);
 
   return (
@@ -71,9 +87,13 @@ export default function LinkMetamask(props) {
         Link your metamask wallet here:
       </h1>
       {data ? (
-        <div className="my-2">
-          <p>Address: {data.address}</p>
-          <p>Balance: {data.balance}</p>
+        <div className="md:text-md my-2 space-y-2 text-sm">
+          <p>
+            <span className="font-medium underline">Address:</span> {data.address}
+          </p>
+          <p>
+            <span className="font-medium underline">Balance:</span> {data.balance}
+          </p>
         </div>
       ) : (
         <Button variant="outline" className="my-2" onClick={handleLink}>

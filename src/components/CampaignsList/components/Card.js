@@ -50,7 +50,7 @@ const Card = (props) => {
           <div className="flex flex-row justify-between pt-4">
             <div className="flex flex-col">
               <p className="text-white">Goal</p>
-              <p>{data.goal}</p>
+              <p>{data.goal} ETH</p>
             </div>
 
             <div className="flex flex-col">

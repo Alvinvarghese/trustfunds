@@ -17,14 +17,17 @@ const InitialsIcon = ({ name }) => {
 const EmailUsername = (props) => {
   const [username, setUsername] = useState(null);
   const [email, setEmail] = useState(null);
+  const [metamask, setMetamask] = useState(null);
   const router = useRouter();
   useEffect(() => {
     const fetchData = async () => {
       try {
         const res = await getUserAPI();
+        console.log(res.data.result);
         if (res.status === 200) {
           setUsername(res.data.result.name);
           setEmail(res.data.result.email);
+          setMetamask(res.data.result.metamask);
         }
       } catch (err) {
         if (err.response?.data?.status === 401) {
@@ -47,7 +50,7 @@ const EmailUsername = (props) => {
         </div>
         <div className="py-2">{email}</div>
       </div>
-      <LinkMetamask />
+      {metamask ? <LinkMetamask account={metamask} /> : <></>}
     </>
   );
 };
