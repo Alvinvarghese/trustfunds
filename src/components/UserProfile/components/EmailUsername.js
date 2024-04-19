@@ -2,9 +2,9 @@
 
 import { useEffect, useState } from "react";
 import { getUserAPI } from "@/axios";
-import { Input } from "@/components/ui/input";
 import { toastError } from "@/lib/toast";
 import { useRouter } from "next/navigation";
+import LinkMetamask from "./LinkMetamask";
 
 const InitialsIcon = ({ name }) => {
   const initials = name
@@ -47,6 +47,7 @@ const EmailUsername = (props) => {
         </div>
         <div className="py-2">{email}</div>
       </div>
+      <LinkMetamask />
     </>
   );
 };
