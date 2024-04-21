@@ -50,7 +50,7 @@ const EmailUsername = (props) => {
         </div>
         <div className="py-2">{email}</div>
       </div>
-      {metamask ? <LinkMetamask account={metamask} /> : <></>}
+      {email && <LinkMetamask account={metamask} />}
     </>
   );
 };

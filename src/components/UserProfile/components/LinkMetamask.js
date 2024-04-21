@@ -14,7 +14,6 @@ export default function LinkMetamask(props) {
         method: "eth_getBalance",
         params: [String(account), "latest"],
       });
-      console.log(account);
       if (!balance) throw new Error("Could not fetch the balance.");
       setData({
         address: account,
@@ -22,6 +21,25 @@ export default function LinkMetamask(props) {
       });
     } catch (error) {
       console.log(error);
+    }
+  };
+
+  const registerMetamaskAccount = async (paramAddress) => {
+    try {
+      if (!data?.address && !paramAddress) {
+        toastError(
+          "The metamask account is not connected yet. Click on link to link your metamask account with the application."
+        );
+        return null;
+      }
+      const res = await postMetamaskAPI({
+        metamaskAddress: paramAddress || data?.address,
+      });
+      if (res.status === 200) return res.data?.result;
+      else return null;
+    } catch (err) {
+      toastError(err.response?.data?.error || err.message);
+      return null;
     }
   };
 
@@ -48,34 +66,14 @@ export default function LinkMetamask(props) {
     }
   };
 
-  const registerMetamaskAccount = async (paramAddress) => {
-    try {
-      console.log(paramAddress);
-      if (!data?.address && !paramAddress) {
-        toastError(
-          "The metamask account is not connected yet. Click on link to link your metamask account with the application."
-        );
-        return null;
-      }
-      const res = await postMetamaskAPI({
-        metamaskAddress: paramAddress || data?.address,
-      });
-      console.log(res);
-      if (res.status === 200) return res.data?.result;
-      else return null;
-    } catch (err) {
-      console.log(err);
-      toastError(err.response?.data?.error || err.message);
-      return null;
-    }
-  };
-
   useEffect(() => {
     const fetchData = async () => {
-      if (props.account && !data) await getBalance(props.account); // on load, already linked metamask
-      toastSuccess(
-        "The metamask account already used is synced with the application."
-      );
+      if (props.account && !data) {
+        await getBalance(props.account); // on load, already linked metamask
+        toastSuccess(
+          "The metamask account already used is synced with the application."
+        );
+      }
     };
 
     fetchData();
@@ -84,16 +82,24 @@ export default function LinkMetamask(props) {
   return (
     <div className="py-4">
       <h1 className="text-darkgray mt-8 w-full pt-3 text-base font-bold lg:text-2xl">
-        Link your metamask wallet here:
+        Metamask wallet connection:
       </h1>
       {data ? (
         <div className="md:text-md my-2 space-y-2 text-sm">
           <p>
-            <span className="font-medium underline">Address:</span> {data.address}
+            <span className="font-medium underline">Address:</span>{" "}
+            {data.address}
           </p>
           <p>
-            <span className="font-medium underline">Balance:</span> {data.balance}
+            <span className="font-medium underline">Balance:</span>{" "}
+            {data.balance}
           </p>
+          <button
+            className="my-4 w-fit cursor-pointer rounded-md border-[1px] border-white bg-primary px-4 py-2 font-medium text-secondary-foreground"
+            onClick={handleLink}
+          >
+            Click here to reconnect/change account
+          </button>
         </div>
       ) : (
         <Button variant="outline" className="my-2" onClick={handleLink}>
