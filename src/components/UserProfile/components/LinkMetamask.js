@@ -95,7 +95,7 @@ export default function LinkMetamask(props) {
             {data.balance}
           </p>
           <button
-            className="my-4 w-fit cursor-pointer rounded-md border-[1px] border-white bg-primary px-4 py-2 font-medium text-secondary-foreground"
+            className="my-4 w-fit cursor-pointer rounded-md border-[1px] border-white bg-primary px-4 py-2 font-medium text-white"
             onClick={handleLink}
           >
             Click here to reconnect/change account
