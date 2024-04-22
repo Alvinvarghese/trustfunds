@@ -24,7 +24,7 @@ const Page = () => {
         console.log(accounts);
         const params = [
           {
-            to: "0xa21A732f2C69Ac8f2e770E9Daab43A1eDffeadc5",
+            to: "0x3f9d67b4D5efd02C0e3a4Dd44E915489d8399514",
             from: accounts[0],
             value: amount.toString(),
           },
@@ -61,7 +61,7 @@ const Page = () => {
   return (
     <>
       <h1 className="pt-4 text-center text-xl font-semibold underline lg:pt-10 lg:text-3xl">
-        Campaign Funds!
+        Fund this campaign!
       </h1>
       <div className="m-6 flex h-screen flex-col gap-4 lg:gap-2 lg:p-10">
         {status === "loading" && <SpinnerLoader />}
@@ -99,7 +99,7 @@ const Page = () => {
               <span>{campaignData.completed ? "Complete" : "Incomplete"}</span>
             </p>
 
-            <div className="my-3 flex flex-col gap-1 lg:flex-row lg:gap-5">
+            <div className="my-3 flex flex-col gap-1 lg:gap-2">
               <Input
                 type="number"
                 value={contributionAmount}
