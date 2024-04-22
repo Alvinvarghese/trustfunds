@@ -6,25 +6,23 @@ import { postMessageAPI } from "@/axios";
 const Text = (props) => {
   const { data } = props;
   const [message, setMessage] = useState("");
-  const handleSubmit = async () => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
+    const timestamp = new Date().getTime();
     try {
       if (message.length === 0) throw new Error("Message cannot be empty.");
       const newData = {
         name: data.name,
+        date: timestamp,
         message,
-        date: new Date().toLocaleDateString(),
-        time: new Date().toLocaleTimeString(),
       };
-      const res = await postMessageAPI(newData);
+      const res = await postMessageAPI(props.slug, newData);
       if (res.status === 200) {
         toastSuccess("Message sent successful!");
       }
     } catch (error) {
       console.error(error);
       let defaultError = "Message sending failed. Please try again later";
-      let e = giveErrorMsg(error);
-      toastError(e[0], e[1]);
     }
   };
   return (
@@ -44,7 +42,7 @@ const Text = (props) => {
       <Textarea
         type="text"
         placeholder="Enter your message here."
-        className="placeholder h-full rounded-xl border border-black bg-white text-start"
+        className="placeholder h-full rounded-xl bg-secondary text-start text-white"
         value={message}
         onChange={(e) => setMessage(e.target.value)}
       />

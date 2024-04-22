@@ -38,6 +38,6 @@ export const getCampaignDetailsUserAPI = (id) =>
 export const searchCampaignsAPI = (id) =>
   api.get(`/campaigns/search?q=${id}`, { withCredentials: true });
 export const postMessageAPI = (slug, body) =>
-  api.post(`/campaigns/${slug}/forum`, body, { withCredentials: true });
+  api.post(`/forum/${slug}`, body, { withCredentials: true });
 export const getMessagesAPI = (slug) =>
-  api.get(`/campaigns/${slug}/forum`, { withCredentials: true });
+  api.get(`/forum/${slug}`, { withCredentials: true });
