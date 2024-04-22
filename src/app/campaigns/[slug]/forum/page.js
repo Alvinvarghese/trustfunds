@@ -3,46 +3,69 @@
 import { getMessagesAPI } from "@/axios";
 import Text from "@/components/Message/input";
 import Message from "@/components/Message/message";
-import { useCampaignDetailContext } from "@/context/CampaignContext";
+import SpinnerLoader from "@/components/common/SpinnerLoader";
+import { Button } from "@/components/ui/button";
+import { useUserContext } from "@/context/UserContext";
 import { toastError } from "@/lib/toast";
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 
 const Page = (props) => {
-  const { status, campaignData } = useCampaignDetailContext();
+  const { signedIn } = useUserContext();
   const [messages, setMessages] = useState([]);
+  const [status, setStatus] = useState("loading");
   const addMessage = (newMessage) => {
     setMessages([...messages, newMessage]);
   };
 
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        if (!props.params.slug) return toastError("No campaign context found. Try again later.")
-        const res = await getMessagesAPI(props.params.slug)
-        if (res.data.success)
-          setMessages(res.data.result)
+  const fetchData = useCallback(async () => {
+    try {
+      if (!props.params.slug)
+        return toastError("No campaign context found. Try again later.");
+      setStatus("loading");
+      const res = await getMessagesAPI(props.params.slug);
+      if (res.data.success) {
+        setStatus("success");
+        setMessages(res.data.result);
       }
-      catch (err) {
-        console.error(err)
-      }
+    } catch (err) {
+      setStatus("error");
+      console.error(err);
     }
+  }, []);
 
-    fetchData()
-  }, [])
+  useEffect(() => {
+    fetchData();
+  }, []);
 
   return (
-    <div className="m-6 flex h-screen flex-col gap-6">
+    <div className="mr-6 flex h-screen w-full flex-col gap-6">
       <h1 className="text-center text-3xl font-semibold">
         Welcome To TrustFunds Community Forum!
       </h1>
-      <div className="flex flex-row">
-        <div className="w-1/2">
-          {messages.map((msg, index) => (
-            <Message key={index} data={msg} />
-          ))}
+      <div className="flex flex-col lg:flex-row">
+        <div className="lg:h-[80vh] min-h-[150px] overflow-y-scroll lg:w-1/2">
+          <Button className="lg:mx-4 m-2" onClick={fetchData}>
+            Refresh
+          </Button>
+          {status === "loading" && <SpinnerLoader />}
+          {status === "success" && messages.length === 0 && (
+            <div className="m-6">No chat found for this campaign.</div>
+          )}
+          {status === "success" &&
+            messages.length > 0 &&
+            messages.map((msg, index) => <Message key={index} data={msg} />)}
+          {status === "error" && (
+            <div className="m-6">Error fetching messages</div>
+          )}
         </div>
-        <div className="flex h-full w-1/2 flex-col items-center ">
-          <Text slug={props.params.slug} addMessage={addMessage} data={campaignData} />
+        <div className="flex h-full flex-col items-center lg:w-1/2 ">
+          {signedIn.data && (
+            <Text
+              slug={props.params.slug}
+              addMessage={addMessage}
+              name={signedIn.data.name}
+            />
+          )}
         </div>
       </div>
     </div>

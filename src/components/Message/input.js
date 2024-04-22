@@ -4,7 +4,6 @@ import { Textarea } from "@/components/ui/textarea";
 import { postMessageAPI } from "@/axios";
 
 const Text = (props) => {
-  const { data } = props;
   const [message, setMessage] = useState("");
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -12,7 +11,7 @@ const Text = (props) => {
     try {
       if (message.length === 0) throw new Error("Message cannot be empty.");
       const newData = {
-        name: data.name,
+        name: props.name,
         date: timestamp,
         message,
       };
@@ -26,30 +25,25 @@ const Text = (props) => {
     }
   };
   return (
-    <div className="h-full w-5/6 gap-3 p-2">
+    <div className="h-full w-full p-2 lg:gap-1">
       <div className="mb-3 flex flex-row justify-between">
-        {data && (
-          <div>
-            <h2 className="font-medium">{data.name}</h2>
-            <p className="text-sm">{data.designation}</p>
+        {props.name && (
+          <div className="ml-auto text-md">
+            <h2 className="font-medium">{props.name}</h2>
           </div>
         )}
-        <div className="text-end text-sm">
-          {/* <p>{new Date().toLocaleDateString()}</p>
-          <p>{new Date().toLocaleTimeString()}</p> */}
-        </div>
       </div>
       <Textarea
         type="text"
         placeholder="Enter your message here."
-        className="placeholder h-full rounded-xl bg-secondary text-start text-white"
+        className="placeholder ml-auto h-full max-h-[50vh] w-5/6 rounded-xl bg-secondary text-start text-white"
         value={message}
         onChange={(e) => setMessage(e.target.value)}
       />
       <div className="flex flex-col items-end">
         <Button
           onClick={handleSubmit}
-          className="mt-6 flex flex-row gap-3 rounded-xl px-10 py-6 text-lg"
+          className="mt-3 flex flex-row gap-3 rounded-xl px-10 py-6 text-lg lg:mt-6"
           type="submit"
         >
           Send
