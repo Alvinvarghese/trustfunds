@@ -44,13 +44,15 @@ const EmailUsername = (props) => {
   return (
     <>
       <div className="flex flex-col items-center">
+        <div className="flex border rounded-full font-medium leading-tight text-5xl bg-secondary text-white p-5">
         <InitialsIcon name={username || ""} />
+        </div>
         <div className="py-2">
           <strong>{username}</strong>
         </div>
         <div className="py-2">{email}</div>
       </div>
-      {email && <LinkMetamask account={metamask} />}
+     <LinkMetamask account={metamask}/>
     </>
   );
 };
