@@ -1,6 +1,7 @@
 "use client";
 
 import { getMessagesAPI } from "@/axios";
+import PaddingLayout from "@/components/Layout/PaddingLayout";
 import Text from "@/components/Message/input";
 import Message from "@/components/Message/message";
 import SpinnerLoader from "@/components/common/SpinnerLoader";
@@ -38,37 +39,39 @@ const Page = (props) => {
   }, []);
 
   return (
-    <div className="mr-6 flex h-screen w-full flex-col gap-6">
-      <h1 className="text-center text-3xl font-semibold">
-        Welcome To TrustFunds Community Forum!
-      </h1>
-      <div className="flex flex-col lg:flex-row">
-        <div className="lg:h-[80vh] min-h-[150px] overflow-y-scroll lg:w-1/2">
-          <Button className="lg:mx-4 m-2" onClick={fetchData}>
-            Refresh
-          </Button>
-          {status === "loading" && <SpinnerLoader />}
-          {status === "success" && messages.length === 0 && (
-            <div className="m-6">No chat found for this campaign.</div>
-          )}
-          {status === "success" &&
-            messages.length > 0 &&
-            messages.map((msg, index) => <Message key={index} data={msg} />)}
-          {status === "error" && (
-            <div className="m-6">Error fetching messages</div>
-          )}
-        </div>
-        <div className="flex h-full flex-col items-center lg:w-1/2 ">
-          {signedIn.data && (
-            <Text
-              slug={props.params.slug}
-              addMessage={addMessage}
-              name={signedIn.data.name}
-            />
-          )}
+    <PaddingLayout>
+      <div className="mr-6 flex h-screen w-full flex-col gap-6">
+        <h1 className="text-center text-3xl font-semibold">
+          Welcome To TrustFunds Community Forum!
+        </h1>
+        <div className="flex flex-col lg:flex-row h-[70%]">
+          <div className="min-h-[150px] overflow-y-scroll h-full lg:w-1/2">
+            <Button className="m-2 lg:mx-4" onClick={fetchData} variant="outline">
+              Refresh
+            </Button>
+            {status === "loading" && <SpinnerLoader className="pb-0 h-[300px]"/>}
+            {status === "success" && messages.length === 0 && (
+              <div className="m-6">No chat found for this campaign.</div>
+            )}
+            {status === "success" &&
+              messages.length > 0 &&
+              messages.map((msg, index) => <Message key={index} data={msg} />)}
+            {status === "error" && (
+              <div className="m-6">Error fetching messages</div>
+            )}
+          </div>
+          <div className="flex h-full flex-col items-center lg:w-1/2 ">
+            {signedIn.data && (
+              <Text
+                slug={props.params.slug}
+                addMessage={addMessage}
+                name={signedIn.data.name}
+              />
+            )}
+          </div>
         </div>
       </div>
-    </div>
+    </PaddingLayout>
   );
 };
 
