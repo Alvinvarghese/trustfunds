@@ -17,6 +17,7 @@ import { PlusCircle } from "../Icons";
 import MilestonesCreator from "./MilestonesCreator";
 import { Textarea } from "../ui/textarea";
 import { createCampaignAPI, getCausesAPI } from "@/axios";
+import SpinnerLoader from "../common/SpinnerLoader";
 
 export default function CampaignCreate() {
   const { signedIn, showLogin } = useUserContext();
@@ -53,8 +54,10 @@ export default function CampaignCreate() {
   const handleCause = (cause) => setSelectedCause(cause);
 
   // submit function
+  const [loading, setLoading] = useState(false);
   const handleSubmit = async () => {
     try {
+      setLoading(true);
       // validations
       let inputsValidated = sanitizeInputs(
         campaignImage,
@@ -91,12 +94,14 @@ export default function CampaignCreate() {
       const res = await createCampaignAPI(data);
 
       // if (res.status === 200) {
-        toastSuccess(res.data.message);
+      toastSuccess(res.data.message);
       // }
     } catch (error) {
       console.error("Campaign creation failed", error);
       let e = giveErrorMsg(error);
       toastError(e[0], e[1]);
+    } finally {
+      setLoading(false);
     }
   };
   return (
@@ -203,10 +208,16 @@ export default function CampaignCreate() {
         />
       </div>
       <Button
-        className="outline-button mt-6 flex flex-row gap-3 rounded-xl px-10 py-6 text-lg"
+        className="outline-button mt-6 flex w-fit flex-row gap-3 rounded-xl px-10 py-6 text-lg"
         onClick={handleSubmit}
       >
-        <PlusCircle size={20} /> <span>Create Campaign</span>
+        {loading ? (
+          <SpinnerLoader className="h-[50px] pb-0" />
+        ) : (
+          <>
+            <PlusCircle size={20} /> <span>Create Campaign</span>
+          </>
+        )}
       </Button>
     </>
   );
