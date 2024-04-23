@@ -90,9 +90,9 @@ export default function CampaignCreate() {
 
       const res = await createCampaignAPI(data);
 
-      if (res.status === 200) {
+      // if (res.status === 200) {
         toastSuccess(res.data.message);
-      }
+      // }
     } catch (error) {
       console.error("Campaign creation failed", error);
       let e = giveErrorMsg(error);
