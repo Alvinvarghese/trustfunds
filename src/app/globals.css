@@ -201,20 +201,20 @@
   @apply rounded-3xl bg-primary text-[16px] font-[500] text-lightbluetext;
 }
 
-.custom_scroll::-webkit-scrollbar {
+*::-webkit-scrollbar {
   width: 0.5rem;
 }
 @media (max-width: 768px) {
-  .custom_scroll::-webkit-scrollbar {
+  *::-webkit-scrollbar {
     width: 0rem;
   }
 }
 
-.custom_scroll::-webkit-scrollbar-track {
+*::-webkit-scrollbar-track {
   @apply bg-primary;
 }
 
-.custom_scroll::-webkit-scrollbar-thumb {
+*::-webkit-scrollbar-thumb {
   @apply bg-lightbluetext;
   border-radius: 2rem;
 }
