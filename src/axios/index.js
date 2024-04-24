@@ -33,6 +33,8 @@ export const getAllCampaignsAPI = () =>
   api.get("/campaigns/all", { withCredentials: true });
 export const getCampaignDetailsAPI = (id) =>
   api.get(`/campaigns/${id}`, { withCredentials: true });
+export const getCampaignBlockchainDetailsAPI = (id) =>
+  api.get(`/campaigns/${id}/blockchain`, { withCredentials: true });
 export const getCampaignDetailsUserAPI = (id) =>
   api.get(`/campaigns/user/${id}`, { withCredentials: true });
 export const searchCampaignsAPI = (id) =>
