@@ -97,7 +97,9 @@ const Page = () => {
         {status === "success" && data && (
           <>
             <div className="flex flex-col items-center justify-start gap-2 lg:flex-row">
-              <p className="text-sm font-semibold lg:text-lg">Recipient:</p>
+              <p className="text-sm font-semibold lg:text-lg">
+                Creator Address:
+              </p>
               <p>{data.recipient}</p>
             </div>
 
@@ -139,6 +141,8 @@ const Page = () => {
               </div>
             ))}
 
+            <div className="h-[1px] w-full bg-secondary-foreground" />
+
             <div className="my-3 flex flex-col gap-1 lg:gap-2">
               <Input
                 type="number"
@@ -154,7 +158,11 @@ const Page = () => {
                   : "0"}{" "}
                 ETH
               </span>
-              <Button onClick={handleContribute} className="w-fit">
+              <Button
+                onClick={handleContribute}
+                className="w-fit"
+                variant="outline"
+              >
                 Fund this campaign
               </Button>
             </div>

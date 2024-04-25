@@ -21,7 +21,7 @@ const Page = (props) => {
   const fetchData = useCallback(async () => {
     try {
       if (!props.params.slug)
-        return toastError("No campaign context found. Try again later.");
+        return toastError("No campaign recognized. Try again later.");
       setStatus("loading");
       const res = await getMessagesAPI(props.params.slug);
       if (res.data.success) {
@@ -39,14 +39,11 @@ const Page = (props) => {
   }, []);
 
   return (
-    <PaddingLayout>
-      <div className="mr-6 flex h-screen w-full flex-col gap-6">
-        <h1 className="text-center text-3xl font-semibold">
-          Welcome To TrustFunds Community Forum!
-        </h1>
-        <div className="flex flex-col lg:flex-row h-[70%]">
-          <div className="min-h-[150px] overflow-y-scroll h-full lg:w-1/2">
-            <Button className="m-2 lg:mx-4" onClick={fetchData} variant="outline">
+    <PaddingLayout className="overflow-y-hidden">
+      <div className="flex h-screen w-full flex-col gap-6">
+        <div className="flex flex-col lg:flex-row h-full pb-28 w-full">
+          <div className="min-h-[200px] overflow-y-scroll h-full w-2/3">
+            <Button className="lg:mx-4" onClick={fetchData} variant="outline">
               Refresh
             </Button>
             {status === "loading" && <SpinnerLoader className="pb-0 h-[300px]"/>}
@@ -60,7 +57,7 @@ const Page = (props) => {
               <div className="m-6">Error fetching messages</div>
             )}
           </div>
-          <div className="flex h-full flex-col items-center lg:w-1/2 ">
+          <div className="flex h-full w-1/3 flex-col items-center">
             {signedIn.data && (
               <Text
                 slug={props.params.slug}

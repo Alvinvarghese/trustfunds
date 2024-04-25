@@ -21,7 +21,7 @@ const Text = (props) => {
       };
       const res = await postMessageAPI(props.slug, newData);
       if (res.status === 200) {
-        toastSuccess("Chat added successfully to forum!");
+        toastSuccess("Chat sent successfully to forum!");
         setMessage("");
       }
     } catch (error) {
@@ -33,7 +33,7 @@ const Text = (props) => {
     }
   };
   return (
-    <div className="h-full w-full p-2 lg:gap-1">
+    <div className="h-full w-full pl-8 lg:gap-1">
       <div className="mb-3 flex flex-row justify-between">
         {props.name && (
           <div className="text-md ml-auto">
@@ -43,8 +43,8 @@ const Text = (props) => {
       </div>
       <Textarea
         type="text"
-        placeholder="Enter your opinion/views about the campaign here. Keep it to the context."
-        className="ml-auto h-full max-h-[30vh] w-5/6 rounded-xl border-secondary-foreground bg-primary text-start text-secondary-foreground placeholder-secondary-foreground"
+        placeholder="Enter your opinion / views / concerns about the campaign here. Keep it to the context."
+        className="ml-auto h-full max-h-[25vh] w-full rounded-xl border-secondary-foreground bg-primary text-start text-white placeholder-white"
         value={message}
         onChange={(e) => setMessage(e.target.value)}
       />
