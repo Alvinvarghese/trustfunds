@@ -41,12 +41,14 @@ const Page = (props) => {
   return (
     <PaddingLayout className="overflow-y-hidden">
       <div className="flex h-screen w-full flex-col gap-6">
-        <div className="flex flex-col lg:flex-row h-full pb-28 w-full">
-          <div className="min-h-[200px] overflow-y-scroll h-full w-2/3">
+        <div className="flex h-full w-full flex-col pb-28 lg:flex-row">
+          <div className="h-full min-h-[200px] w-2/3 overflow-y-scroll">
             <Button className="lg:mx-4" onClick={fetchData} variant="outline">
               Refresh
             </Button>
-            {status === "loading" && <SpinnerLoader className="pb-0 h-[300px]"/>}
+            {status === "loading" && (
+              <SpinnerLoader className="h-[300px] pb-0" />
+            )}
             {status === "success" && messages.length === 0 && (
               <div className="m-6">No chat found for this campaign.</div>
             )}
