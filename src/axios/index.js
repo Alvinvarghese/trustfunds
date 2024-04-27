@@ -18,6 +18,8 @@ export const postRegisterAPI = (body) =>
   api.post("/users/register", body, { withCredentials: true });
 export const postLoginAPI = (body) =>
   api.post("/users/login", body, { withCredentials: true });
+export const changePasswordAPI = (body) =>
+  api.post("/users/change-password", body, { withCredentials: true });
 export const getLogoutAPI = () =>
   api.get("/users/logout", { withCredentials: true });
 export const getUserAPI = () => api.get("/users/me", { withCredentials: true });

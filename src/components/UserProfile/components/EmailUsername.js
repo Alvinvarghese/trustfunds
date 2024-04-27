@@ -45,7 +45,7 @@ const EmailUsername = (props) => {
     <>
       <div className="flex flex-col items-center">
         <div className="flex rounded-full border bg-secondary p-5 text-5xl font-medium leading-tight text-white">
-          <InitialsIcon name={username || ""} />
+          <InitialsIcon name={username || "-"} />
         </div>
         <div className="py-2">
           <strong>{username}</strong>
