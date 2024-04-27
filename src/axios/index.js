@@ -49,3 +49,5 @@ export const getMessagesAPI = (slug) =>
   api.get(`/forum/${slug}`, { withCredentials: true });
 export const getContractAPI = () =>
   api.get("/debug/contract-address", { withCredentials: true });
+export const getTransactionsAPI = () =>
+  api.get("/debug/transactions", { withCredentials: true });

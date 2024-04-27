@@ -4,7 +4,7 @@ import Profile from "@/components/UserProfile/Profile";
 const Page = () => {
   return (
     <PaddingLayout>
-      <div>
+      <div className="py-16">
         <Profile />
       </div>
     </PaddingLayout>
