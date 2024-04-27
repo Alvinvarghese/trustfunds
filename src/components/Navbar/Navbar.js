@@ -80,7 +80,7 @@ const Navbar = () => {
             {signedIn.status ? (
               <div className="flex flex-row items-center justify-center gap-3">
                 <span className="hidden select-none lg:block">
-                  Welcome {signedIn.data.name},
+                  Hi {signedIn.data.name},
                 </span>
                 <Logout />
               </div>

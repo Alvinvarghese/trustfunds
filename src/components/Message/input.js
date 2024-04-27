@@ -23,6 +23,7 @@ const Text = (props) => {
       if (res.status === 200) {
         toastSuccess("Chat sent successfully to forum!");
         setMessage("");
+        props?.addMessage(newData);
       }
     } catch (error) {
       console.error(error);

@@ -35,6 +35,8 @@ export const getCampaignDetailsAPI = (id) =>
   api.get(`/campaigns/${id}`, { withCredentials: true });
 export const getCampaignBlockchainDetailsAPI = (id) =>
   api.get(`/campaigns/${id}/blockchain`, { withCredentials: true });
+export const sendFundConfirmationAPI = (id, body) =>
+  api.post(`/campaigns/${id}/fund`, body, { withCredentials: true });
 export const getCampaignDetailsUserAPI = (id) =>
   api.get(`/campaigns/user/${id}`, { withCredentials: true });
 export const searchCampaignsAPI = (id) =>
@@ -43,3 +45,5 @@ export const postMessageAPI = (slug, body) =>
   api.post(`/forum/${slug}`, body, { withCredentials: true });
 export const getMessagesAPI = (slug) =>
   api.get(`/forum/${slug}`, { withCredentials: true });
+export const getContractAPI = () =>
+  api.get("/debug/contract-address", { withCredentials: true });

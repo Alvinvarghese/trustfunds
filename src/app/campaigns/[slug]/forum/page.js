@@ -12,16 +12,15 @@ import { useCallback, useEffect, useState } from "react";
 
 const Page = (props) => {
   const { signedIn } = useUserContext();
-  const [messages, setMessages] = useState([]);
+
   const [status, setStatus] = useState("loading");
-  const addMessage = (newMessage) => {
-    setMessages([...messages, newMessage]);
-  };
+  const [messages, setMessages] = useState([]);
+  const addMessage = (newMessage) => setMessages([newMessage, ...messages]);
 
   const fetchData = useCallback(async () => {
     try {
       if (!props.params.slug)
-        return toastError("No campaign recognized. Try again later.");
+        throw new Error("No campaign recognized. Try again later.");
       setStatus("loading");
       const res = await getMessagesAPI(props.params.slug);
       if (res.data.success) {
@@ -31,6 +30,7 @@ const Page = (props) => {
     } catch (err) {
       setStatus("error");
       console.error(err);
+      toastError(err.message);
     }
   }, []);
 
