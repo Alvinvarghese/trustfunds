@@ -35,7 +35,7 @@ const useFundCampaign = () => {
       newAmount
     );
     if (!result) throw new Error("The donation process was not completed.");
-    toastSuccess(`The payment was completed successfully. Txn Hash: ${result}`);
+    toastSuccess(`The payment was completed successfully. Txn Hash: ${result}. Please wait for transaction confirmation.`);
     return { result, newAmount, sendersAddress: accounts[0] };
   };
 

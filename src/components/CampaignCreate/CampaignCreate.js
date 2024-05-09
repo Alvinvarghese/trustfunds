@@ -20,7 +20,7 @@ import { createCampaignAPI, getCausesAPI } from "@/axios";
 import SpinnerLoader from "../common/SpinnerLoader";
 
 export default function CampaignCreate() {
-  const { signedIn, showLogin } = useUserContext();
+  const { signedIn, checkIfLoggedInAndRedirect } = useUserContext();
 
   // causes list fetching
   const [causes, setCauses] = useState([]);
@@ -35,8 +35,8 @@ export default function CampaignCreate() {
       }
     };
 
-    if (!signedIn.status && !signedIn.fetched) showLogin();
-    else fetchData();
+    const proceed = checkIfLoggedInAndRedirect();
+    if (proceed) fetchData();
   }, []);
 
   // states that manage data

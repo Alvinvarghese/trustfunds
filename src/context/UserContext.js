@@ -30,16 +30,21 @@ export const UserProvider = ({ children }) => {
     setSignedIn({ status: false, data: null, fetched: false });
 
   const router = useRouter();
-  const showLogin = () => {
-    toastError(
-      "You must be logged in to perform this operation. Please login and try again!"
-    );
-    router.push("/auth/login");
+  const checkIfLoggedInAndRedirect = async () => {
+    const res = await getUserData();
+    if (!res) {
+      toastError(
+        "You must be logged in to perform this operation. Please login and try again!"
+      );
+      router.push("/auth/login");
+      return false
+    }
+    else return true
   };
 
   return (
     <UserContext.Provider
-      value={{ signedIn, checkSignedIn, checkout, showLogin }}
+      value={{ signedIn, checkSignedIn, checkout, checkIfLoggedInAndRedirect }}
     >
       {children}
     </UserContext.Provider>
