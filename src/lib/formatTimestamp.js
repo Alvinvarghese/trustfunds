@@ -1,6 +1,8 @@
 function formatTimestamp(deadline) {
   const deadlineDate = new Date(parseInt(deadline));
 
+  if (!deadline) return "";
+
   const options = {
     year: "numeric",
     month: "long",
@@ -11,7 +13,7 @@ function formatTimestamp(deadline) {
   };
   const readableDeadline = deadlineDate.toLocaleString(undefined, options);
 
-  return readableDeadline;
+  return `${readableDeadline} IST`;
 }
 
 export default formatTimestamp;

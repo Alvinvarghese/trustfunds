@@ -18,6 +18,7 @@ import MilestonesCreator from "./MilestonesCreator";
 import { Textarea } from "../ui/textarea";
 import { createCampaignAPI, getCausesAPI } from "@/axios";
 import SpinnerLoader from "../common/SpinnerLoader";
+import LinkMetamask from "../UserProfile/components/LinkMetamask";
 
 export default function CampaignCreate() {
   const { signedIn, checkIfLoggedInAndRedirect } = useUserContext();
@@ -52,6 +53,8 @@ export default function CampaignCreate() {
   ]);
   const [selectedCause, setSelectedCause] = useState("");
   const handleCause = (cause) => setSelectedCause(cause);
+  // metamaskData
+  const [metamaskData, setMetamaskData] = useState(null);
 
   // submit function
   const [loading, setLoading] = useState(false);
@@ -70,6 +73,10 @@ export default function CampaignCreate() {
       if (inputsValidated.error) throw new Error(inputsValidated.error);
       let milestonesValidated = sanitizeMilestones(milestones, endDate);
       if (milestonesValidated.error) throw new Error(milestonesValidated.error);
+      if (!metamaskData?.address)
+        throw new Error("Connect metamask to conttinue.");
+      if (!userName)
+        throw new Error("Something went wrong. Please try again later or try refreshing.");
 
       // upload image to firebase storage
       const url = new URL(await uploadImage(campaignImage, campaignImage.name));
@@ -89,8 +96,9 @@ export default function CampaignCreate() {
         image: url,
         endDate,
         milestones,
+        creatorAddress: metamaskData.address,
       };
-
+      console.log(data)
       const res = await createCampaignAPI(data);
 
       // if (res.status === 200) {
@@ -106,6 +114,12 @@ export default function CampaignCreate() {
   };
   return (
     <>
+      <LinkMetamask
+        account={null}
+        data={metamaskData}
+        setData={setMetamaskData}
+      />
+
       <div className="w-full flex-row gap-4 lg:flex lg:gap-6">
         <div className="w-full pb-4">
           <label>Campaign title*</label>

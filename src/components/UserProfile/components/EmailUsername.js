@@ -4,7 +4,6 @@ import { useEffect, useState } from "react";
 import { getUserAPI } from "@/axios";
 import { toastError } from "@/lib/toast";
 import { useRouter } from "next/navigation";
-import LinkMetamask from "./LinkMetamask";
 
 const InitialsIcon = ({ name }) => {
   const initials = name
@@ -17,7 +16,6 @@ const InitialsIcon = ({ name }) => {
 const EmailUsername = (props) => {
   const [username, setUsername] = useState(null);
   const [email, setEmail] = useState(null);
-  const [metamask, setMetamask] = useState(null);
   const router = useRouter();
   useEffect(() => {
     const fetchData = async () => {
@@ -27,7 +25,6 @@ const EmailUsername = (props) => {
         if (res.status === 200) {
           setUsername(res.data.result.name);
           setEmail(res.data.result.email);
-          setMetamask(res.data.result.metamask);
         }
       } catch (err) {
         if (err.response?.data?.status === 401) {
@@ -52,7 +49,6 @@ const EmailUsername = (props) => {
         </div>
         <div className="py-2">{email}</div>
       </div>
-      <LinkMetamask account={metamask} />
     </>
   );
 };
