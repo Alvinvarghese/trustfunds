@@ -37,9 +37,8 @@ export const UserProvider = ({ children }) => {
         "You must be logged in to perform this operation. Please login and try again!"
       );
       router.push("/auth/login");
-      return false
-    }
-    else return true
+      return false;
+    } else return true;
   };
 
   return (

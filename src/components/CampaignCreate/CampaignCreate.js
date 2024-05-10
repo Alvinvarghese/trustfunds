@@ -76,7 +76,9 @@ export default function CampaignCreate() {
       if (!metamaskData?.address)
         throw new Error("Connect metamask to conttinue.");
       if (!userName)
-        throw new Error("Something went wrong. Please try again later or try refreshing.");
+        throw new Error(
+          "Something went wrong. Please try again later or try refreshing."
+        );
 
       // upload image to firebase storage
       const url = new URL(await uploadImage(campaignImage, campaignImage.name));
@@ -98,7 +100,7 @@ export default function CampaignCreate() {
         milestones,
         creatorAddress: metamaskData.address,
       };
-      console.log(data)
+      console.log(data);
       const res = await createCampaignAPI(data);
 
       // if (res.status === 200) {
