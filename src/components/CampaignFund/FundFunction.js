@@ -16,10 +16,7 @@ const FundFunction = () => {
         placeholder="Enter amount to contribute"
         className="lg:w-[300px]"
       />
-      <span className="text-sm">
-        {contributionAmount.length > 0 ? contributionAmount : 0} eth ={" "}
-        {contributionAmount ? contributionAmount : "0"} ETH
-      </span>
+      <span className="text-sm">(in eth)</span>
       <Button onClick={handleContribute} className="w-fit" variant="outline">
         Fund this campaign
       </Button>

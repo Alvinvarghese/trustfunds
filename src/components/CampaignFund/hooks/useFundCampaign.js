@@ -35,8 +35,10 @@ const useFundCampaign = () => {
       newAmount
     );
     if (!result) throw new Error("The donation process was not completed.");
-    toastSuccess(`The payment was completed successfully. Txn Hash: ${result}. Please wait for transaction confirmation.`);
-    return { result, newAmount, sendersAddress: accounts[0] };
+    toastSuccess(
+      `The payment was completed successfully. Txn Hash: ${result}. Please wait for transaction confirmation.`
+    );
+    return { result, sendersAddress: accounts[0] };
   };
 
   const handleContribute = async () => {
@@ -49,13 +51,13 @@ const useFundCampaign = () => {
       if (amount === "" || !amount || isNaN(amount))
         throw new Error("Enter a valid donating amount.");
       // Step 1: Fund Campaign
-      const { result, newAmount, sendersAddress } = await fundCampaign(amount);
+      const { result, sendersAddress } = await fundCampaign(amount);
       // Step 2: Send confirmation if funded
       if (result)
         await sendConfirmation(
           campaignData._id,
           sendersAddress,
-          newAmount.toString()
+          parseFloat(amount)
         );
     } catch (err) {
       console.error("Error funding campaign:", err);

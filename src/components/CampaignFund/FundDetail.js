@@ -6,7 +6,14 @@ import { getCampaignBlockchainDetailsAPI } from "@/axios";
 import SpinnerLoader from "@/components/common/SpinnerLoader";
 import formatTimestamp from "@/lib/formatTimestamp";
 import { toastError } from "@/lib/toast";
-import { formatEther } from "ethers";
+
+function weiToEth(weiAmount, decimal, is36) {
+  if (typeof weiAmount !== "string") weiAmount = weiAmount.toString();
+  const ethAmount =
+    parseFloat(weiAmount) / parseFloat(Math.pow(10, is36 ? 36 : 18));
+  if (decimal) return ethAmount.toFixed(decimal);
+  return ethAmount;
+}
 
 const FundDetail = () => {
   const { campaignData } = useCampaignDetailContext();
@@ -24,7 +31,10 @@ const FundDetail = () => {
       const res = await getCampaignBlockchainDetailsAPI(campaignData._id);
       console.log(res);
       if (res.data.success) {
-        setData(res.data.result);
+        let temp = res.data.result;
+        const goal = weiToEth(temp.targetAmount, 2, true);
+        const balance = weiToEth(temp.totalRaised, null, false);
+        setData({ ...temp, targetAmount: goal, totalRaised: balance });
         setStatus("success");
       } else setStatus("error");
     } catch (err) {
@@ -62,7 +72,7 @@ const FundDetail = () => {
 
           <div className="flex flex-col items-center justify-start gap-2 lg:flex-row">
             <p className="text-sm font-semibold lg:text-lg">Total Raised:</p>
-            <p>{data.totalRaised}</p>
+            <p>{data.totalRaised} eth</p>
           </div>
 
           <div className="flex flex-col items-center justify-start gap-2 lg:flex-row">
