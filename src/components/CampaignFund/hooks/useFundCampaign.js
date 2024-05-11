@@ -11,8 +11,10 @@ const useFundCampaign = () => {
 
   const sendConfirmation = async (campaignId, sendersAddress, value) => {
     // sending payment successful confirmation
-    const data = { sendersAddress, value };
-    const res = await sendFundConfirmationAPI(campaignId, data);
+    const res = await sendFundConfirmationAPI(campaignId, {
+      sendersAddress,
+      value,
+    });
     const { success, message, error } = res.data;
     if (success) toastSuccess(message);
     else throw new Error(error);
@@ -45,7 +47,7 @@ const useFundCampaign = () => {
     try {
       // checking if campaign context present
       if (!campaignData || !campaignData?._id)
-        throw new Error("Chose a campaign to donate first.");
+        throw new Error("Campaign not found. Please try again later.");
       const amount = contributionAmount.trim();
       // checking transaction amount
       if (amount === "" || !amount || isNaN(amount))
@@ -54,11 +56,7 @@ const useFundCampaign = () => {
       const { result, sendersAddress } = await fundCampaign(amount);
       // Step 2: Send confirmation if funded
       if (result)
-        await sendConfirmation(
-          campaignData._id,
-          sendersAddress,
-          parseFloat(amount)
-        );
+        await sendConfirmation(campaignData._id, sendersAddress, amount);
     } catch (err) {
       console.error("Error funding campaign:", err);
       toastError(err?.response?.data?.error || err.message);

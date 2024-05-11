@@ -99,6 +99,8 @@ const FundDetail = () => {
           ))}
 
           <div className="h-2" />
+          <div className="cursor-pointer underline" onClick={fetchData}>Refresh this data?</div>
+          <div className="h-2" />
         </>
       )}
     </>

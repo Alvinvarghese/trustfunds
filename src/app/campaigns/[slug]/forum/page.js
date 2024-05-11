@@ -1,6 +1,7 @@
 "use client";
 
 import { getMessagesAPI } from "@/axios";
+import SignInToChat from "@/components/CampaignForum/SignInToChat";
 import PaddingLayout from "@/components/Layout/PaddingLayout";
 import Text from "@/components/Message/input";
 import Message from "@/components/Message/message";
@@ -60,12 +61,14 @@ const Page = (props) => {
             )}
           </div>
           <div className="flex h-full w-1/3 flex-col items-center">
-            {signedIn.data && (
+            {signedIn.data ? (
               <Text
                 slug={props.params.slug}
                 addMessage={addMessage}
                 name={signedIn.data.name}
               />
+            ) : (
+              <SignInToChat />
             )}
           </div>
         </div>
