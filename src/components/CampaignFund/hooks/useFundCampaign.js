@@ -7,6 +7,7 @@ import { useCampaignDetailContext } from "@/context/CampaignContext";
 
 const useFundCampaign = () => {
   const [contributionAmount, setContributionAmount] = useState("");
+  const [state, setState] = useState("idle");
   const { campaignData } = useCampaignDetailContext();
 
   const sendConfirmation = async (campaignId, sendersAddress, value) => {
@@ -45,6 +46,7 @@ const useFundCampaign = () => {
 
   const handleContribute = async () => {
     try {
+      setState("loading");
       // checking if campaign context present
       if (!campaignData || !campaignData?._id)
         throw new Error("Campaign not found. Please try again later.");
@@ -62,6 +64,7 @@ const useFundCampaign = () => {
       toastError(err?.response?.data?.error || err.message);
     } finally {
       setContributionAmount("");
+      setState("idle");
     }
   };
 
@@ -69,6 +72,7 @@ const useFundCampaign = () => {
     contributionAmount,
     setContributionAmount,
     handleContribute,
+    state,
   };
 };
 
