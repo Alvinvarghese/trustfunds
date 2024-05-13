@@ -30,9 +30,9 @@ export default function CampaignAdminDetails({ data }) {
       <div className="flex flex-col justify-between gap-5 pt-8 lg:flex-row lg:gap-0">
         <div className="flex w-full flex-col items-start justify-between gap-1">
           <h1 className="text-darkgray text-4xl font-bold">{data.title}</h1>
-          <div className="flex w-full flex-col gap-5 lg:w-1/2">
+          <div className="flex w-full flex-col gap-5 lg:w-1/2 mt-10">
             <Button className="size-100 text-darkgray flex flex-col bg-lightblue hover:text-white">
-              <p className="text-3xl font-bold">{data.balance}</p>{" "}
+              <p className="text-3xl font-bold">{parseFloat(data.balance).toFixed(10)}</p>{" "}
               <p>raised of {data.goal}</p>
             </Button>
             <Button className="size-100 text-darkgray flex flex-col bg-lightblue hover:text-white">

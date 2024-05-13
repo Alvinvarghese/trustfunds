@@ -54,7 +54,7 @@ const FundDetail = () => {
   }, []);
   return (
     <>
-      <div className="mb-4 flex flex-col items-center justify-start gap-2 lg:flex-row">
+      <div className="mb-4 flex flex-row items-center justify-start gap-2">
         <IconButton onClick={goBack} text="Back" Icon={ArrowLeft} />
         <IconButton onClick={fetchData} text="Refresh" Icon={RefreshIcon} />
       </div>
@@ -64,32 +64,32 @@ const FundDetail = () => {
       {status === "success" && data && (
         <>
         {console.log(data)}
-          <div className="flex flex-col items-center justify-start gap-2 lg:flex-row">
+          <div className="flex flex-row text-wrap break-words hyphens-auto max-w-screen items-center justify-start gap-2">
             <p className="text-sm font-semibold lg:text-lg">Creator Address:</p>
             <p>{data.recipient}</p>
           </div>
 
-          <div className="flex flex-col items-center justify-start gap-2 lg:flex-row">
+          <div className="flex flex-row text-wrap break-words hyphens-auto max-w-screen items-center justify-start gap-2">
             <p className="text-sm font-semibold lg:text-lg">Target Amount:</p>
             <p>{data.targetAmount} eth</p>
           </div>
 
-          <div className="flex flex-col items-center justify-start gap-2 lg:flex-row">
+          <div className="flex flex-row text-wrap break-words hyphens-auto max-w-screen items-center justify-start gap-2">
             <p className="text-sm font-semibold lg:text-lg">Deadline:</p>
             <p>{formatTimestamp(data.deadline)}</p>
           </div>
 
-          <div className="flex flex-col items-center justify-start gap-2 lg:flex-row">
+          <div className="flex flex-row text-wrap break-words hyphens-auto max-w-screen items-center justify-start gap-2">
             <p className="text-sm font-semibold lg:text-lg">Total Raised:</p>
             <p>{data.totalRaised} eth</p>
           </div>
 
-          <div className="flex flex-col items-center justify-start gap-2 lg:flex-row">
+          <div className="flex flex-row text-wrap break-words hyphens-auto max-w-screen items-center justify-start gap-2">
             <p className="text-sm font-semibold lg:text-lg">Completed:</p>
             <p>{data.completed ? "Yes" : "No"}</p>
           </div>
 
-          <div className="flex flex-col items-center justify-start gap-2 lg:flex-row">
+          <div className="flex flex-row text-wrap break-words hyphens-auto max-w-screen items-center justify-start gap-2">
             <p className="text-sm font-semibold lg:text-lg">
               Number of Contributors:
             </p>

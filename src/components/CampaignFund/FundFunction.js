@@ -9,7 +9,7 @@ const FundFunction = () => {
   const { contributionAmount, setContributionAmount, handleContribute, state } =
     useFundCampaign();
   return (
-    <div className="my-3 flex flex-col gap-1 lg:gap-2">
+    <div className="lg:my-3 flex flex-col gap-1 lg:gap-2">
       <Input
         type="number"
         value={contributionAmount}

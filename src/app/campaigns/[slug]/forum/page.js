@@ -46,10 +46,10 @@ const Page = (props) => {
 
   return (
     <PaddingLayout className="overflow-y-hidden">
-      <div className="flex h-screen w-full flex-col gap-6">
+      <div className="flex h-screen w-full lg:flex-col flex-row-reverse gap-6">
         <div className="flex h-full w-full flex-col pb-28 lg:flex-row">
-          <div className="h-full min-h-[200px] w-2/3 overflow-y-scroll">
-            <div className="mb-6 ml-3 flex flex-row items-center justify-start gap-4">
+          <div className="h-full min-h-[320px] lg:w-2/3 overflow-y-scroll lg:border-b-0 border-b-2 border-[#ffffff33]">
+            <div className="lg:mb-6 ml-3 flex flex-row items-center justify-start gap-4">
               <IconButton onClick={goBack} text="Back" Icon={ArrowLeft} />
               <IconButton
                 onClick={fetchData}
@@ -70,7 +70,7 @@ const Page = (props) => {
               <div className="m-6">Error fetching messages</div>
             )}
           </div>
-          <div className="flex h-full w-1/3 flex-col items-center">
+          <div className="flex h-full lg:w-1/3 flex-col items-center mt-8 lg:mt-0">
             {signedIn.data ? (
               <Text
                 slug={props.params.slug}

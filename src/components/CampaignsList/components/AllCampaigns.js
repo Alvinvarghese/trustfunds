@@ -12,7 +12,7 @@ const AllCampaigns = (props) => {
   if (data.length === 0)
     return (
       <IconButton
-        className="px-8 py-10"
+        className="lg:px-8 py-10"
         text="Click to create your first campaign."
         onClick={sendToCreate}
         Icon={PlusCircle}
