@@ -7,6 +7,8 @@ import SpinnerLoader from "@/components/common/SpinnerLoader";
 import formatTimestamp from "@/lib/formatTimestamp";
 import { toastError } from "@/lib/toast";
 import { useRouter } from "next/navigation";
+import IconButton from "../common/IconButton";
+import { ArrowLeft, RefreshIcon } from "../Icons";
 
 function weiToEth(weiAmount, decimal, is36) {
   if (typeof weiAmount !== "string") weiAmount = weiAmount.toString();
@@ -52,15 +54,13 @@ const FundDetail = () => {
   }, []);
   return (
     <>
+      <div className="mb-4 flex flex-col items-center justify-start gap-2 lg:flex-row">
+        <IconButton onClick={goBack} text="Back" Icon={ArrowLeft} />
+        <IconButton onClick={fetchData} text="Refresh" Icon={RefreshIcon} />
+      </div>
+
       {status === "loading" && <SpinnerLoader />}
-      {status === "error" && (
-        <p className="my-4">
-          Error fetching campaign data.{" "}
-          <span onClick={goBack} className="underline">
-            Click to go back
-          </span>
-        </p>
-      )}
+      {status === "error" && <></>}
       {status === "success" && data && (
         <>
           <div className="flex flex-col items-center justify-start gap-2 lg:flex-row">
@@ -105,12 +105,6 @@ const FundDetail = () => {
               <p>Reached: {milestone.reached ? "Yes" : "No"}</p>
             </div>
           ))}
-
-          <div className="h-2" />
-          <div className="cursor-pointer underline" onClick={fetchData}>
-            Refresh this data?
-          </div>
-          <div className="h-2" />
         </>
       )}
     </>
