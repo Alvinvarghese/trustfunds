@@ -10,10 +10,10 @@ import { useRouter } from "next/navigation";
 import IconButton from "../common/IconButton";
 import { ArrowLeft, RefreshIcon } from "../Icons";
 
-function weiToEth(weiAmount, decimal, is36) {
+function weiToEth(weiAmount, decimal, exp) {
   if (typeof weiAmount !== "string") weiAmount = weiAmount.toString();
   const ethAmount =
-    parseFloat(weiAmount) / parseFloat(Math.pow(10, is36 ? 36 : 18));
+    parseFloat(weiAmount) / parseFloat(Math.pow(10, exp));
   if (decimal) return ethAmount.toFixed(decimal);
   return ethAmount;
 }
@@ -37,8 +37,8 @@ const FundDetail = () => {
       console.log(res);
       if (res.data.success) {
         let temp = res.data.result;
-        const goal = weiToEth(temp.targetAmount, 2, true);
-        const balance = weiToEth(temp.totalRaised, null, false);
+        const goal = weiToEth(temp.targetAmount, 4, 36);
+        const balance = weiToEth(temp.totalRaised, 10, 18).toString();
         setData({ ...temp, targetAmount: goal, totalRaised: balance });
         setStatus("success");
       } else setStatus("error");
@@ -63,6 +63,7 @@ const FundDetail = () => {
       {status === "error" && <></>}
       {status === "success" && data && (
         <>
+        {console.log(data)}
           <div className="flex flex-col items-center justify-start gap-2 lg:flex-row">
             <p className="text-sm font-semibold lg:text-lg">Creator Address:</p>
             <p>{data.recipient}</p>

@@ -56,3 +56,5 @@ export const getContractAPI = () =>
   api.get("/debug/contract-address", { withCredentials: true });
 export const getTransactionsAPI = () =>
   api.get("/debug/transactions", { withCredentials: true });
+
+// export const voteCampaignId = ()=> 

@@ -43,8 +43,7 @@ const Page = () => {
     } catch (error) {
       console.error(error);
       let defaultError = "Registration failed. Please try again later";
-      let e = giveErrorMsg(error);
-      toastError(e[0], e[1]);
+      toastError(err.response?.data?.error || err.message || defaultError);
     }
   };
 

@@ -26,7 +26,7 @@ export default function MilestoneTable(props) {
         props.milestones.map((milestone, index) => {
           return (
             <div
-              className="flex flex-row items-center justify-between gap-2 py-1 text-left"
+              className="flex flex-row items-center justify-between gap-1 py-1 text-left text-sm"
               key={index}
             >
               <Number>{index + 1}</Number>

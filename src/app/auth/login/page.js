@@ -36,8 +36,7 @@ const Page = () => {
       }
     } catch (error) {
       console.log("Login failed", error);
-      const e = giveErrorMsg(error);
-      toastError(e[0], e[1]);
+      toastError(err.response?.data?.error || err.message);
     }
   };
 

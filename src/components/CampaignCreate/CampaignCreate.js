@@ -108,8 +108,7 @@ export default function CampaignCreate() {
       // }
     } catch (error) {
       console.error("Campaign creation failed", error);
-      let e = giveErrorMsg(error);
-      toastError(e[0], e[1]);
+      toastError(error.response?.data?.error || error.message);
     } finally {
       setLoading(false);
     }

@@ -30,10 +30,6 @@ export default function CampaignAdminDetails({ data }) {
       <div className="flex flex-col justify-between gap-5 pt-8 lg:flex-row lg:gap-0">
         <div className="flex w-full flex-col items-start justify-between gap-1">
           <h1 className="text-darkgray text-4xl font-bold">{data.title}</h1>
-          <div className="flex flex-row gap-1">
-            <p>Transaction Address: </p>
-            <p className="font-bold">{data.contractAddress}</p>
-          </div>
           <div className="flex w-full flex-col gap-5 lg:w-1/2">
             <Button className="size-100 text-darkgray flex flex-col bg-lightblue hover:text-white">
               <p className="text-3xl font-bold">{data.balance}</p>{" "}

@@ -2,7 +2,7 @@ import PaddingLayout from "@/components/Layout/PaddingLayout";
 import FundDetail from "@/components/CampaignFund/FundDetail";
 import FundFunction from "@/components/CampaignFund/FundFunction";
 import TokenCheckLayout from "@/components/Layout/TokenCheckLayout";
-import FundVoting from "@/components/CampaignFund/FundVoting";
+// import FundVoting from "@/components/CampaignFund/FundVoting";
 
 const Page = () => {
   const Line = () => (
@@ -20,8 +20,6 @@ const Page = () => {
           <FundDetail />
           <Line />
           <FundFunction />
-          <Line />
-          <FundVoting />
         </div>
       </PaddingLayout>
     </TokenCheckLayout>
@@ -29,3 +27,5 @@ const Page = () => {
 };
 
 export default Page;
+
+{/* <FundVoting /> */}

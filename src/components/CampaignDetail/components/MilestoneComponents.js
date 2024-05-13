@@ -25,7 +25,7 @@ export const Date = (props) => (
 );
 
 export const Fund = (props) => (
-  <p className="rounded-md border-[1px] border-secondary px-2 py-1 text-left lg:w-[200px]">
+  <p className="rounded-md border-[1px] border-secondary px-2 py-1 text-left lg:w-[280px]">
     {props.children}
   </p>
 );
