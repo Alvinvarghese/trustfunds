@@ -50,26 +50,22 @@ const Details = (props) => {
         />
       </div>
 
-      <div className="flex flex-col justify-between gap-5 pt-8 lg:flex-row lg:gap-0">
-        <div className="flex flex-col items-start justify-between gap-1">
-          <h1 className="text-darkgray text-4xl font-bold">{data.title}</h1>
-          <div className="flex flex-row gap-1">
-            <p>Transaction Address: </p>
-            <p className="font-bold">{data.contractAddress}</p>
-          </div>
-        </div>
-
+      <div className="flex flex-col justify-between gap-5 mt-8 lg:flex-row lg:gap-0">
+        <h1 className="text-darkgray text-4xl font-bold">{data.title}</h1>
         <div className="flex flex-col gap-5 lg:flex-row">
           <Button className="size-100 text-darkgray flex flex-col bg-lightblue hover:text-white">
-            <p className="text-3xl font-bold">0.00</p>{" "}
-            <p>raised of {data.goal}</p>
+            <p className="text-3xl font-bold">
+              {parseFloat(data.balance).toFixed(8)}
+            </p>{" "}
+            <p>raised of {data.goal} eth</p>
           </Button>
           <Button className="size-100 text-darkgray flex flex-col bg-lightblue hover:text-white">
             <p className="text-3xl font-bold">{daysLeft(data.endDate)}</p>{" "}
             <p>days left</p>
           </Button>
           <Button className="size-100 text-darkgray flex flex-col bg-lightblue hover:text-white">
-            <p className="text-3xl font-bold">0</p> <p>backers</p>
+            <p className="text-3xl font-bold">{data.backersCount}</p>{" "}
+            <p>donations</p>
           </Button>
         </div>
       </div>

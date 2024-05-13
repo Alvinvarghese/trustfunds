@@ -2,17 +2,22 @@
 
 import { getMessagesAPI } from "@/axios";
 import SignInToChat from "@/components/CampaignForum/SignInToChat";
+import { ArrowLeft, RefreshIcon } from "@/components/Icons";
 import PaddingLayout from "@/components/Layout/PaddingLayout";
 import Text from "@/components/Message/input";
 import Message from "@/components/Message/message";
+import IconButton from "@/components/common/IconButton";
 import SpinnerLoader from "@/components/common/SpinnerLoader";
 import { Button } from "@/components/ui/button";
 import { useUserContext } from "@/context/UserContext";
 import { toastError } from "@/lib/toast";
+import { useRouter } from "next/navigation";
 import { useCallback, useEffect, useState } from "react";
 
 const Page = (props) => {
   const { signedIn } = useUserContext();
+  const router = useRouter();
+  const goBack = () => router.back();
 
   const [status, setStatus] = useState("loading");
   const [messages, setMessages] = useState([]);
@@ -44,9 +49,14 @@ const Page = (props) => {
       <div className="flex h-screen w-full flex-col gap-6">
         <div className="flex h-full w-full flex-col pb-28 lg:flex-row">
           <div className="h-full min-h-[200px] w-2/3 overflow-y-scroll">
-            <Button className="lg:mx-4" onClick={fetchData} variant="outline">
-              Refresh
-            </Button>
+            <div className="mb-6 ml-3 flex flex-row items-center justify-start gap-4">
+              <IconButton onClick={goBack} text="Back" Icon={ArrowLeft} />
+              <IconButton
+                onClick={fetchData}
+                text="Refresh"
+                Icon={RefreshIcon}
+              />
+            </div>
             {status === "loading" && (
               <SpinnerLoader className="h-[300px] pb-0" />
             )}

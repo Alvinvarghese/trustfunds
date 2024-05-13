@@ -36,7 +36,7 @@ export default function CampaignAdminDetails({ data }) {
           </div>
           <div className="flex w-full flex-col gap-5 lg:w-1/2">
             <Button className="size-100 text-darkgray flex flex-col bg-lightblue hover:text-white">
-              <p className="text-3xl font-bold">0.00</p>{" "}
+              <p className="text-3xl font-bold">{data.balance}</p>{" "}
               <p>raised of {data.goal}</p>
             </Button>
             <Button className="size-100 text-darkgray flex flex-col bg-lightblue hover:text-white">
@@ -44,7 +44,8 @@ export default function CampaignAdminDetails({ data }) {
               <p>days left</p>
             </Button>
             <Button className="size-100 text-darkgray flex flex-col bg-lightblue hover:text-white">
-              <p className="text-3xl font-bold">0</p> <p>backers</p>
+              <p className="text-3xl font-bold">{data.backersCount}</p>{" "}
+              <p>donations</p>
             </Button>
           </div>
         </div>

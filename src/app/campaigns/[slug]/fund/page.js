@@ -2,8 +2,14 @@ import PaddingLayout from "@/components/Layout/PaddingLayout";
 import FundDetail from "@/components/CampaignFund/FundDetail";
 import FundFunction from "@/components/CampaignFund/FundFunction";
 import TokenCheckLayout from "@/components/Layout/TokenCheckLayout";
+import FundVoting from "@/components/CampaignFund/FundVoting";
 
 const Page = () => {
+  const Line = () => (
+    <div className="py-3">
+      <div className="h-[1px] w-full bg-secondary-foreground opacity-20 hover:opacity-40" />
+    </div>
+  );
   return (
     <TokenCheckLayout>
       <PaddingLayout>
@@ -12,8 +18,10 @@ const Page = () => {
         </h1>
         <div className="mb-20 mt-10 flex h-screen flex-col gap-4 lg:gap-2">
           <FundDetail />
-          <div className="h-[1px] w-full bg-secondary-foreground" />
+          <Line />
           <FundFunction />
+          <Line />
+          <FundVoting />
         </div>
       </PaddingLayout>
     </TokenCheckLayout>

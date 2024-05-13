@@ -6,6 +6,7 @@ import { getCampaignBlockchainDetailsAPI } from "@/axios";
 import SpinnerLoader from "@/components/common/SpinnerLoader";
 import formatTimestamp from "@/lib/formatTimestamp";
 import { toastError } from "@/lib/toast";
+import { useRouter } from "next/navigation";
 
 function weiToEth(weiAmount, decimal, is36) {
   if (typeof weiAmount !== "string") weiAmount = weiAmount.toString();
@@ -19,6 +20,8 @@ const FundDetail = () => {
   const { campaignData } = useCampaignDetailContext();
   const [status, setStatus] = useState("loading");
   const [data, setData] = useState(null);
+  const router = useRouter();
+  const goBack = () => router.back();
 
   const fetchData = useCallback(async () => {
     try {
@@ -51,7 +54,12 @@ const FundDetail = () => {
     <>
       {status === "loading" && <SpinnerLoader />}
       {status === "error" && (
-        <p className="my-4">Error fetching campaign data</p>
+        <p className="my-4">
+          Error fetching campaign data.{" "}
+          <span onClick={goBack} className="underline">
+            Click to go back
+          </span>
+        </p>
       )}
       {status === "success" && data && (
         <>
@@ -99,7 +107,9 @@ const FundDetail = () => {
           ))}
 
           <div className="h-2" />
-          <div className="cursor-pointer underline" onClick={fetchData}>Refresh this data?</div>
+          <div className="cursor-pointer underline" onClick={fetchData}>
+            Refresh this data?
+          </div>
           <div className="h-2" />
         </>
       )}

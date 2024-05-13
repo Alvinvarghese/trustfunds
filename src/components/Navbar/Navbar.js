@@ -11,7 +11,7 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { useTheme } from "next-themes";
 import SearchBar from "./components/SearchBar";
-import { BadgePlus, Menu, Moon, Sun, UserIcon } from "../Icons";
+import { BadgePlus, DashboardIcon, Menu, Moon, Sun, UserIcon } from "../Icons";
 import { useRouter } from "next/navigation";
 import Logout from "./components/Logout";
 
@@ -24,6 +24,16 @@ const Navbar = () => {
 
   const router = useRouter();
   const gotoProfile = () => router.push("/user/profile");
+  const gotoUserCampaigns = () => router.push("/user/campaigns");
+
+  const NavItem = (props) => {
+    return (
+      <DropdownMenuItem onClick={props.onClick}>
+        <props.Icon />
+        <span className="pl-2">{props.text}</span>
+      </DropdownMenuItem>
+    );
+  };
 
   return (
     <nav className="fixed z-50 w-full">
@@ -44,21 +54,23 @@ const Navbar = () => {
               </DropdownMenuTrigger>
               <DropdownMenuContent>
                 {theme === "dark" ? (
-                  <DropdownMenuItem onClick={handleLight}>
-                    <Sun />
-                    <span className="pl-2">Light Mode</span>
-                  </DropdownMenuItem>
+                  <NavItem Icon={Sun} onClick={handleLight} text="Light Mode" />
                 ) : (
-                  <DropdownMenuItem onClick={handleTheme}>
-                    <Moon />
-                    <span className="pl-2">Dark Mode</span>
-                  </DropdownMenuItem>
+                  <NavItem Icon={Moon} onClick={handleTheme} text="Dark Mode" />
                 )}
                 {signedIn.status && (
-                  <DropdownMenuItem onClick={gotoProfile}>
-                    <UserIcon />
-                    <span className="hidden lg:flex">Profile</span>
-                  </DropdownMenuItem>
+                  <>
+                    <NavItem
+                      Icon={DashboardIcon}
+                      onClick={gotoUserCampaigns}
+                      text="Dashboard"
+                    />
+                    <NavItem
+                      Icon={UserIcon}
+                      onClick={gotoProfile}
+                      text="Profile"
+                    />
+                  </>
                 )}
               </DropdownMenuContent>
             </DropdownMenu>

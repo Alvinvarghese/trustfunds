@@ -14,10 +14,9 @@ const FundFunction = () => {
         type="number"
         value={contributionAmount}
         onChange={(e) => setContributionAmount(e.target.value)}
-        placeholder="Enter amount to contribute"
+        placeholder="Enter amount to contribute (in eth)"
         className="lg:w-[300px]"
       />
-      <span className="text-sm">(in eth)</span>
       <Button
         onClick={handleContribute}
         className="w-fit"

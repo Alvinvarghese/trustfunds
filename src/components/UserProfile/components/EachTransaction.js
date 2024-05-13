@@ -1,13 +1,7 @@
+import formatTimestamp from "@/lib/formatTimestamp";
 import Link from "next/link";
 
 const EachTransaction = (props) => {
-  const date = new Date(props.data.timestamp).toString().split(" ");
-  const timestamp = date.map((e, index) => {
-    if (index > 4) return "";
-    if ([0, 3].includes(index)) return `${e}, `;
-    else return `${e} `;
-  });
-  console.log(timestamp);
   return (
     <div className="my-1 flex w-full flex-col items-center justify-start rounded-md border border-primary p-2 lg:flex-row">
       <div className="w-[40px] px-3 font-medium">{props.index}</div>
@@ -24,7 +18,7 @@ const EachTransaction = (props) => {
           {props.data.action}
         </span>
       </div>
-      <div className="w-1/6">{timestamp}</div>
+      <div className="w-1/6 text-sm">{formatTimestamp(props.data.timestamp)}</div>
     </div>
   );
 };

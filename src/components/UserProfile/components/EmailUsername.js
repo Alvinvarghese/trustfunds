@@ -10,7 +10,7 @@ const InitialsIcon = ({ name }) => {
     .split(" ")
     .map((part) => part.charAt(0))
     .join("");
-  return <div className="initials-icon">{initials}</div>;
+  return <div className="initials-icon">{`${initials[0]}${initials[1]}`}</div>;
 };
 
 const EmailUsername = (props) => {

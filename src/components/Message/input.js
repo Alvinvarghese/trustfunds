@@ -4,6 +4,8 @@ import { Textarea } from "@/components/ui/textarea";
 import { postMessageAPI } from "@/axios";
 import SpinnerLoader from "../common/SpinnerLoader";
 import { toastError, toastSuccess } from "@/lib/toast";
+import IconButton from "../common/IconButton";
+import { SendHorizontalIcon } from "../Icons";
 
 const Text = (props) => {
   const [message, setMessage] = useState("");
@@ -50,14 +52,15 @@ const Text = (props) => {
         onChange={(e) => setMessage(e.target.value)}
       />
       <div className="flex flex-col items-end">
-        <Button
+        <IconButton
+          className="mt-4 flex-row-reverse gap-4"
           onClick={handleSubmit}
-          className="mt-3 flex flex-row gap-3 rounded-xl px-10 py-6 text-lg"
+          text={!loading ? "Send Message" : ""}
+          Icon={!loading ? SendHorizontalIcon : null}
           type="submit"
-          variant="outline"
         >
-          {loading ? <SpinnerLoader className="h-fit pb-0" /> : <>Send</>}
-        </Button>
+          {loading ? <SpinnerLoader className="h-fit pb-0" /> : <></>}
+        </IconButton>
       </div>
     </div>
   );

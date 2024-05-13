@@ -40,6 +40,9 @@ const TransactionHistory = () => {
             index={index + 1}
           />
         ))}
+      {transactions && transactions.length === 0 && (
+        <div className="py-2 opacity-50 w-full">No transactions to view...</div>
+      )}
     </div>
   );
 };
